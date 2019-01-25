@@ -22,6 +22,7 @@
 		0D19EC1421FB457F0033C524 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EC0C21FB457F0033C524 /* AFSecurityPolicy.m */; };
 		0D19EC1821FB46280033C524 /* MKCRequestAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EC1721FB46280033C524 /* MKCRequestAPI.m */; };
 		0D19EC1B21FB47290033C524 /* MKCRequestAPI+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EC1A21FB47290033C524 /* MKCRequestAPI+Private.m */; };
+		0D19EC1E21FB4C7E0033C524 /* MKCURLGuide.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EC1D21FB4C7E0033C524 /* MKCURLGuide.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,8 @@
 		0D19EC1721FB46280033C524 /* MKCRequestAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCRequestAPI.m; sourceTree = "<group>"; };
 		0D19EC1921FB47290033C524 /* MKCRequestAPI+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKCRequestAPI+Private.h"; sourceTree = "<group>"; };
 		0D19EC1A21FB47290033C524 /* MKCRequestAPI+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MKCRequestAPI+Private.m"; sourceTree = "<group>"; };
+		0D19EC1C21FB4C7E0033C524 /* MKCURLGuide.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCURLGuide.h; sourceTree = "<group>"; };
+		0D19EC1D21FB4C7E0033C524 /* MKCURLGuide.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCURLGuide.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +170,8 @@
 				0D19EC1721FB46280033C524 /* MKCRequestAPI.m */,
 				0D19EC1921FB47290033C524 /* MKCRequestAPI+Private.h */,
 				0D19EC1A21FB47290033C524 /* MKCRequestAPI+Private.m */,
+				0D19EC1C21FB4C7E0033C524 /* MKCURLGuide.h */,
+				0D19EC1D21FB4C7E0033C524 /* MKCURLGuide.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D19EC1E21FB4C7E0033C524 /* MKCURLGuide.m in Sources */,
 				0D19EBE021FB44A90033C524 /* ViewController.m in Sources */,
 				0D19EC1421FB457F0033C524 /* AFSecurityPolicy.m in Sources */,
 				0D19EBEB21FB44AA0033C524 /* main.m in Sources */,

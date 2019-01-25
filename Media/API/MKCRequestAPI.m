@@ -8,6 +8,7 @@
 
 #import "MKCRequestAPI.h"
 #import "MKCRequestAPI+Private.h"
+#import "MKCURLGuide.h"
 
 @implementation MKCRequestAPI
 
@@ -21,14 +22,12 @@
 }
 
 - (NSURLSessionDataTask *)fetchSongWithKeyword:(nonnull NSString *)keyword successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler {
-	
-	NSString *URLString = @"https://itunes.apple.com/search";
-	
+		
 	NSDictionary *parameters = @{@"term": keyword,
 								 @"entity": @"song"
 								 };
 	
-	NSMutableURLRequest *request = [self in_requestWithURLString:URLString method:@"GET" parameters:parameters];
+	NSMutableURLRequest *request = [self in_requestWithURLString:MKCURLGuide.searchAPI method:@"GET" parameters:parameters];
 	
 	NSURLSessionDataTask *dataTask = [self in_fireAPIWithRequest:request successHandler:successHandler failureHandler:failureHandler];
 	
