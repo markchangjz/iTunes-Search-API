@@ -11,6 +11,13 @@
 
 @implementation MKCRequestAPI (Private)
 
+- (NSMutableURLRequest *)in_requestWithURLString:(NSString *)URLString method:(NSString *)method parameters:(NSDictionary *)parameters {
+	
+	NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:method URLString:URLString parameters:parameters error:nil];
+	
+	return request;
+}
+
 - (NSURLSessionDataTask *)in_fireAPIWithRequest:(NSURLRequest *)request successHandler:(void (^)(NSURLResponse *, id))successHandler failureHandler:(void (^)(NSError *))failureHandler {
 	
 	NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
