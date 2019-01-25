@@ -33,6 +33,7 @@
 		0DAF141021FB530700103B3F /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF140421FB530700103B3F /* JSONAPI.m */; };
 		0DAF141121FB530700103B3F /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF140821FB530700103B3F /* JSONModel+networking.m */; };
 		0DAF141521FB53CC00103B3F /* MKCSongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF141421FB53CC00103B3F /* MKCSongModel.m */; };
+		0DE0F1E721FB59980039B53E /* MKCMovieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE0F1E621FB59980039B53E /* MKCMovieModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,8 @@
 		0DAF140821FB530700103B3F /* JSONModel+networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONModel+networking.m"; sourceTree = "<group>"; };
 		0DAF141321FB53CC00103B3F /* MKCSongModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCSongModel.h; sourceTree = "<group>"; };
 		0DAF141421FB53CC00103B3F /* MKCSongModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCSongModel.m; sourceTree = "<group>"; };
+		0DE0F1E521FB59980039B53E /* MKCMovieModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCMovieModel.h; sourceTree = "<group>"; };
+		0DE0F1E621FB59980039B53E /* MKCMovieModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCMovieModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +267,8 @@
 			children = (
 				0DAF141321FB53CC00103B3F /* MKCSongModel.h */,
 				0DAF141421FB53CC00103B3F /* MKCSongModel.m */,
+				0DE0F1E521FB59980039B53E /* MKCMovieModel.h */,
+				0DE0F1E621FB59980039B53E /* MKCMovieModel.m */,
 			);
 			path = "JSON Model";
 			sourceTree = "<group>";
@@ -383,6 +388,7 @@
 				0DAF140D21FB530700103B3F /* JSONModelClassProperty.m in Sources */,
 				0D19EC1121FB457F0033C524 /* AFURLSessionManager.m in Sources */,
 				0DAF140B21FB530700103B3F /* JSONModel.m in Sources */,
+				0DE0F1E721FB59980039B53E /* MKCMovieModel.m in Sources */,
 				0D19EC0F21FB457F0033C524 /* AFURLResponseSerialization.m in Sources */,
 				0D19EC1821FB46280033C524 /* MKCRequestAPI.m in Sources */,
 				0D19EC1221FB457F0033C524 /* AFURLRequestSerialization.m in Sources */,
