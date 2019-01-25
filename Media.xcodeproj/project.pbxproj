@@ -32,6 +32,7 @@
 		0DAF140F21FB530700103B3F /* JSONHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF140321FB530700103B3F /* JSONHTTPClient.m */; };
 		0DAF141021FB530700103B3F /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF140421FB530700103B3F /* JSONAPI.m */; };
 		0DAF141121FB530700103B3F /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF140821FB530700103B3F /* JSONModel+networking.m */; };
+		0DAF141521FB53CC00103B3F /* MKCSongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF141421FB53CC00103B3F /* MKCSongModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,8 @@
 		0DAF140621FB530700103B3F /* JSONHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONHTTPClient.h; sourceTree = "<group>"; };
 		0DAF140721FB530700103B3F /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONAPI.h; sourceTree = "<group>"; };
 		0DAF140821FB530700103B3F /* JSONModel+networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONModel+networking.m"; sourceTree = "<group>"; };
+		0DAF141321FB53CC00103B3F /* MKCSongModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCSongModel.h; sourceTree = "<group>"; };
+		0DAF141421FB53CC00103B3F /* MKCSongModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCSongModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +198,7 @@
 		0D19EC1521FB45AE0033C524 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				0DAF141221FB539100103B3F /* JSON Model */,
 				0D19EC1621FB46280033C524 /* MKCRequestAPI.h */,
 				0D19EC1721FB46280033C524 /* MKCRequestAPI.m */,
 				0D19EC1921FB47290033C524 /* MKCRequestAPI+Private.h */,
@@ -253,6 +257,15 @@
 				0DAF140821FB530700103B3F /* JSONModel+networking.m */,
 			);
 			path = JSONModelNetworking;
+			sourceTree = "<group>";
+		};
+		0DAF141221FB539100103B3F /* JSON Model */ = {
+			isa = PBXGroup;
+			children = (
+				0DAF141321FB53CC00103B3F /* MKCSongModel.h */,
+				0DAF141421FB53CC00103B3F /* MKCSongModel.m */,
+			);
+			path = "JSON Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,6 +389,7 @@
 				0DAF141021FB530700103B3F /* JSONAPI.m in Sources */,
 				0D19EC1321FB457F0033C524 /* AFNetworkReachabilityManager.m in Sources */,
 				0D19EBDD21FB44A90033C524 /* AppDelegate.m in Sources */,
+				0DAF141521FB53CC00103B3F /* MKCSongModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
