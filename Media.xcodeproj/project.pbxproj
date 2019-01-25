@@ -102,6 +102,7 @@
 		0DAF141421FB53CC00103B3F /* MKCSongModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCSongModel.m; sourceTree = "<group>"; };
 		0DE0F1E521FB59980039B53E /* MKCMovieModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCMovieModel.h; sourceTree = "<group>"; };
 		0DE0F1E621FB59980039B53E /* MKCMovieModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCMovieModel.m; sourceTree = "<group>"; };
+		0DE0F1E821FB5CCB0039B53E /* MKCJSONModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCJSONModel.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +265,7 @@
 		0DAF141221FB539100103B3F /* JSON Model */ = {
 			isa = PBXGroup;
 			children = (
+				0DE0F1E821FB5CCB0039B53E /* MKCJSONModel.h */,
 				0DAF141321FB53CC00103B3F /* MKCSongModel.h */,
 				0DAF141421FB53CC00103B3F /* MKCSongModel.m */,
 				0DE0F1E521FB59980039B53E /* MKCMovieModel.h */,
