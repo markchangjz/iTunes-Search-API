@@ -34,4 +34,17 @@
 	return dataTask;
 }
 
+- (NSURLSessionDataTask *)fetchMovieWithKeyword:(nonnull NSString *)keyword successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler {
+
+	NSDictionary *parameters = @{@"term": keyword,
+								 @"entity": @"movie"
+								 };
+	
+	NSMutableURLRequest *request = [self in_requestWithURLString:MKCURLGuide.searchAPI method:@"GET" parameters:parameters];
+	
+	NSURLSessionDataTask *dataTask = [self in_fireAPIWithRequest:request successHandler:successHandler failureHandler:failureHandler];
+	
+	return dataTask;
+}
+
 @end
