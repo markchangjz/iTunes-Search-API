@@ -21,6 +21,7 @@
 		0D19EC1321FB457F0033C524 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EC0B21FB457F0033C524 /* AFNetworkReachabilityManager.m */; };
 		0D19EC1421FB457F0033C524 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EC0C21FB457F0033C524 /* AFSecurityPolicy.m */; };
 		0D19EC1821FB46280033C524 /* MKCRequestAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EC1721FB46280033C524 /* MKCRequestAPI.m */; };
+		0D19EC1B21FB47290033C524 /* MKCRequestAPI+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EC1A21FB47290033C524 /* MKCRequestAPI+Private.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		0D19EC0E21FB457F0033C524 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		0D19EC1621FB46280033C524 /* MKCRequestAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCRequestAPI.h; sourceTree = "<group>"; };
 		0D19EC1721FB46280033C524 /* MKCRequestAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCRequestAPI.m; sourceTree = "<group>"; };
+		0D19EC1921FB47290033C524 /* MKCRequestAPI+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKCRequestAPI+Private.h"; sourceTree = "<group>"; };
+		0D19EC1A21FB47290033C524 /* MKCRequestAPI+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MKCRequestAPI+Private.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +165,8 @@
 			children = (
 				0D19EC1621FB46280033C524 /* MKCRequestAPI.h */,
 				0D19EC1721FB46280033C524 /* MKCRequestAPI.m */,
+				0D19EC1921FB47290033C524 /* MKCRequestAPI+Private.h */,
+				0D19EC1A21FB47290033C524 /* MKCRequestAPI+Private.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -269,6 +274,7 @@
 				0D19EBE021FB44A90033C524 /* ViewController.m in Sources */,
 				0D19EC1421FB457F0033C524 /* AFSecurityPolicy.m in Sources */,
 				0D19EBEB21FB44AA0033C524 /* main.m in Sources */,
+				0D19EC1B21FB47290033C524 /* MKCRequestAPI+Private.m in Sources */,
 				0D19EC1021FB457F0033C524 /* AFHTTPSessionManager.m in Sources */,
 				0D19EC1121FB457F0033C524 /* AFURLSessionManager.m in Sources */,
 				0D19EC0F21FB457F0033C524 /* AFURLResponseSerialization.m in Sources */,

@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^MKCSuccessHandler)(NSURLResponse *response, id responseObject);
+typedef void (^MKCFailureHandler)(NSError *error);
+
 @interface MKCRequestAPI : NSObject
 
 + (MKCRequestAPI *)sharedAPI;

@@ -7,6 +7,7 @@
 //
 
 #import "MKCRequestAPI.h"
+#import "MKCRequestAPI+Private.h"
 
 @implementation MKCRequestAPI
 
