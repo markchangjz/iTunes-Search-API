@@ -36,6 +36,18 @@
 	
 }
 
+#pragma mark - binding
+
+- (void)setIsCollected:(BOOL)isCollected {
+	_isCollected = isCollected;
+	
+	if (isCollected) {
+		[self.collectionButton setImage:[UIImage imageNamed:@"collected"] forState:UIControlStateNormal];
+	} else {
+		[self.collectionButton setImage:[UIImage imageNamed:@"not_collected"] forState:UIControlStateNormal];
+	}
+}
+
 #pragma mark - UI Layout
 
 - (void)layoutMainStackView {
