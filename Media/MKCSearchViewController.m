@@ -161,6 +161,9 @@
 
 - (void)configureStateView {
 	switch (self.state) {
+		case UIStateBlank:
+			[self configureInitialStateView];
+			break;
 		case UIStateLoading:
 			[self configureLoadingStateView];
 			break;
@@ -171,6 +174,11 @@
 			[self configureErrorStateView];
 			break;
 	}
+}
+
+- (void)configureInitialStateView {
+	[self.activityIndicatorView stopAnimating];
+	self.tableView.alpha = 1.0;
 }
 
 - (void)configureLoadingStateView {
