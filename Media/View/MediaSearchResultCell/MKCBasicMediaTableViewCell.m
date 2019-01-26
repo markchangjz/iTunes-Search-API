@@ -10,6 +10,8 @@
 
 @interface MKCBasicMediaTableViewCell()
 
+@property (nonatomic, strong) UIStackView *mainStackView;
+
 @end
 
 @implementation MKCBasicMediaTableViewCell
@@ -17,33 +19,15 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
 	if (self) {
-		
 		self.selectionStyle = UITableViewCellSelectionStyleNone;
 		
-		[self.contentView addSubview:self.coverImageView];
-		[self layoutCoverImageView];
+		[self.contentView addSubview:self.mainStackView];
 		
-		[self.contentView addSubview:self.collectionButton];
+		[self layoutMainStackView];
+		[self layoutCoverImageView];
 		[self layoutCollectionButton];
 	}
 	return self;
-}
-
-- (void)layoutSubviews {
-	[super layoutSubviews];
-	
-	self.contentView.frame = UIEdgeInsetsInsetRect(self.contentView.frame, UIEdgeInsetsMake(0, 16, 0, 16));
-}
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 #pragma mark - IBAction
@@ -54,20 +38,21 @@
 
 #pragma mark - UI Layout
 
+- (void)layoutMainStackView {
+	[self.mainStackView.topAnchor constraintEqualToAnchor:self.contentView.topAnchor constant:10.0].active = YES;
+	[self.mainStackView.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor constant:-10.0].active = YES;
+	[self.mainStackView.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor constant:10.0].active = YES;
+	[self.mainStackView.trailingAnchor constraintEqualToAnchor:self.contentView.trailingAnchor constant:-10.0].active = YES;
+}
+
 - (void)layoutCoverImageView {
 	[self.coverImageView.widthAnchor constraintEqualToConstant:80.0].active = YES;
 	[self.coverImageView.heightAnchor constraintEqualToConstant:80.0].active = YES;
-
-	[self.coverImageView.topAnchor constraintEqualToAnchor:self.contentView.topAnchor constant:20.0].active = YES;
-	[self.coverImageView.bottomAnchor constraintLessThanOrEqualToAnchor:self.contentView.bottomAnchor constant:-20.0].active = YES;
 }
 
 - (void)layoutCollectionButton {
 	[self.collectionButton.widthAnchor constraintEqualToConstant:30.0].active = YES;
 	[self.collectionButton.heightAnchor constraintEqualToConstant:30.0].active = YES;
-	
-	[self.collectionButton.trailingAnchor constraintEqualToAnchor:self.contentView.trailingAnchor constant:0.0].active = YES;
-	[self.collectionButton.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor].active = YES;
 }
 
 #pragma mark - lazy instance
@@ -89,6 +74,35 @@
 		[_collectionButton addTarget:self action:@selector(collect:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	return _collectionButton;
+}
+
+- (UIStackView *)mainStackView {
+	if (!_mainStackView) {
+		_mainStackView = [[UIStackView alloc] init];
+		_mainStackView.translatesAutoresizingMaskIntoConstraints = NO;
+		_mainStackView.axis = UILayoutConstraintAxisHorizontal;
+		_mainStackView.distribution = UIStackViewDistributionEqualCentering;
+		_mainStackView.alignment = UIStackViewAlignmentCenter;
+		_mainStackView.spacing = 2.0;
+		[_mainStackView setBackgroundColor:[UIColor redColor]];
+		
+		[_mainStackView addArrangedSubview:self.coverImageView];
+		[_mainStackView addArrangedSubview:self.contentStackView];
+		[_mainStackView addArrangedSubview:self.collectionButton];
+	}
+	return _mainStackView;
+}
+
+- (UIStackView *)contentStackView {
+	if (!_contentStackView) {
+		_contentStackView = [[UIStackView alloc] init];
+		_contentStackView.translatesAutoresizingMaskIntoConstraints = NO;
+		_contentStackView.axis = UILayoutConstraintAxisVertical;
+		_contentStackView.distribution = UIStackViewDistributionFill;
+		_contentStackView.alignment = UIStackViewAlignmentLeading;
+		_contentStackView.spacing = 2.0;
+	}
+	return _contentStackView;
 }
 
 @end
