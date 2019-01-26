@@ -10,6 +10,10 @@
 
 @implementation MKCMovieInfoModel
 
++ (JSONKeyMapper *)keyMapper {
+	return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"imageUrl": @"artworkUrl100"}];
+}
+
 @end
 
 @implementation MKCMovieModel

@@ -10,6 +10,10 @@
 
 @implementation MKCSongInfoModel
 
++ (JSONKeyMapper *)keyMapper {
+	return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"imageUrl": @"artworkUrl100"}];
+}
+
 @end
 
 @implementation MKCSongModel

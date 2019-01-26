@@ -19,6 +19,7 @@
 @property (nonatomic, copy) NSString <Optional> *trackTimeMillis;
 @property (nonatomic, copy) NSString <Optional> *longDescription;
 @property (nonatomic, copy) NSString <Optional> *trackViewUrl;
+@property (nonatomic, copy) NSString <Optional> *imageUrl;
 
 @end
 
