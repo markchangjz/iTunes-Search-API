@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "MKCMainTabBarController.h"
+#import "MKCSearchViewController.h"
+#import "MKCMoreViewController.h"
 
 @interface AppDelegate ()
 
@@ -23,7 +25,7 @@
 	
 	MKCMainTabBarController *mainTabBarController = [[MKCMainTabBarController alloc] init];
 	
-	self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:mainTabBarController];
+	self.window.rootViewController = mainTabBarController;
 	[self.window makeKeyAndVisible];
 	
 	return YES;

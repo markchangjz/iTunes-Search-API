@@ -21,6 +21,10 @@
     // Do any additional setup after loading the view.
 	
 	self.view.backgroundColor = [UIColor whiteColor];
+	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+	view.backgroundColor = UIColor.redColor;
+	
+	self.navigationItem.titleView = view;
 	
 	[[MKCRequestAPI sharedAPI] fetchMovieWithKeyword:@"apple" successHandler:^(NSURLResponse *response, id responseObject) {
 		
