@@ -131,8 +131,16 @@
 		return cell;
 	} else {
 		MKCMovieTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCMovieTableViewCell.identifier forIndexPath:indexPath];
-		cell.textLabel.text = self.movies[indexPath.row].trackName;
-		[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.movies[indexPath.row].imageUrl]];
+		
+		MKCMovieInfoModel *movieInfo = self.movies[indexPath.row];
+		
+		[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:movieInfo.imageUrl]];
+		cell.trackName = movieInfo.trackName;
+		cell.artistName = movieInfo.artistName;
+		cell.trackCensoredName = movieInfo.trackCensoredName;
+		cell.trackTimeMillis = movieInfo.trackTimeMillis;
+		cell.longDescription = movieInfo.longDescription;
+		
 		return cell;
 	}
 }
