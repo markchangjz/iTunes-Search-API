@@ -14,6 +14,7 @@
 @interface MKCSearchViewController () <MKCSerchViewDelegate>
 
 @property (nonatomic, strong) MKCSerchView *serchView;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 
 @end
 
@@ -21,7 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 	
 	[self configureView];
 }
@@ -61,11 +61,56 @@
 	}];
 }
 
+#pragma mark - UI State
+
+- (void)setState:(UIState)state {
+	_state = state;
+	
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[self configureStateView];
+	});
+}
+
+- (void)configureStateView {
+	switch (self.state) {
+		case UIStateLoading:
+			[self configureLoadingStateView];
+			break;
+		case UIStateFinish:
+			[self configureFinishStateView];
+			break;
+		case UIStateError:
+			[self configureErrorStateView];
+			break;
+	}
+}
+
+- (void)configureLoadingStateView {
+	[self.activityIndicatorView startAnimating];
+}
+
+- (void)configureFinishStateView {
+	[self.activityIndicatorView stopAnimating];
+}
+
+- (void)configureErrorStateView {
+	[self.activityIndicatorView stopAnimating];
+}
+
 #pragma mark - UI Layout
 
 - (void)configureView {
 	self.view.backgroundColor = [UIColor whiteColor];
 	self.navigationItem.titleView = self.serchView;
+	
+	// loading view
+	[self.view addSubview:self.activityIndicatorView];
+	[self layoutActivityIndicatorView];
+}
+
+- (void)layoutActivityIndicatorView {
+	[self.activityIndicatorView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+	[self.activityIndicatorView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
 }
 
 #pragma mark - lazy instance
@@ -76,6 +121,14 @@
 		_serchView.delegate = self;
 	}
 	return _serchView;
+}
+
+- (UIActivityIndicatorView *)activityIndicatorView {
+	if (!_activityIndicatorView) {
+		_activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+		_activityIndicatorView.translatesAutoresizingMaskIntoConstraints = NO;
+	}
+	return _activityIndicatorView;
 }
 
 @end

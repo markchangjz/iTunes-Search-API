@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, UIState) {
+	UIStateLoading = 0,
+	UIStateFinish,
+	UIStateError
+};
+
 @interface MKCSearchViewController : UIViewController
+
+@property (nonatomic, assign) UIState state;
 
 @end
