@@ -15,8 +15,8 @@ typedef void (^MKCFailureHandler)(NSError *error);
 
 + (MKCRequestAPI *)sharedAPI;
 
-- (NSURLSessionDataTask *)fetchSongWithKeyword:(nonnull NSString *)keyword successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler;
+- (NSURLSessionDataTask *)searchSongWithKeyword:(nonnull NSString *)keyword successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler;
 
-- (NSURLSessionDataTask *)fetchMovieWithKeyword:(nonnull NSString *)keyword successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler;
+- (NSURLSessionDataTask *)searchMovieWithKeyword:(nonnull NSString *)keyword successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler;
 
 @end

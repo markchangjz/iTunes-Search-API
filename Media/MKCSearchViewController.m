@@ -60,7 +60,7 @@
 }
 
 - (void)searchSongWithKeyword:(NSString *)keyword completion:(void (^)(BOOL success))completion {
-	[[MKCRequestAPI sharedAPI] fetchSongWithKeyword:keyword successHandler:^(NSURLResponse *response, id responseObject) {
+	[[MKCRequestAPI sharedAPI] searchSongWithKeyword:keyword successHandler:^(NSURLResponse *response, id responseObject) {
 		
 		NSError *error = nil;
 		MKCSongModel *model = [[MKCSongModel alloc] initWithDictionary:responseObject error:&error];
@@ -76,7 +76,7 @@
 }
 
 - (void)searchMovieWithKeyword:(NSString *)keyword completion:(void (^)(BOOL success))completion {
-	[[MKCRequestAPI sharedAPI] fetchMovieWithKeyword:keyword successHandler:^(NSURLResponse *response, id responseObject) {
+	[[MKCRequestAPI sharedAPI] searchMovieWithKeyword:keyword successHandler:^(NSURLResponse *response, id responseObject) {
 		
 		NSError *error = nil;
 		MKCMovieModel *model = [[MKCMovieModel alloc] initWithDictionary:responseObject error:&error];

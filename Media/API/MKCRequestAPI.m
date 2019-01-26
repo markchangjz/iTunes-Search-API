@@ -21,7 +21,7 @@
 	return instance;
 }
 
-- (NSURLSessionDataTask *)fetchSongWithKeyword:(nonnull NSString *)keyword successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler {
+- (NSURLSessionDataTask *)searchSongWithKeyword:(nonnull NSString *)keyword successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler {
 		
 	NSDictionary *parameters = @{@"term": keyword,
 								 @"entity": @"song"
@@ -34,7 +34,7 @@
 	return dataTask;
 }
 
-- (NSURLSessionDataTask *)fetchMovieWithKeyword:(nonnull NSString *)keyword successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler {
+- (NSURLSessionDataTask *)searchMovieWithKeyword:(nonnull NSString *)keyword successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler {
 
 	NSDictionary *parameters = @{@"term": keyword,
 								 @"entity": @"movie"
