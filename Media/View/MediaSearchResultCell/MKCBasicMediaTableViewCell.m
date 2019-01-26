@@ -81,9 +81,8 @@
 		_mainStackView = [[UIStackView alloc] init];
 		_mainStackView.translatesAutoresizingMaskIntoConstraints = NO;
 		_mainStackView.axis = UILayoutConstraintAxisHorizontal;
-		_mainStackView.distribution = UIStackViewDistributionEqualCentering;
 		_mainStackView.alignment = UIStackViewAlignmentCenter;
-		_mainStackView.spacing = 2.0;
+		_mainStackView.spacing = 10.0;
 		[_mainStackView setBackgroundColor:[UIColor redColor]];
 		
 		[_mainStackView addArrangedSubview:self.coverImageView];
@@ -98,8 +97,7 @@
 		_contentStackView = [[UIStackView alloc] init];
 		_contentStackView.translatesAutoresizingMaskIntoConstraints = NO;
 		_contentStackView.axis = UILayoutConstraintAxisVertical;
-		_contentStackView.distribution = UIStackViewDistributionFill;
-		_contentStackView.alignment = UIStackViewAlignmentLeading;
+		_contentStackView.alignment = UIStackViewAlignmentFill;
 		_contentStackView.spacing = 2.0;
 	}
 	return _contentStackView;

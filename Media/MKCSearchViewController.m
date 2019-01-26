@@ -121,11 +121,13 @@
 		MKCSongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCSongTableViewCell.identifier forIndexPath:indexPath];
 		
 		MKCSongInfoModel *songInfo = self.songs[indexPath.row];
+		
 		[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:songInfo.imageUrl]];
 		cell.trackName = songInfo.trackName;
 		cell.artistName = songInfo.artistName;
 		cell.collectionName = songInfo.collectionName;
 		cell.trackTimeMillis = songInfo.trackTimeMillis;
+		
 		return cell;
 	} else {
 		MKCMovieTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCMovieTableViewCell.identifier forIndexPath:indexPath];
