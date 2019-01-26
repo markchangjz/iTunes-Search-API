@@ -10,6 +10,7 @@
 #import "MKCRequestAPI.h"
 #import "MKCJSONModel.h"
 #import "MKCSerchView.h"
+#import "MKCBasicMediaTableViewCell.h"
 
 @interface MKCSearchViewController () <MKCSerchViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -96,7 +97,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	return [UITableViewCell new];
+	MKCBasicMediaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCBasicMediaTableViewCell.identifier forIndexPath:indexPath];
+		
+	return cell;
 }
 
 #pragma mark - MKCSerchViewDelegate
@@ -137,6 +140,7 @@
 - (void)configureFinishStateView {
 	[self.activityIndicatorView stopAnimating];
 	self.tableView.alpha = 1.0;
+	[self.tableView reloadData];
 }
 
 - (void)configureErrorStateView {
@@ -157,6 +161,8 @@
 	// table view
 	[self.view addSubview:self.tableView];
 	[self layoutTableView];
+	
+	[self.tableView registerClass:[MKCBasicMediaTableViewCell class] forCellReuseIdentifier:MKCBasicMediaTableViewCell.identifier];
 }
 
 - (void)layoutActivityIndicatorView {

@@ -12,6 +12,7 @@
 		0D057A9421FBF0C8007EC471 /* MKCMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057A9321FBF0C8007EC471 /* MKCMainTabBarController.m */; };
 		0D057A9721FC02FC007EC471 /* MKCSerchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057A9621FC02FC007EC471 /* MKCSerchView.m */; };
 		0D057A9C21FC2F4F007EC471 /* MKCBasicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057A9B21FC2F4F007EC471 /* MKCBasicTableViewCell.m */; };
+		0D057A9F21FC3008007EC471 /* MKCBasicMediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057A9E21FC3008007EC471 /* MKCBasicMediaTableViewCell.m */; };
 		0D19EBDD21FB44A90033C524 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EBDC21FB44A90033C524 /* AppDelegate.m */; };
 		0D19EBE521FB44AA0033C524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D19EBE421FB44AA0033C524 /* Assets.xcassets */; };
 		0D19EBE821FB44AA0033C524 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D19EBE621FB44AA0033C524 /* LaunchScreen.storyboard */; };
@@ -59,6 +60,8 @@
 		0D057A9621FC02FC007EC471 /* MKCSerchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCSerchView.m; sourceTree = "<group>"; };
 		0D057A9A21FC2F4F007EC471 /* MKCBasicTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCBasicTableViewCell.h; sourceTree = "<group>"; };
 		0D057A9B21FC2F4F007EC471 /* MKCBasicTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCBasicTableViewCell.m; sourceTree = "<group>"; };
+		0D057A9D21FC3008007EC471 /* MKCBasicMediaTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCBasicMediaTableViewCell.h; sourceTree = "<group>"; };
+		0D057A9E21FC3008007EC471 /* MKCBasicMediaTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCBasicMediaTableViewCell.m; sourceTree = "<group>"; };
 		0D19EBD821FB44A80033C524 /* Media.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Media.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D19EBDB21FB44A90033C524 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0D19EBDC21FB44A90033C524 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -148,6 +151,8 @@
 			children = (
 				0D057A9A21FC2F4F007EC471 /* MKCBasicTableViewCell.h */,
 				0D057A9B21FC2F4F007EC471 /* MKCBasicTableViewCell.m */,
+				0D057A9D21FC3008007EC471 /* MKCBasicMediaTableViewCell.h */,
+				0D057A9E21FC3008007EC471 /* MKCBasicMediaTableViewCell.m */,
 			);
 			path = MediaSearchResultCell;
 			sourceTree = "<group>";
@@ -408,6 +413,7 @@
 			files = (
 				0DAF140F21FB530700103B3F /* JSONHTTPClient.m in Sources */,
 				0DAF140C21FB530700103B3F /* JSONModelError.m in Sources */,
+				0D057A9F21FC3008007EC471 /* MKCBasicMediaTableViewCell.m in Sources */,
 				0D19EC1E21FB4C7E0033C524 /* MKCURLGuide.m in Sources */,
 				0D057A9121FBEFB4007EC471 /* MKCSearchViewController.m in Sources */,
 				0D19EC1421FB457F0033C524 /* AFSecurityPolicy.m in Sources */,
