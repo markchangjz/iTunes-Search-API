@@ -65,6 +65,9 @@
 }
 
 - (void)layoutCollectionButton {
+	[self.collectionButton.widthAnchor constraintEqualToConstant:30.0].active = YES;
+	[self.collectionButton.heightAnchor constraintEqualToConstant:30.0].active = YES;
+	
 	[self.collectionButton.trailingAnchor constraintEqualToAnchor:self.contentView.trailingAnchor constant:0.0].active = YES;
 	[self.collectionButton.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor].active = YES;
 }
@@ -82,11 +85,9 @@
 
 - (UIButton *)collectionButton {
 	if (!_collectionButton) {
-		_collectionButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+		_collectionButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		_collectionButton.translatesAutoresizingMaskIntoConstraints = NO;
-		[_collectionButton setTitle:@"收藏" forState:UIControlStateNormal];
-		[_collectionButton setBackgroundColor:[UIColor purpleColor]];
-		[_collectionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+		[_collectionButton setImage:[UIImage imageNamed:@"not_collected"] forState:UIControlStateNormal];
 		[_collectionButton addTarget:self action:@selector(collect:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	return _collectionButton;
