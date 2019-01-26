@@ -11,10 +11,11 @@
 #import "MKCJSONModel.h"
 #import "MKCSerchView.h"
 
-@interface MKCSearchViewController () <MKCSerchViewDelegate>
+@interface MKCSearchViewController () <MKCSerchViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) MKCSerchView *serchView;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -87,6 +88,17 @@
 	}];
 }
 
+#pragma mark - UITableViewDelegate & UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return 10;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	return [UITableViewCell new];
+}
+
 #pragma mark - MKCSerchViewDelegate
 
 - (void)serchView:(MKCSerchView *)serchView searchKeyword:(NSString *)keyword {
@@ -119,14 +131,17 @@
 
 - (void)configureLoadingStateView {
 	[self.activityIndicatorView startAnimating];
+	self.tableView.alpha = 0.0;
 }
 
 - (void)configureFinishStateView {
 	[self.activityIndicatorView stopAnimating];
+	self.tableView.alpha = 1.0;
 }
 
 - (void)configureErrorStateView {
 	[self.activityIndicatorView stopAnimating];
+	self.tableView.alpha = 1.0;
 }
 
 #pragma mark - UI Layout
@@ -138,11 +153,22 @@
 	// loading view
 	[self.view addSubview:self.activityIndicatorView];
 	[self layoutActivityIndicatorView];
+	
+	// table view
+	[self.view addSubview:self.tableView];
+	[self layoutTableView];
 }
 
 - (void)layoutActivityIndicatorView {
 	[self.activityIndicatorView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
 	[self.activityIndicatorView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
+}
+
+- (void)layoutTableView {
+	NSArray *tableViewHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[tableView]-0-|" options:0 metrics:nil views:@{@"tableView": self.tableView}];
+	NSArray *tableViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[tableView]-0-|" options:0 metrics:nil views:@{@"tableView": self.tableView}];
+	[self.view addConstraints:tableViewHorizontalConstraints];
+	[self.view addConstraints:tableViewVerticalConstraints];
 }
 
 #pragma mark - lazy instance
@@ -161,6 +187,18 @@
 		_activityIndicatorView.translatesAutoresizingMaskIntoConstraints = NO;
 	}
 	return _activityIndicatorView;
+}
+
+- (UITableView *)tableView {
+	if (!_tableView) {
+		_tableView = [[UITableView alloc] init];
+		_tableView.translatesAutoresizingMaskIntoConstraints = NO;
+		_tableView.delegate = self;
+		_tableView.dataSource = self;
+		_tableView.estimatedRowHeight = 200.0;
+		_tableView.rowHeight = UITableViewAutomaticDimension;
+	}
+	return _tableView;
 }
 
 @end
