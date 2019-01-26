@@ -12,5 +12,6 @@
 @interface MKCBasicMediaTableViewCell : MKCBasicTableViewCell
 
 @property (nonatomic, strong) UIImageView *coverImageView;
+@property (nonatomic, assign) BOOL isCollected;
 
 @end

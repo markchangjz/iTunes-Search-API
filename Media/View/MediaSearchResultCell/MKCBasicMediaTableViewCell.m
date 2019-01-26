@@ -8,6 +8,12 @@
 
 #import "MKCBasicMediaTableViewCell.h"
 
+@interface MKCBasicMediaTableViewCell()
+
+@property (nonatomic, strong) UIButton *collectionButton;
+
+@end
+
 @implementation MKCBasicMediaTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -19,7 +25,8 @@
 		[self.contentView addSubview:self.coverImageView];
 		[self layoutCoverImageView];
 		
-		
+		[self.contentView addSubview:self.collectionButton];
+		[self layoutCollectionButton];
 	}
 	return self;
 }
@@ -41,6 +48,12 @@
     // Configure the view for the selected state
 }
 
+#pragma mark - IBAction
+
+- (void)collect:(UIButton *)sender {
+	
+}
+
 #pragma mark - UI Layout
 
 - (void)layoutCoverImageView {
@@ -49,6 +62,11 @@
 
 	[self.coverImageView.topAnchor constraintEqualToAnchor:self.contentView.topAnchor constant:20.0].active = YES;
 	[self.coverImageView.bottomAnchor constraintLessThanOrEqualToAnchor:self.contentView.bottomAnchor constant:-20.0].active = YES;
+}
+
+- (void)layoutCollectionButton {
+	[self.collectionButton.trailingAnchor constraintEqualToAnchor:self.contentView.trailingAnchor constant:0.0].active = YES;
+	[self.collectionButton.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor].active = YES;
 }
 
 #pragma mark - lazy instance
@@ -60,6 +78,18 @@
 		_coverImageView.backgroundColor = [UIColor lightGrayColor];
 	}
 	return _coverImageView;
+}
+
+- (UIButton *)collectionButton {
+	if (!_collectionButton) {
+		_collectionButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+		_collectionButton.translatesAutoresizingMaskIntoConstraints = NO;
+		[_collectionButton setTitle:@"收藏" forState:UIControlStateNormal];
+		[_collectionButton setBackgroundColor:[UIColor purpleColor]];
+		[_collectionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+		[_collectionButton addTarget:self action:@selector(collect:) forControlEvents:UIControlEventTouchUpInside];
+	}
+	return _collectionButton;
 }
 
 @end
