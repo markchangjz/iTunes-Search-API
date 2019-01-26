@@ -18,6 +18,8 @@
 @property (nonatomic, strong) MKCSerchView *serchView;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, copy) NSArray<MKCSongInfoModel *> *songs;
+@property (nonatomic, copy) NSArray<MKCMovieInfoModel *> *movies;
 
 @end
 
@@ -65,7 +67,7 @@
 			completion(NO);
 			return;
 		}
-		
+		self.songs = model.results;
 		NSLog(@"song: %@", model.resultCount);
 		completion(YES);
 	} failureHandler:^(NSError *error) {
@@ -82,7 +84,7 @@
 			completion(NO);
 			return;
 		}
-		
+		self.movies = model.results;
 		NSLog(@"movie: %@", model.resultCount);
 		completion(YES);
 	} failureHandler:^(NSError *error) {
@@ -106,9 +108,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if (section == 0) {
-		return 10;
+		return self.songs.count;
 	} else {
-		return 5;
+		return self.movies.count;
 	}
 }
 
@@ -116,9 +118,11 @@
 	
 	if (indexPath.section == 0) {
 		MKCSongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCSongTableViewCell.identifier forIndexPath:indexPath];
+		cell.textLabel.text = self.songs[indexPath.row].trackName;
 		return cell;
 	} else {
 		MKCMovieTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCMovieTableViewCell.identifier forIndexPath:indexPath];
+		cell.textLabel.text = self.movies[indexPath.row].trackName;
 		return cell;
 	}
 }
