@@ -45,6 +45,7 @@
 		0D057B0321FC46B9007EC471 /* SDWebImageImageIOCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057AE021FC46B8007EC471 /* SDWebImageImageIOCoder.m */; };
 		0D057B0421FC46B9007EC471 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057AE421FC46B8007EC471 /* UIButton+WebCache.m */; };
 		0D057B0521FC46B9007EC471 /* SDWebImageWebPCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057AE521FC46B8007EC471 /* SDWebImageWebPCoder.m */; };
+		0D057B0921FC8C53007EC471 /* MKCDataPersistence.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057B0821FC8C53007EC471 /* MKCDataPersistence.m */; };
 		0D19EBDD21FB44A90033C524 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EBDC21FB44A90033C524 /* AppDelegate.m */; };
 		0D19EBE521FB44AA0033C524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D19EBE421FB44AA0033C524 /* Assets.xcassets */; };
 		0D19EBE821FB44AA0033C524 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D19EBE621FB44AA0033C524 /* LaunchScreen.storyboard */; };
@@ -159,6 +160,8 @@
 		0D057AE421FC46B8007EC471 /* UIButton+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WebCache.m"; sourceTree = "<group>"; };
 		0D057AE521FC46B8007EC471 /* SDWebImageWebPCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageWebPCoder.m; sourceTree = "<group>"; };
 		0D057AE621FC46B8007EC471 /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
+		0D057B0721FC8C53007EC471 /* MKCDataPersistence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCDataPersistence.h; sourceTree = "<group>"; };
+		0D057B0821FC8C53007EC471 /* MKCDataPersistence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCDataPersistence.m; sourceTree = "<group>"; };
 		0D19EBD821FB44A80033C524 /* Media.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Media.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D19EBDB21FB44A90033C524 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0D19EBDC21FB44A90033C524 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -326,6 +329,15 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		0D057B0621FC8B27007EC471 /* Data Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				0D057B0721FC8C53007EC471 /* MKCDataPersistence.h */,
+				0D057B0821FC8C53007EC471 /* MKCDataPersistence.m */,
+			);
+			path = "Data Persistence";
+			sourceTree = "<group>";
+		};
 		0D19EBCF21FB44A80033C524 = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +362,7 @@
 			children = (
 				0D19EC1521FB45AE0033C524 /* API */,
 				0D057A9821FC2E9B007EC471 /* View */,
+				0D057B0621FC8B27007EC471 /* Data Persistence */,
 				0D19EBDB21FB44A90033C524 /* AppDelegate.h */,
 				0D19EBDC21FB44A90033C524 /* AppDelegate.m */,
 				0D057A9221FBF0C8007EC471 /* MKCMainTabBarController.h */,
@@ -586,6 +599,7 @@
 				0D057AF021FC46B8007EC471 /* UIImage+GIF.m in Sources */,
 				0DAF140F21FB530700103B3F /* JSONHTTPClient.m in Sources */,
 				0D057AE921FC46B8007EC471 /* SDWebImageManager.m in Sources */,
+				0D057B0921FC8C53007EC471 /* MKCDataPersistence.m in Sources */,
 				0DAF140C21FB530700103B3F /* JSONModelError.m in Sources */,
 				0D057A9F21FC3008007EC471 /* MKCBasicMediaTableViewCell.m in Sources */,
 				0D057AF221FC46B8007EC471 /* SDWebImageCoderHelper.m in Sources */,
