@@ -69,7 +69,6 @@
 			return;
 		}
 		self.songs = model.results;
-		NSLog(@"song: %@", model.resultCount);
 		completion(YES);
 	} failureHandler:^(NSError *error) {
 		completion(NO);
@@ -86,7 +85,6 @@
 			return;
 		}
 		self.movies = model.results;
-		NSLog(@"movie: %@", model.resultCount);
 		completion(YES);
 	} failureHandler:^(NSError *error) {
 		completion(NO);
@@ -101,35 +99,23 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	if (section == 0) {
-		return @"音樂";
-	} else {
 		return @"電影";
+	} else {
+		return @"音樂";
 	}
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if (section == 0) {
-		return self.songs.count;
-	} else {
 		return self.movies.count;
+	} else {
+		return self.songs.count;
 	}
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	if (indexPath.section == 0) {
-		MKCSongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCSongTableViewCell.identifier forIndexPath:indexPath];
-		
-		MKCSongInfoModel *songInfo = self.songs[indexPath.row];
-		
-		[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:songInfo.imageUrl]];
-		cell.trackName = songInfo.trackName;
-		cell.artistName = songInfo.artistName;
-		cell.collectionName = songInfo.collectionName;
-		cell.trackTimeMillis = songInfo.trackTimeMillis;
-		
-		return cell;
-	} else {
 		MKCMovieTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCMovieTableViewCell.identifier forIndexPath:indexPath];
 		
 		MKCMovieInfoModel *movieInfo = self.movies[indexPath.row];
@@ -140,6 +126,18 @@
 		cell.trackCensoredName = movieInfo.trackCensoredName;
 		cell.trackTimeMillis = movieInfo.trackTimeMillis;
 		cell.longDescription = movieInfo.longDescription;
+		
+		return cell;
+	} else {
+		MKCSongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCSongTableViewCell.identifier forIndexPath:indexPath];
+		
+		MKCSongInfoModel *songInfo = self.songs[indexPath.row];
+		
+		[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:songInfo.imageUrl]];
+		cell.trackName = songInfo.trackName;
+		cell.artistName = songInfo.artistName;
+		cell.collectionName = songInfo.collectionName;
+		cell.trackTimeMillis = songInfo.trackTimeMillis;
 		
 		return cell;
 	}
