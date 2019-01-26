@@ -18,4 +18,8 @@
 	return [NSString stringWithFormat:@"%@/search", self.iTunesHost];
 }
 
++ (NSString *)lookupAPI {
+	return [NSString stringWithFormat:@"%@/lookup", self.iTunesHost];
+}
+
 @end

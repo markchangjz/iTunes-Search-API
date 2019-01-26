@@ -14,5 +14,7 @@
 
 + (NSString *)searchAPI;
 
++ (NSString *)lookupAPI;
+
 @end
 
