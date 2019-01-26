@@ -26,39 +26,50 @@
 	[self configureView];
 }
 
-#pragma mark - MKCSerchViewDelegate
+#pragma mark - Fetch API
 
-- (void)serchView:(MKCSerchView *)serchView searchKeyword:(NSString *)keyword {
+- (void)searchSongAndMovieWithKeyword:(NSString *)keyword {
 	
+}
+
+- (void)searchSongWithKeyword:(NSString *)keyword completion:(void (^)(BOOL success))completion {
 	[[MKCRequestAPI sharedAPI] fetchSongWithKeyword:keyword successHandler:^(NSURLResponse *response, id responseObject) {
 		
 		NSError *error = nil;
 		MKCSongModel *model = [[MKCSongModel alloc] initWithDictionary:responseObject error:&error];
 		if (error) { // Parse JSON failed
-			
+			completion(NO);
 			return;
 		}
 		
 		NSLog(@"song: %@", model.resultCount);
-		
+		completion(YES);
 	} failureHandler:^(NSError *error) {
-		
+		completion(NO);
 	}];
-	
+}
+
+- (void)searchMovieWithKeyword:(NSString *)keyword completion:(void (^)(BOOL success))completion {
 	[[MKCRequestAPI sharedAPI] fetchMovieWithKeyword:keyword successHandler:^(NSURLResponse *response, id responseObject) {
 		
 		NSError *error = nil;
 		MKCMovieModel *model = [[MKCMovieModel alloc] initWithDictionary:responseObject error:&error];
 		if (error) { // Parse JSON failed
-			
+			completion(NO);
 			return;
 		}
 		
 		NSLog(@"movie: %@", model.resultCount);
-		
+		completion(YES);
 	} failureHandler:^(NSError *error) {
-		
+		completion(NO);
 	}];
+}
+
+#pragma mark - MKCSerchViewDelegate
+
+- (void)serchView:(MKCSerchView *)serchView searchKeyword:(NSString *)keyword {
+	[self searchSongAndMovieWithKeyword:keyword];
 }
 
 #pragma mark - UI State
