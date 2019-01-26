@@ -13,6 +13,7 @@
 #import "MKCSongTableViewCell.h"
 #import "MKCMovieTableViewCell.h"
 #import "UIImageView+WebCache.h"
+#import "MKCDataPersistence.h"
 
 @interface MKCSearchViewController () <MKCSerchViewDelegate, UITableViewDelegate, UITableViewDataSource, MKCMovieTableViewCellDelegate, MKCSongTableViewCellDelegate>
 
@@ -125,6 +126,7 @@
 		cell.trackCensoredName = movieInfo.trackCensoredName;
 		cell.trackTimeMillis = movieInfo.trackTimeMillis;
 		cell.longDescription = movieInfo.longDescription;
+		cell.isCollected = [MKCDataPersistence hasCollectdMovieWithTrackId:movieInfo.trackId];
 		
 		cell.delegate = self;
 		cell.tag = indexPath.row;
@@ -139,6 +141,7 @@
 		cell.artistName = songInfo.artistName;
 		cell.collectionName = songInfo.collectionName;
 		cell.trackTimeMillis = songInfo.trackTimeMillis;
+		cell.isCollected = [MKCDataPersistence hasCollectdSongWithTrackId:songInfo.trackId];
 		
 		cell.delegate = self;
 		cell.tag = indexPath.row;
@@ -157,12 +160,32 @@
 
 - (void)movieTableViewCell:(MKCMovieTableViewCell *)movieTableViewCell collectMovieAtIndex:(NSInteger)index {
 	
+	NSString *trackId = self.movies[index].trackId;
+	
+	if ([MKCDataPersistence hasCollectdMovieWithTrackId:trackId]) {
+		[MKCDataPersistence removeCollectedMovieWithTrackId:trackId];
+	} else {
+		[MKCDataPersistence collectMovieWithTrackId:trackId];
+	}
+	
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+	[self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark - MKCSongTableViewCellDelegate
 
 - (void)songTableViewCell:(MKCSongTableViewCell *)songTableViewCell collectSongAtIndex:(NSInteger)index {
 	
+	NSString *trackId = self.songs[index].trackId;
+	
+	if ([MKCDataPersistence hasCollectdSongWithTrackId:trackId]) {
+		[MKCDataPersistence removeCollectedSongWithTrackId:trackId];
+	} else {
+		[MKCDataPersistence collectSongWithTrackId:trackId];
+	}
+	
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:1];
+	[self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark - UI State

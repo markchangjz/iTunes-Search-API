@@ -9,8 +9,11 @@
 #import "MKCDataPersistence.h"
 
 NSString * const movieKey = @"movieKey";
+NSString * const songKey = @"songKey";
 
 @implementation MKCDataPersistence
+
+#pragma mark - movie
 
 + (void)collectMovieWithTrackId:(NSString *)trackId {
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -33,6 +36,31 @@ NSString * const movieKey = @"movieKey";
 	
 	NSMutableArray *collectedMovies = [userDefaults mutableArrayValueForKey:movieKey];
 	return [collectedMovies containsObject:trackId];
+}
+
+#pragma mark - song
+
++ (void)collectSongWithTrackId:(nonnull NSString *)trackId {
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	
+	NSMutableArray *collectedSongs = [userDefaults mutableArrayValueForKey:songKey];
+	[collectedSongs addObject:trackId];
+	[userDefaults setObject:collectedSongs forKey:songKey];
+}
+
++ (void)removeCollectedSongWithTrackId:(nonnull NSString *)trackId {
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	
+	NSMutableArray *collectedSongs = [userDefaults mutableArrayValueForKey:songKey];
+	[collectedSongs removeObject:trackId];
+	[userDefaults setObject:collectedSongs forKey:songKey];
+}
+
++ (BOOL)hasCollectdSongWithTrackId:(nonnull NSString *)trackId {
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	
+	NSMutableArray *collectedSongs = [userDefaults mutableArrayValueForKey:songKey];
+	return [collectedSongs containsObject:trackId];
 }
 
 @end
