@@ -64,6 +64,7 @@
 	if (!_trackNameLabel) {
 		_trackNameLabel = [[UILabel alloc] init];
 		_trackNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
+		_trackNameLabel.font = [UIFont boldSystemFontOfSize:18.0];
 	}
 	return _trackNameLabel;
 }

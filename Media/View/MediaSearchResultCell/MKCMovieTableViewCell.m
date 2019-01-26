@@ -71,6 +71,7 @@
 	if (!_trackNameLabel) {
 		_trackNameLabel = [[UILabel alloc] init];
 		_trackNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
+		_trackNameLabel.font = [UIFont boldSystemFontOfSize:18.0];
 	}
 	return _trackNameLabel;
 }
@@ -104,6 +105,7 @@
 		_longDescriptionLabel = [[UILabel alloc] init];
 		_longDescriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
 		_longDescriptionLabel.numberOfLines = 2;
+		_longDescriptionLabel.font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightLight];
 	}
 	return _longDescriptionLabel;
 }
