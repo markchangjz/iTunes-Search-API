@@ -12,6 +12,7 @@
 #import "MKCSerchView.h"
 #import "MKCSongTableViewCell.h"
 #import "MKCMovieTableViewCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface MKCSearchViewController () <MKCSerchViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -119,10 +120,12 @@
 	if (indexPath.section == 0) {
 		MKCSongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCSongTableViewCell.identifier forIndexPath:indexPath];
 		cell.textLabel.text = self.songs[indexPath.row].trackName;
+		[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.songs[indexPath.row].imageUrl]];
 		return cell;
 	} else {
 		MKCMovieTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCMovieTableViewCell.identifier forIndexPath:indexPath];
 		cell.textLabel.text = self.movies[indexPath.row].trackName;
+		[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.movies[indexPath.row].imageUrl]];
 		return cell;
 	}
 }
