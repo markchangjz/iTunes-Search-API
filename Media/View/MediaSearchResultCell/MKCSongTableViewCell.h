@@ -13,6 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MKCSongTableViewCell : MKCBasicMediaTableViewCell
 
+@property (nonatomic, copy) NSString *trackName;
+@property (nonatomic, copy) NSString *artistName;
+@property (nonatomic, copy) NSString *collectionName;
+@property (nonatomic, copy) NSString *trackTimeMillis;
+
 @end
 
 NS_ASSUME_NONNULL_END

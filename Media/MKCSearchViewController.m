@@ -119,8 +119,13 @@
 	
 	if (indexPath.section == 0) {
 		MKCSongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCSongTableViewCell.identifier forIndexPath:indexPath];
-		cell.textLabel.text = self.songs[indexPath.row].trackName;
-		[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.songs[indexPath.row].imageUrl]];
+		
+		MKCSongInfoModel *songInfo = self.songs[indexPath.row];
+		[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:songInfo.imageUrl]];
+		cell.trackName = songInfo.trackName;
+		cell.artistName = songInfo.artistName;
+		cell.collectionName = songInfo.collectionName;
+		cell.trackTimeMillis = songInfo.trackTimeMillis;
 		return cell;
 	} else {
 		MKCMovieTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCMovieTableViewCell.identifier forIndexPath:indexPath];

@@ -10,8 +10,6 @@
 
 @interface MKCBasicMediaTableViewCell()
 
-@property (nonatomic, strong) UIButton *collectionButton;
-
 @end
 
 @implementation MKCBasicMediaTableViewCell
