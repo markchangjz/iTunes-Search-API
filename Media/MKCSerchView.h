@@ -12,7 +12,7 @@
 
 @protocol MKCSerchViewDelegate <NSObject>
 
-- (void)serchView:(MKCSerchView *) serchView searchKeyword:(NSString *)keyword;
+- (void)serchView:(MKCSerchView *)serchView searchKeyword:(NSString *)keyword;
 
 @end
 

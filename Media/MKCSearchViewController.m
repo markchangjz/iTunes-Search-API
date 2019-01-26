@@ -9,8 +9,11 @@
 #import "MKCSearchViewController.h"
 #import "MKCRequestAPI.h"
 #import "MKCJSONModel.h"
+#import "MKCSerchView.h"
 
-@interface MKCSearchViewController ()
+@interface MKCSearchViewController () <MKCSerchViewDelegate>
+
+@property (nonatomic, strong) MKCSerchView *serchView;
 
 @end
 
@@ -20,30 +23,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	
-	self.view.backgroundColor = [UIColor whiteColor];
-	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
-	view.backgroundColor = UIColor.redColor;
+	[self configureView];
+}
+
+#pragma mark - MKCSerchViewDelegate
+
+- (void)serchView:(MKCSerchView *)serchView searchKeyword:(NSString *)keyword {
 	
-	self.navigationItem.titleView = view;
-	
-	[[MKCRequestAPI sharedAPI] fetchMovieWithKeyword:@"apple" successHandler:^(NSURLResponse *response, id responseObject) {
-		
-		NSError *error = nil;
-		MKCMovieModel *model = [[MKCMovieModel alloc] initWithDictionary:responseObject error:&error];
-		if (error) { // Parse JSON failed
-			
-			return;
-		}
-		
-		NSLog(@"qaz: %@", model.results[0].artistName);
-		
-		
-		NSLog(@"movie: %@", responseObject);
-	} failureHandler:^(NSError *error) {
-		
-	}];
-	
-	[[MKCRequestAPI sharedAPI] fetchSongWithKeyword:@"apple" successHandler:^(NSURLResponse *response, id responseObject) {
+	[[MKCRequestAPI sharedAPI] fetchSongWithKeyword:keyword successHandler:^(NSURLResponse *response, id responseObject) {
 		
 		NSError *error = nil;
 		MKCSongModel *model = [[MKCSongModel alloc] initWithDictionary:responseObject error:&error];
@@ -52,23 +39,43 @@
 			return;
 		}
 		
-		NSLog(@"qaz: %@", model.results[0].artistName);
+		NSLog(@"song: %@", model.resultCount);
 		
+	} failureHandler:^(NSError *error) {
 		
-		NSLog(@"song: %@", responseObject);
+	}];
+	
+	[[MKCRequestAPI sharedAPI] fetchMovieWithKeyword:keyword successHandler:^(NSURLResponse *response, id responseObject) {
+		
+		NSError *error = nil;
+		MKCMovieModel *model = [[MKCMovieModel alloc] initWithDictionary:responseObject error:&error];
+		if (error) { // Parse JSON failed
+			
+			return;
+		}
+		
+		NSLog(@"movie: %@", model.resultCount);
+		
 	} failureHandler:^(NSError *error) {
 		
 	}];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - UI Layout
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)configureView {
+	self.view.backgroundColor = [UIColor whiteColor];
+	self.navigationItem.titleView = self.serchView;
 }
-*/
+
+#pragma mark - lazy instance
+
+- (MKCSerchView *)serchView {
+	if (!_serchView) {
+		_serchView = [[MKCSerchView alloc] init];
+		_serchView.delegate = self;
+	}
+	return _serchView;
+}
 
 @end
