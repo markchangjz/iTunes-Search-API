@@ -178,23 +178,23 @@
 
 - (void)configureInitialStateView {
 	[self.activityIndicatorView stopAnimating];
-	self.tableView.alpha = 1.0;
+	self.tableView.hidden = YES;
 }
 
 - (void)configureLoadingStateView {
 	[self.activityIndicatorView startAnimating];
-	self.tableView.alpha = 0.0;
+	self.tableView.hidden = YES;
 }
 
 - (void)configureFinishStateView {
 	[self.activityIndicatorView stopAnimating];
-	self.tableView.alpha = 1.0;
+	self.tableView.hidden = NO;
 	[self.tableView reloadData];
 }
 
 - (void)configureErrorStateView {
 	[self.activityIndicatorView stopAnimating];
-	self.tableView.alpha = 1.0;
+	self.tableView.hidden = NO;
 }
 
 #pragma mark - UI Layout
@@ -249,6 +249,7 @@
 	if (!_tableView) {
 		_tableView = [[UITableView alloc] init];
 		_tableView.translatesAutoresizingMaskIntoConstraints = NO;
+		_tableView.hidden = YES;
 		_tableView.delegate = self;
 		_tableView.dataSource = self;
 		_tableView.estimatedRowHeight = 200.0;
