@@ -72,6 +72,7 @@
 		_searchTextField.translatesAutoresizingMaskIntoConstraints = NO;
 		_searchTextField.placeholder = @"搜尋";
 		_searchTextField.borderStyle = UITextBorderStyleLine;
+		_searchTextField.text = @"apple";
 	}
 	return _searchTextField;
 }

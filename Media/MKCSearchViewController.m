@@ -29,7 +29,28 @@
 #pragma mark - Fetch API
 
 - (void)searchSongAndMovieWithKeyword:(NSString *)keyword {
+	self.state = UIStateLoading;
 	
+	dispatch_group_t group = dispatch_group_create();
+	dispatch_queue_global_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+	
+	dispatch_group_async(group, concurrentQueue, ^{
+		dispatch_group_enter(group);
+		[self searchSongWithKeyword:keyword completion:^(BOOL success) {
+			dispatch_group_leave(group);
+		}];
+	});
+	
+	dispatch_group_async(group, concurrentQueue, ^{
+		dispatch_group_enter(group);
+		[self searchMovieWithKeyword:keyword completion:^(BOOL success) {
+			dispatch_group_leave(group);
+		}];
+	});
+	
+	dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+		self.state = UIStateFinish;
+	});
 }
 
 - (void)searchSongWithKeyword:(NSString *)keyword completion:(void (^)(BOOL success))completion {
