@@ -130,6 +130,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D057A9821FC2E9B007EC471 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0D057A9521FC02FC007EC471 /* MKCSerchView.h */,
+				0D057A9621FC02FC007EC471 /* MKCSerchView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		0D19EBCF21FB44A80033C524 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				0D19EC1521FB45AE0033C524 /* API */,
+				0D057A9821FC2E9B007EC471 /* View */,
 				0D19EBDB21FB44A90033C524 /* AppDelegate.h */,
 				0D19EBDC21FB44A90033C524 /* AppDelegate.m */,
 				0D057A9221FBF0C8007EC471 /* MKCMainTabBarController.h */,
@@ -165,8 +175,6 @@
 				0D19EBE621FB44AA0033C524 /* LaunchScreen.storyboard */,
 				0D19EBE921FB44AA0033C524 /* Info.plist */,
 				0D19EBEA21FB44AA0033C524 /* main.m */,
-				0D057A9521FC02FC007EC471 /* MKCSerchView.h */,
-				0D057A9621FC02FC007EC471 /* MKCSerchView.m */,
 			);
 			path = Media;
 			sourceTree = "<group>";
