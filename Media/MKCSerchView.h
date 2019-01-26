@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class MKCSerchView;
+
+@protocol MKCSerchViewDelegate <NSObject>
+
+- (void)serchView:(MKCSerchView *) serchView searchKeyword:(NSString *)keyword;
+
+@end
+
 @interface MKCSerchView : UIView
+
+@property (nonatomic, weak) id<MKCSerchViewDelegate> delegate;
 
 @end

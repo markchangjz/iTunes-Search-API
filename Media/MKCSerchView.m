@@ -29,6 +29,16 @@
 	return self;
 }
 
+#pragma mark - IBAction
+
+- (void)searchKeyword:(UIButton *)sender {
+	[self.searchTextField resignFirstResponder];
+	
+	if (self.delegate) {
+		[self.delegate serchView:self searchKeyword:self.searchTextField.text];
+	}
+}
+
 #pragma mark - UI Layout
 
 - (void)configureView {
@@ -71,6 +81,7 @@
 		_searchButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 		_searchButton.translatesAutoresizingMaskIntoConstraints = NO;
 		[_searchButton setTitle:@"搜尋" forState:UIControlStateNormal];
+		[_searchButton addTarget:self action:@selector(searchKeyword:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	return _searchButton;
 }
