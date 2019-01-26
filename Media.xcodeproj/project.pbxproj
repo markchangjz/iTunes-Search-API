@@ -13,6 +13,8 @@
 		0D057A9721FC02FC007EC471 /* MKCSerchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057A9621FC02FC007EC471 /* MKCSerchView.m */; };
 		0D057A9C21FC2F4F007EC471 /* MKCBasicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057A9B21FC2F4F007EC471 /* MKCBasicTableViewCell.m */; };
 		0D057A9F21FC3008007EC471 /* MKCBasicMediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057A9E21FC3008007EC471 /* MKCBasicMediaTableViewCell.m */; };
+		0D057AA221FC3EE3007EC471 /* MKCSongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057AA121FC3EE3007EC471 /* MKCSongTableViewCell.m */; };
+		0D057AA521FC3EFA007EC471 /* MKCMovieTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057AA421FC3EFA007EC471 /* MKCMovieTableViewCell.m */; };
 		0D19EBDD21FB44A90033C524 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EBDC21FB44A90033C524 /* AppDelegate.m */; };
 		0D19EBE521FB44AA0033C524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D19EBE421FB44AA0033C524 /* Assets.xcassets */; };
 		0D19EBE821FB44AA0033C524 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D19EBE621FB44AA0033C524 /* LaunchScreen.storyboard */; };
@@ -62,6 +64,10 @@
 		0D057A9B21FC2F4F007EC471 /* MKCBasicTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCBasicTableViewCell.m; sourceTree = "<group>"; };
 		0D057A9D21FC3008007EC471 /* MKCBasicMediaTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCBasicMediaTableViewCell.h; sourceTree = "<group>"; };
 		0D057A9E21FC3008007EC471 /* MKCBasicMediaTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCBasicMediaTableViewCell.m; sourceTree = "<group>"; };
+		0D057AA021FC3EE3007EC471 /* MKCSongTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCSongTableViewCell.h; sourceTree = "<group>"; };
+		0D057AA121FC3EE3007EC471 /* MKCSongTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCSongTableViewCell.m; sourceTree = "<group>"; };
+		0D057AA321FC3EFA007EC471 /* MKCMovieTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCMovieTableViewCell.h; sourceTree = "<group>"; };
+		0D057AA421FC3EFA007EC471 /* MKCMovieTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCMovieTableViewCell.m; sourceTree = "<group>"; };
 		0D19EBD821FB44A80033C524 /* Media.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Media.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D19EBDB21FB44A90033C524 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0D19EBDC21FB44A90033C524 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -153,6 +159,10 @@
 				0D057A9B21FC2F4F007EC471 /* MKCBasicTableViewCell.m */,
 				0D057A9D21FC3008007EC471 /* MKCBasicMediaTableViewCell.h */,
 				0D057A9E21FC3008007EC471 /* MKCBasicMediaTableViewCell.m */,
+				0D057AA021FC3EE3007EC471 /* MKCSongTableViewCell.h */,
+				0D057AA121FC3EE3007EC471 /* MKCSongTableViewCell.m */,
+				0D057AA321FC3EFA007EC471 /* MKCMovieTableViewCell.h */,
+				0D057AA421FC3EFA007EC471 /* MKCMovieTableViewCell.m */,
 			);
 			path = MediaSearchResultCell;
 			sourceTree = "<group>";
@@ -421,6 +431,8 @@
 				0DAF140A21FB530700103B3F /* JSONKeyMapper.m in Sources */,
 				0DAF141121FB530700103B3F /* JSONModel+networking.m in Sources */,
 				0DAF140921FB530700103B3F /* JSONValueTransformer.m in Sources */,
+				0D057AA521FC3EFA007EC471 /* MKCMovieTableViewCell.m in Sources */,
+				0D057AA221FC3EE3007EC471 /* MKCSongTableViewCell.m in Sources */,
 				0D19EC1B21FB47290033C524 /* MKCRequestAPI+Private.m in Sources */,
 				0D19EC1021FB457F0033C524 /* AFHTTPSessionManager.m in Sources */,
 				0DAF140D21FB530700103B3F /* JSONModelClassProperty.m in Sources */,

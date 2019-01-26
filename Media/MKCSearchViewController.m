@@ -10,7 +10,8 @@
 #import "MKCRequestAPI.h"
 #import "MKCJSONModel.h"
 #import "MKCSerchView.h"
-#import "MKCBasicMediaTableViewCell.h"
+#import "MKCSongTableViewCell.h"
+#import "MKCMovieTableViewCell.h"
 
 @interface MKCSearchViewController () <MKCSerchViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -91,15 +92,35 @@
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+	return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	if (section == 0) {
+		return @"音樂";
+	} else {
+		return @"電影";
+	}
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 10;
+	if (section == 0) {
+		return 10;
+	} else {
+		return 5;
+	}
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	MKCBasicMediaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCBasicMediaTableViewCell.identifier forIndexPath:indexPath];
-		
-	return cell;
+	if (indexPath.section == 0) {
+		MKCSongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCSongTableViewCell.identifier forIndexPath:indexPath];
+		return cell;
+	} else {
+		MKCMovieTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCMovieTableViewCell.identifier forIndexPath:indexPath];
+		return cell;
+	}
 }
 
 #pragma mark - MKCSerchViewDelegate
@@ -162,7 +183,8 @@
 	[self.view addSubview:self.tableView];
 	[self layoutTableView];
 	
-	[self.tableView registerClass:[MKCBasicMediaTableViewCell class] forCellReuseIdentifier:MKCBasicMediaTableViewCell.identifier];
+	[self.tableView registerClass:[MKCSongTableViewCell class] forCellReuseIdentifier:MKCSongTableViewCell.identifier];
+	[self.tableView registerClass:[MKCMovieTableViewCell class] forCellReuseIdentifier:MKCMovieTableViewCell.identifier];
 }
 
 - (void)layoutActivityIndicatorView {
