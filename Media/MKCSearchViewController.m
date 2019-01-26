@@ -14,7 +14,7 @@
 #import "MKCMovieTableViewCell.h"
 #import "UIImageView+WebCache.h"
 
-@interface MKCSearchViewController () <MKCSerchViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface MKCSearchViewController () <MKCSerchViewDelegate, UITableViewDelegate, UITableViewDataSource, MKCMovieTableViewCellDelegate, MKCSongTableViewCellDelegate>
 
 @property (nonatomic, strong) MKCSerchView *serchView;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
@@ -119,7 +119,6 @@
 		MKCMovieTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCMovieTableViewCell.identifier forIndexPath:indexPath];
 		
 		MKCMovieInfoModel *movieInfo = self.movies[indexPath.row];
-		
 		[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:movieInfo.imageUrl]];
 		cell.trackName = movieInfo.trackName;
 		cell.artistName = movieInfo.artistName;
@@ -127,17 +126,22 @@
 		cell.trackTimeMillis = movieInfo.trackTimeMillis;
 		cell.longDescription = movieInfo.longDescription;
 		
+		cell.delegate = self;
+		cell.tag = indexPath.row;
+		
 		return cell;
 	} else {
 		MKCSongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCSongTableViewCell.identifier forIndexPath:indexPath];
 		
 		MKCSongInfoModel *songInfo = self.songs[indexPath.row];
-		
 		[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:songInfo.imageUrl]];
 		cell.trackName = songInfo.trackName;
 		cell.artistName = songInfo.artistName;
 		cell.collectionName = songInfo.collectionName;
 		cell.trackTimeMillis = songInfo.trackTimeMillis;
+		
+		cell.delegate = self;
+		cell.tag = indexPath.row;
 		
 		return cell;
 	}
@@ -147,6 +151,18 @@
 
 - (void)serchView:(MKCSerchView *)serchView searchKeyword:(NSString *)keyword {
 	[self searchSongAndMovieWithKeyword:keyword];
+}
+
+#pragma mark - MKCMovieTableViewCellDelegate
+
+- (void)movieTableViewCell:(MKCMovieTableViewCell *)movieTableViewCell collectMovieAtIndex:(NSInteger)index {
+	
+}
+
+#pragma mark - MKCSongTableViewCellDelegate
+
+- (void)songTableViewCell:(MKCSongTableViewCell *)songTableViewCell collectSongAtIndex:(NSInteger)index {
+	
 }
 
 #pragma mark - UI State

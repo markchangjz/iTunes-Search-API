@@ -9,10 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "MKCBasicMediaTableViewCell.h"
 
+@class MKCMovieTableViewCell;
+
+@protocol MKCMovieTableViewCellDelegate <NSObject>
+
+- (void)movieTableViewCell:(MKCMovieTableViewCell *)movieTableViewCell collectMovieAtIndex:(NSInteger)index;
+
+@end
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MKCMovieTableViewCell : MKCBasicMediaTableViewCell
 
+@property (nonatomic, weak) id<MKCMovieTableViewCellDelegate> delegate;
 @property (nonatomic, copy) NSString *trackName;
 @property (nonatomic, copy) NSString *artistName;
 @property (nonatomic, copy) NSString *trackCensoredName;

@@ -27,6 +27,14 @@
 	return self;
 }
 
+#pragma mark - Override
+
+- (void)collect:(UIButton *)sender {
+	if (self.delegate) {
+		[self.delegate songTableViewCell:self collectSongAtIndex:self.tag];
+	}
+}
+
 #pragma mark - UI layout
 
 - (void)configureContentStackView {
