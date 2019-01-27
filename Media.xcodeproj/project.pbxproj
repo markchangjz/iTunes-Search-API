@@ -46,6 +46,9 @@
 		0D057B0421FC46B9007EC471 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057AE421FC46B8007EC471 /* UIButton+WebCache.m */; };
 		0D057B0521FC46B9007EC471 /* SDWebImageWebPCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057AE521FC46B8007EC471 /* SDWebImageWebPCoder.m */; };
 		0D057B0921FC8C53007EC471 /* MKCDataPersistence.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057B0821FC8C53007EC471 /* MKCDataPersistence.m */; };
+		0D057B0C21FD3C2C007EC471 /* MKCCollectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057B0B21FD3C2C007EC471 /* MKCCollectedViewController.m */; };
+		0D057B0F21FD3C62007EC471 /* MKCCollectedMoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057B0E21FD3C62007EC471 /* MKCCollectedMoviesViewController.m */; };
+		0D057B1221FD3C87007EC471 /* MKCCollectedSongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057B1121FD3C87007EC471 /* MKCCollectedSongsViewController.m */; };
 		0D19EBDD21FB44A90033C524 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EBDC21FB44A90033C524 /* AppDelegate.m */; };
 		0D19EBE521FB44AA0033C524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D19EBE421FB44AA0033C524 /* Assets.xcassets */; };
 		0D19EBE821FB44AA0033C524 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D19EBE621FB44AA0033C524 /* LaunchScreen.storyboard */; };
@@ -162,6 +165,12 @@
 		0D057AE621FC46B8007EC471 /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
 		0D057B0721FC8C53007EC471 /* MKCDataPersistence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCDataPersistence.h; sourceTree = "<group>"; };
 		0D057B0821FC8C53007EC471 /* MKCDataPersistence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCDataPersistence.m; sourceTree = "<group>"; };
+		0D057B0A21FD3C2C007EC471 /* MKCCollectedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCCollectedViewController.h; sourceTree = "<group>"; };
+		0D057B0B21FD3C2C007EC471 /* MKCCollectedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCCollectedViewController.m; sourceTree = "<group>"; };
+		0D057B0D21FD3C62007EC471 /* MKCCollectedMoviesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCCollectedMoviesViewController.h; sourceTree = "<group>"; };
+		0D057B0E21FD3C62007EC471 /* MKCCollectedMoviesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCCollectedMoviesViewController.m; sourceTree = "<group>"; };
+		0D057B1021FD3C87007EC471 /* MKCCollectedSongsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCCollectedSongsViewController.h; sourceTree = "<group>"; };
+		0D057B1121FD3C87007EC471 /* MKCCollectedSongsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCCollectedSongsViewController.m; sourceTree = "<group>"; };
 		0D19EBD821FB44A80033C524 /* Media.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Media.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D19EBDB21FB44A90033C524 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0D19EBDC21FB44A90033C524 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -375,6 +384,12 @@
 				0D19EBE621FB44AA0033C524 /* LaunchScreen.storyboard */,
 				0D19EBE921FB44AA0033C524 /* Info.plist */,
 				0D19EBEA21FB44AA0033C524 /* main.m */,
+				0D057B0A21FD3C2C007EC471 /* MKCCollectedViewController.h */,
+				0D057B0B21FD3C2C007EC471 /* MKCCollectedViewController.m */,
+				0D057B0D21FD3C62007EC471 /* MKCCollectedMoviesViewController.h */,
+				0D057B0E21FD3C62007EC471 /* MKCCollectedMoviesViewController.m */,
+				0D057B1021FD3C87007EC471 /* MKCCollectedSongsViewController.h */,
+				0D057B1121FD3C87007EC471 /* MKCCollectedSongsViewController.m */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -630,6 +645,7 @@
 				0D057AA221FC3EE3007EC471 /* MKCSongTableViewCell.m in Sources */,
 				0D19EC1B21FB47290033C524 /* MKCRequestAPI+Private.m in Sources */,
 				0D19EC1021FB457F0033C524 /* AFHTTPSessionManager.m in Sources */,
+				0D057B0C21FD3C2C007EC471 /* MKCCollectedViewController.m in Sources */,
 				0DAF140D21FB530700103B3F /* JSONModelClassProperty.m in Sources */,
 				0D057AF721FC46B9007EC471 /* SDAnimatedImageRep.m in Sources */,
 				0D19EC1121FB457F0033C524 /* AFURLSessionManager.m in Sources */,
@@ -644,6 +660,7 @@
 				0D19EC0F21FB457F0033C524 /* AFURLResponseSerialization.m in Sources */,
 				0D057AF421FC46B8007EC471 /* SDWebImagePrefetcher.m in Sources */,
 				0D19EC1821FB46280033C524 /* MKCRequestAPI.m in Sources */,
+				0D057B0F21FD3C62007EC471 /* MKCCollectedMoviesViewController.m in Sources */,
 				0D057AF121FC46B8007EC471 /* UIImage+MultiFormat.m in Sources */,
 				0D19EC1221FB457F0033C524 /* AFURLRequestSerialization.m in Sources */,
 				0DAF141021FB530700103B3F /* JSONAPI.m in Sources */,
@@ -654,6 +671,7 @@
 				0D19EBDD21FB44A90033C524 /* AppDelegate.m in Sources */,
 				0D057AF821FC46B9007EC471 /* SDImageCache.m in Sources */,
 				0DAF141521FB53CC00103B3F /* MKCSongModel.m in Sources */,
+				0D057B1221FD3C87007EC471 /* MKCCollectedSongsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
