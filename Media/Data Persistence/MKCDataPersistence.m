@@ -24,6 +24,8 @@ NSString *const songKey = @"songKey";
 	NSMutableArray *collectedMovies = [userDefaults mutableArrayValueForKey:movieKey];
 	[collectedMovies addObject:trackId];
 	[userDefaults setObject:[collectedMovies copy] forKey:movieKey];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedMovieDidChangeNotification object:nil];
 }
 
 + (void)removeCollectedMovieWithTrackId:(NSString *)trackId {
@@ -32,6 +34,8 @@ NSString *const songKey = @"songKey";
 	NSMutableArray *collectedMovies = [userDefaults mutableArrayValueForKey:movieKey];
 	[collectedMovies removeObject:trackId];
 	[userDefaults setObject:[collectedMovies copy] forKey:movieKey];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedMovieDidChangeNotification object:nil];
 }
 
 + (BOOL)hasCollectdMovieWithTrackId:(NSString *)trackId {
@@ -56,6 +60,8 @@ NSString *const songKey = @"songKey";
 	NSMutableArray *collectedSongs = [userDefaults mutableArrayValueForKey:songKey];
 	[collectedSongs addObject:trackId];
 	[userDefaults setObject:[collectedSongs copy] forKey:songKey];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedSongDidChangeNotification object:nil];
 }
 
 + (void)removeCollectedSongWithTrackId:(nonnull NSString *)trackId {
@@ -64,6 +70,8 @@ NSString *const songKey = @"songKey";
 	NSMutableArray *collectedSongs = [userDefaults mutableArrayValueForKey:songKey];
 	[collectedSongs removeObject:trackId];
 	[userDefaults setObject:[collectedSongs copy] forKey:songKey];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedSongDidChangeNotification object:nil];
 }
 
 + (BOOL)hasCollectdSongWithTrackId:(nonnull NSString *)trackId {
