@@ -7,6 +7,7 @@
 //
 
 #import "MKCMoreViewController.h"
+#import "MKCCollectedViewController.h"
 
 @interface MKCMoreViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -57,8 +58,11 @@
 	if (indexPath.section == 0) {
 		
 	} else {
-		
+		MKCCollectedViewController *collectedViewController = [[MKCCollectedViewController alloc] init];
+		[self.navigationController pushViewController:collectedViewController animated:YES];
 	}
+	
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - UI Layout

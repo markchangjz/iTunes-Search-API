@@ -7,6 +7,9 @@
 //
 
 #import "MKCCollectedViewController.h"
+#import "MKCCollectedMoviesViewController.h"
+#import "MKCCollectedSongsViewController.h"
+#import "YSLContainerViewController.h"
 
 @interface MKCCollectedViewController ()
 
@@ -16,7 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+	
+	self.view.backgroundColor = [UIColor whiteColor];
 }
 
 /*
