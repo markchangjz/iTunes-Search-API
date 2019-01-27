@@ -38,6 +38,13 @@ NSString * const songKey = @"songKey";
 	return [collectedMovies containsObject:trackId];
 }
 
++ (NSArray<NSString *> *)collectMovieTrackIds {
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	
+	NSMutableArray *collectedMovies = [userDefaults mutableArrayValueForKey:movieKey];
+	return collectedMovies;
+}
+
 #pragma mark - song
 
 + (void)collectSongWithTrackId:(nonnull NSString *)trackId {

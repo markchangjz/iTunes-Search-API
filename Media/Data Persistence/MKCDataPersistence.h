@@ -20,6 +20,7 @@ extern NSString *const songKey;
 + (void)collectMovieWithTrackId:(nonnull NSString *)trackId;
 + (void)removeCollectedMovieWithTrackId:(nonnull NSString *)trackId;
 + (BOOL)hasCollectdMovieWithTrackId:(nonnull NSString *)trackId;
++ (NSArray<NSString *> *)collectMovieTrackIds;
 
 #pragma mark - song
 
