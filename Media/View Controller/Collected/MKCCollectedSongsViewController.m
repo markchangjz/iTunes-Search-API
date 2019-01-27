@@ -62,16 +62,20 @@
 
 - (void)songTableViewCell:(MKCSongTableViewCell *)songTableViewCell collectSongAtIndex:(NSInteger)index {
 	
-	NSString *trackId = self.songs[index].trackId;
+	NSIndexPath *deleteIndexPath = [self.tableView indexPathForCell:songTableViewCell];
+	NSInteger deleteIndex = deleteIndexPath.row;
+	
+	NSString *trackId = self.songs[deleteIndex].trackId;
 	
 	if ([MKCDataPersistence hasCollectdSongWithTrackId:trackId]) {
 		[MKCDataPersistence removeCollectedSongWithTrackId:trackId];
-	} else {
-		[MKCDataPersistence collectSongWithTrackId:trackId];
+		
+		NSMutableArray *songs = [self.songs mutableCopy];
+		[songs removeObjectAtIndex:deleteIndex];
+		self.songs = songs;
+		
+		[self.tableView deleteRowsAtIndexPaths:@[deleteIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 	}
-	
-	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-	[self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark - Fetch API
@@ -91,6 +95,7 @@
 		}
 		
 		self.songs = model.results;
+		[self.tableView reloadData];
 	} failureHandler:^(NSError *error) {
 		
 	}];
@@ -113,14 +118,6 @@
 	NSArray *tableViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[tableView]-0-|" options:0 metrics:nil views:@{@"tableView": self.tableView}];
 	[self.view addConstraints:tableViewHorizontalConstraints];
 	[self.view addConstraints:tableViewVerticalConstraints];
-}
-
-#pragma mark - binding
-
-- (void)setSongs:(NSArray<MKCSongInfoModel *> *)songs {
-	_songs = songs;
-	
-	[self.tableView reloadData];
 }
 
 #pragma mark - lazy instance

@@ -63,16 +63,20 @@
 
 - (void)movieTableViewCell:(MKCMovieTableViewCell *)movieTableViewCell collectMovieAtIndex:(NSInteger)index {
 	
-	NSString *trackId = self.movies[index].trackId;
+	NSIndexPath *deleteIndexPath = [self.tableView indexPathForCell:movieTableViewCell];
+	NSInteger deleteIndex = deleteIndexPath.row;
+	
+	NSString *trackId = self.movies[deleteIndex].trackId;
 	
 	if ([MKCDataPersistence hasCollectdMovieWithTrackId:trackId]) {
 		[MKCDataPersistence removeCollectedMovieWithTrackId:trackId];
-	} else {
-		[MKCDataPersistence collectMovieWithTrackId:trackId];
+		
+		NSMutableArray *movies = [self.movies mutableCopy];
+		[movies removeObjectAtIndex:deleteIndex];
+		self.movies = movies;
+		
+		[self.tableView deleteRowsAtIndexPaths:@[deleteIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 	}
-	
-	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-	[self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark - Fetch API
@@ -92,6 +96,7 @@
 		}
 		
 		self.movies = model.results;
+		[self.tableView reloadData];
 	} failureHandler:^(NSError *error) {
 		
 	}];
@@ -114,14 +119,6 @@
 	NSArray *tableViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[tableView]-0-|" options:0 metrics:nil views:@{@"tableView": self.tableView}];
 	[self.view addConstraints:tableViewHorizontalConstraints];
 	[self.view addConstraints:tableViewVerticalConstraints];
-}
-
-#pragma mark - binding
-
-- (void)setMovies:(NSArray<MKCMovieInfoModel *> *)movies {
-	_movies = movies;
-	
-	[self.tableView reloadData];
 }
 
 #pragma mark - lazy instance
