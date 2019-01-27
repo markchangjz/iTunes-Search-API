@@ -26,6 +26,12 @@
 	[self configureView];
 }
 
+#pragma mark - IBAction
+
+- (void)openInfoWebView:(UIButton *)sender {
+	
+}
+
 #pragma mark - UITableViewDelegate & UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -91,6 +97,7 @@
 	[aboutButton setImage:[UIImage imageNamed:@"info"] forState:UIControlStateNormal];
 	[aboutButton setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
 	aboutButton.tintColor = [UIColor blackColor];
+	[aboutButton addTarget:self action:@selector(openInfoWebView:) forControlEvents:UIControlEventTouchUpInside];
 	
 	[footerView addSubview:aboutButton];
 	
