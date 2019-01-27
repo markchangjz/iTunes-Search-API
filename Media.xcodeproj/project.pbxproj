@@ -376,6 +376,33 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		0D057B1E21FD58C3007EC471 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0D057A9221FBF0C8007EC471 /* MKCMainTabBarController.h */,
+				0D057A9321FBF0C8007EC471 /* MKCMainTabBarController.m */,
+				0D057A8F21FBEFB4007EC471 /* MKCSearchViewController.h */,
+				0D057A9021FBEFB4007EC471 /* MKCSearchViewController.m */,
+				0D057A8C21FBEEE1007EC471 /* MKCMoreViewController.h */,
+				0D057A8D21FBEEE1007EC471 /* MKCMoreViewController.m */,
+				0D057B1F21FD5910007EC471 /* Collected */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		0D057B1F21FD5910007EC471 /* Collected */ = {
+			isa = PBXGroup;
+			children = (
+				0D057B0A21FD3C2C007EC471 /* MKCCollectedViewController.h */,
+				0D057B0B21FD3C2C007EC471 /* MKCCollectedViewController.m */,
+				0D057B0D21FD3C62007EC471 /* MKCCollectedMoviesViewController.h */,
+				0D057B0E21FD3C62007EC471 /* MKCCollectedMoviesViewController.m */,
+				0D057B1021FD3C87007EC471 /* MKCCollectedSongsViewController.h */,
+				0D057B1121FD3C87007EC471 /* MKCCollectedSongsViewController.m */,
+			);
+			path = Collected;
+			sourceTree = "<group>";
+		};
 		0D19EBCF21FB44A80033C524 = {
 			isa = PBXGroup;
 			children = (
@@ -402,24 +429,13 @@
 				0D057A9821FC2E9B007EC471 /* View */,
 				0D057B0621FC8B27007EC471 /* Data Persistence */,
 				0D057B1A21FD4E9D007EC471 /* Utility */,
+				0D057B1E21FD58C3007EC471 /* View Controller */,
 				0D19EBDB21FB44A90033C524 /* AppDelegate.h */,
 				0D19EBDC21FB44A90033C524 /* AppDelegate.m */,
-				0D057A9221FBF0C8007EC471 /* MKCMainTabBarController.h */,
-				0D057A9321FBF0C8007EC471 /* MKCMainTabBarController.m */,
-				0D057A8F21FBEFB4007EC471 /* MKCSearchViewController.h */,
-				0D057A9021FBEFB4007EC471 /* MKCSearchViewController.m */,
-				0D057A8C21FBEEE1007EC471 /* MKCMoreViewController.h */,
-				0D057A8D21FBEEE1007EC471 /* MKCMoreViewController.m */,
 				0D19EBE421FB44AA0033C524 /* Assets.xcassets */,
 				0D19EBE621FB44AA0033C524 /* LaunchScreen.storyboard */,
 				0D19EBE921FB44AA0033C524 /* Info.plist */,
 				0D19EBEA21FB44AA0033C524 /* main.m */,
-				0D057B0A21FD3C2C007EC471 /* MKCCollectedViewController.h */,
-				0D057B0B21FD3C2C007EC471 /* MKCCollectedViewController.m */,
-				0D057B0D21FD3C62007EC471 /* MKCCollectedMoviesViewController.h */,
-				0D057B0E21FD3C62007EC471 /* MKCCollectedMoviesViewController.m */,
-				0D057B1021FD3C87007EC471 /* MKCCollectedSongsViewController.h */,
-				0D057B1121FD3C87007EC471 /* MKCCollectedSongsViewController.m */,
 			);
 			path = Media;
 			sourceTree = "<group>";
