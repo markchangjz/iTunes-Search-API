@@ -26,6 +26,11 @@
     [super viewDidLoad];
 	
 	[self configureView];
+	[self addObserver];
+}
+
+- (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - IBAction
@@ -128,6 +133,20 @@
 	NSUInteger numberOfCollectedSongs = [MKCDataPersistence collectSongTrackIds].count;
 	
 	return @(numberOfCollectedMovies + numberOfCollectedSongs);
+}
+
+- (void)addObserver {
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableViewData:) name:MKCCollectedMovieDidChangeNotification object:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableViewData:) name:MKCCollectedSongDidChangeNotification object:nil];
+}
+
+- (void)reloadTableViewData:(NSNotification *)notification {
+	[self.tableView beginUpdates];
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+	[self.tableView reloadRowsAtIndexPaths:@[indexPath]
+						  withRowAnimation:UITableViewRowAnimationNone];
+	[self.tableView endUpdates];
 }
 
 #pragma mark - lazy instance
