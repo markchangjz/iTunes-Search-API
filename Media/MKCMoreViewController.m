@@ -8,10 +8,13 @@
 
 #import "MKCMoreViewController.h"
 #import "MKCCollectedViewController.h"
+#import "NSNumber+Formatter.h"
+#import "MKCDataPersistence.h"
 
 @interface MKCMoreViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, readonly, strong) NSNumber *numberOfCollected;
 
 @end
 
@@ -46,7 +49,7 @@
 		cell.detailTextLabel.text = @"淺色主題";
 	} else {
 		cell.textLabel.text = @"收藏項目";
-		cell.detailTextLabel.text = @"共有 # 項收藏";
+		cell.detailTextLabel.text = [NSString stringWithFormat:@"共有 %@ 項收藏", [self.numberOfCollected decimalText]];
 	}
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
@@ -81,6 +84,15 @@
 	NSArray *tableViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[tableView]-0-|" options:0 metrics:nil views:@{@"tableView": self.tableView}];
 	[self.view addConstraints:tableViewHorizontalConstraints];
 	[self.view addConstraints:tableViewVerticalConstraints];
+}
+
+#pragma mark - data source
+
+- (NSNumber *)numberOfCollected {
+	NSUInteger numberOfCollectedMovies = [MKCDataPersistence collectMovieTrackIds].count;
+	NSUInteger numberOfCollectedSongs = [MKCDataPersistence collectSongTrackIds].count;
+	
+	return @(numberOfCollectedMovies + numberOfCollectedSongs);
 }
 
 #pragma mark - lazy instance
