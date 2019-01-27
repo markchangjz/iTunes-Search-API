@@ -150,6 +150,20 @@
 	}
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	NSURL *openURL;
+	if (indexPath.section == 0) {
+		MKCMovieInfoModel *movieInfo = self.movies[indexPath.row];
+		openURL = [NSURL URLWithString:movieInfo.trackViewUrl];
+	} else {
+		MKCSongInfoModel *movieInfo = self.songs[indexPath.row];
+		openURL = [NSURL URLWithString:movieInfo.trackViewUrl];
+	}
+	
+	[[UIApplication sharedApplication] openURL:openURL options:@{} completionHandler:nil];
+}
+
 #pragma mark - MKCSerchViewDelegate
 
 - (void)serchView:(MKCSerchView *)serchView searchKeyword:(NSString *)keyword {
