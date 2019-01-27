@@ -142,7 +142,7 @@ static const CGFloat kYSLIndicatorHeight = 3;
                                 options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                              animations:^{
                                  label.alpha = 1.0;
-                                 label.textColor = _itemSelectedTitleColor;
+                                 label.textColor = self.itemSelectedTitleColor;
                              } completion:^(BOOL finished) {
                              }];
         } else {
