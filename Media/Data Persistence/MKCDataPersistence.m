@@ -20,7 +20,7 @@ NSString * const songKey = @"songKey";
 	
 	NSMutableArray *collectedMovies = [userDefaults mutableArrayValueForKey:movieKey];
 	[collectedMovies addObject:trackId];
-	[userDefaults setObject:collectedMovies forKey:movieKey];
+	[userDefaults setObject:[collectedMovies copy] forKey:movieKey];
 }
 
 + (void)removeCollectedMovieWithTrackId:(NSString *)trackId {
@@ -28,7 +28,7 @@ NSString * const songKey = @"songKey";
 	
 	NSMutableArray *collectedMovies = [userDefaults mutableArrayValueForKey:movieKey];
 	[collectedMovies removeObject:trackId];
-	[userDefaults setObject:collectedMovies forKey:movieKey];
+	[userDefaults setObject:[collectedMovies copy] forKey:movieKey];
 }
 
 + (BOOL)hasCollectdMovieWithTrackId:(NSString *)trackId {
@@ -52,7 +52,7 @@ NSString * const songKey = @"songKey";
 	
 	NSMutableArray *collectedSongs = [userDefaults mutableArrayValueForKey:songKey];
 	[collectedSongs addObject:trackId];
-	[userDefaults setObject:collectedSongs forKey:songKey];
+	[userDefaults setObject:[collectedSongs copy] forKey:songKey];
 }
 
 + (void)removeCollectedSongWithTrackId:(nonnull NSString *)trackId {
@@ -60,7 +60,7 @@ NSString * const songKey = @"songKey";
 	
 	NSMutableArray *collectedSongs = [userDefaults mutableArrayValueForKey:songKey];
 	[collectedSongs removeObject:trackId];
-	[userDefaults setObject:collectedSongs forKey:songKey];
+	[userDefaults setObject:[collectedSongs copy] forKey:songKey];
 }
 
 + (BOOL)hasCollectdSongWithTrackId:(nonnull NSString *)trackId {
