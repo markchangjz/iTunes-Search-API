@@ -27,6 +27,7 @@
 
 - (void)configureView {
 	self.view.backgroundColor = [UIColor whiteColor];
+	self.navigationItem.title = @"收藏項目";
 	
 	MKCCollectedMoviesViewController *collectedMoviesViewController = [[MKCCollectedMoviesViewController alloc] init];
 	collectedMoviesViewController.title = @"電影";
