@@ -70,7 +70,7 @@
 		[MKCDataPersistence collectSongWithTrackId:trackId];
 	}
 	
-	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:1];
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
 	[self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
