@@ -52,6 +52,7 @@
 		0D057B1821FD3CC0007EC471 /* YSLContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057B1521FD3CC0007EC471 /* YSLContainerViewController.m */; };
 		0D057B1921FD3CC0007EC471 /* YSLScrollMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057B1721FD3CC0007EC471 /* YSLScrollMenuView.m */; };
 		0D057B1D21FD4EDB007EC471 /* NSNumber+Formatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057B1C21FD4EDB007EC471 /* NSNumber+Formatter.m */; };
+		0D057B2221FD7388007EC471 /* MKCWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057B2121FD7388007EC471 /* MKCWebViewController.m */; };
 		0D19EBDD21FB44A90033C524 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EBDC21FB44A90033C524 /* AppDelegate.m */; };
 		0D19EBE521FB44AA0033C524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D19EBE421FB44AA0033C524 /* Assets.xcassets */; };
 		0D19EBE821FB44AA0033C524 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D19EBE621FB44AA0033C524 /* LaunchScreen.storyboard */; };
@@ -180,6 +181,8 @@
 		0D057B1721FD3CC0007EC471 /* YSLScrollMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSLScrollMenuView.m; sourceTree = "<group>"; };
 		0D057B1B21FD4EDB007EC471 /* NSNumber+Formatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Formatter.h"; sourceTree = "<group>"; };
 		0D057B1C21FD4EDB007EC471 /* NSNumber+Formatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Formatter.m"; sourceTree = "<group>"; };
+		0D057B2021FD7388007EC471 /* MKCWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCWebViewController.h; sourceTree = "<group>"; };
+		0D057B2121FD7388007EC471 /* MKCWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCWebViewController.m; sourceTree = "<group>"; };
 		0D19EBD821FB44A80033C524 /* Media.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Media.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D19EBDB21FB44A90033C524 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0D19EBDC21FB44A90033C524 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -386,6 +389,8 @@
 				0D057A8C21FBEEE1007EC471 /* MKCMoreViewController.h */,
 				0D057A8D21FBEEE1007EC471 /* MKCMoreViewController.m */,
 				0D057B1F21FD5910007EC471 /* Collected */,
+				0D057B2021FD7388007EC471 /* MKCWebViewController.h */,
+				0D057B2121FD7388007EC471 /* MKCWebViewController.m */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -702,6 +707,7 @@
 				0DAF140B21FB530700103B3F /* JSONModel.m in Sources */,
 				0D057A8E21FBEEE1007EC471 /* MKCMoreViewController.m in Sources */,
 				0D057A9721FC02FC007EC471 /* MKCSerchView.m in Sources */,
+				0D057B2221FD7388007EC471 /* MKCWebViewController.m in Sources */,
 				0D057AEC21FC46B8007EC471 /* UIImage+ForceDecode.m in Sources */,
 				0DE0F1E721FB59980039B53E /* MKCMovieModel.m in Sources */,
 				0D057AE821FC46B8007EC471 /* MKAnnotationView+WebCache.m in Sources */,

@@ -10,6 +10,8 @@
 #import "MKCCollectedViewController.h"
 #import "NSNumber+Formatter.h"
 #import "MKCDataPersistence.h"
+#import "MKCWebViewController.h"
+#import "MKCURLGuide.h"
 
 @interface MKCMoreViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -29,7 +31,12 @@
 #pragma mark - IBAction
 
 - (void)openInfoWebView:(UIButton *)sender {
+	MKCWebViewController *webViewController = [[MKCWebViewController alloc] init];
+	[webViewController loadURLString:MKCURLGuide.iTunesSupport];
 	
+	UINavigationController *webViewNavigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
+	
+	[self presentViewController:webViewNavigationController animated:YES completion:nil];
 }
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource

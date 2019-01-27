@@ -22,4 +22,8 @@
 	return [NSString stringWithFormat:@"%@/lookup", self.iTunesHost];
 }
 
++ (NSString *)iTunesSupport {
+	return @"https://support.apple.com/itunes";
+}
+
 @end

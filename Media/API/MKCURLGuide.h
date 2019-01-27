@@ -16,5 +16,7 @@
 
 + (NSString *)lookupAPI;
 
++ (NSString *)iTunesSupport;
+
 @end
 
