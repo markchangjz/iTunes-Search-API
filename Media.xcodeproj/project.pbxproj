@@ -49,6 +49,8 @@
 		0D057B0C21FD3C2C007EC471 /* MKCCollectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057B0B21FD3C2C007EC471 /* MKCCollectedViewController.m */; };
 		0D057B0F21FD3C62007EC471 /* MKCCollectedMoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057B0E21FD3C62007EC471 /* MKCCollectedMoviesViewController.m */; };
 		0D057B1221FD3C87007EC471 /* MKCCollectedSongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057B1121FD3C87007EC471 /* MKCCollectedSongsViewController.m */; };
+		0D057B1821FD3CC0007EC471 /* YSLContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057B1521FD3CC0007EC471 /* YSLContainerViewController.m */; };
+		0D057B1921FD3CC0007EC471 /* YSLScrollMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057B1721FD3CC0007EC471 /* YSLScrollMenuView.m */; };
 		0D19EBDD21FB44A90033C524 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EBDC21FB44A90033C524 /* AppDelegate.m */; };
 		0D19EBE521FB44AA0033C524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D19EBE421FB44AA0033C524 /* Assets.xcassets */; };
 		0D19EBE821FB44AA0033C524 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D19EBE621FB44AA0033C524 /* LaunchScreen.storyboard */; };
@@ -171,6 +173,10 @@
 		0D057B0E21FD3C62007EC471 /* MKCCollectedMoviesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCCollectedMoviesViewController.m; sourceTree = "<group>"; };
 		0D057B1021FD3C87007EC471 /* MKCCollectedSongsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCCollectedSongsViewController.h; sourceTree = "<group>"; };
 		0D057B1121FD3C87007EC471 /* MKCCollectedSongsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCCollectedSongsViewController.m; sourceTree = "<group>"; };
+		0D057B1421FD3CC0007EC471 /* YSLScrollMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSLScrollMenuView.h; sourceTree = "<group>"; };
+		0D057B1521FD3CC0007EC471 /* YSLContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSLContainerViewController.m; sourceTree = "<group>"; };
+		0D057B1621FD3CC0007EC471 /* YSLContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSLContainerViewController.h; sourceTree = "<group>"; };
+		0D057B1721FD3CC0007EC471 /* YSLScrollMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSLScrollMenuView.m; sourceTree = "<group>"; };
 		0D19EBD821FB44A80033C524 /* Media.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Media.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D19EBDB21FB44A90033C524 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0D19EBDC21FB44A90033C524 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -347,6 +353,17 @@
 			path = "Data Persistence";
 			sourceTree = "<group>";
 		};
+		0D057B1321FD3CC0007EC471 /* YSLContainerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0D057B1421FD3CC0007EC471 /* YSLScrollMenuView.h */,
+				0D057B1521FD3CC0007EC471 /* YSLContainerViewController.m */,
+				0D057B1621FD3CC0007EC471 /* YSLContainerViewController.h */,
+				0D057B1721FD3CC0007EC471 /* YSLScrollMenuView.m */,
+			);
+			path = YSLContainerViewController;
+			sourceTree = "<group>";
+		};
 		0D19EBCF21FB44A80033C524 = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +423,7 @@
 		0D19EBFF21FB453B0033C524 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				0D057B1321FD3CC0007EC471 /* YSLContainerViewController */,
 				0D057AA621FC46B8007EC471 /* SDWebImage */,
 				0DAF13F221FB530700103B3F /* JSONModel */,
 				0D19EC0021FB457F0033C524 /* AFNetworking */,
@@ -626,6 +644,7 @@
 				0D057AF621FC46B9007EC471 /* NSButton+WebCache.m in Sources */,
 				0D057AFF21FC46B9007EC471 /* UIImage+MemoryCacheCost.m in Sources */,
 				0D19EC1421FB457F0033C524 /* AFSecurityPolicy.m in Sources */,
+				0D057B1821FD3CC0007EC471 /* YSLContainerViewController.m in Sources */,
 				0D19EBEB21FB44AA0033C524 /* main.m in Sources */,
 				0D057AF521FC46B8007EC471 /* SDWebImageCoder.m in Sources */,
 				0D057AE721FC46B8007EC471 /* UIImage+WebP.m in Sources */,
@@ -672,6 +691,7 @@
 				0D057AF821FC46B9007EC471 /* SDImageCache.m in Sources */,
 				0DAF141521FB53CC00103B3F /* MKCSongModel.m in Sources */,
 				0D057B1221FD3C87007EC471 /* MKCCollectedSongsViewController.m in Sources */,
+				0D057B1921FD3CC0007EC471 /* YSLScrollMenuView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
