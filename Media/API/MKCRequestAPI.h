@@ -19,6 +19,6 @@ typedef void (^MKCFailureHandler)(NSError *error);
 
 - (NSURLSessionDataTask *)searchMovieWithKeyword:(nonnull NSString *)keyword successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler;
 
-- (NSURLSessionDataTask *)lookupWithTrackId:(nonnull NSString *)trackId successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler;
+- (NSURLSessionDataTask *)lookupWithTrackIds:(nonnull NSArray<NSString *> *)trackIds successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler;
 
 @end

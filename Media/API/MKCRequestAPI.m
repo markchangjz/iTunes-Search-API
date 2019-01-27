@@ -47,9 +47,11 @@
 	return dataTask;
 }
 
-- (NSURLSessionDataTask *)lookupWithTrackId:(NSString *)trackId successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler {
+- (NSURLSessionDataTask *)lookupWithTrackIds:(nonnull NSArray<NSString *> *)trackIds successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler {
 	
-	NSDictionary *parameters = @{@"id": trackId};
+	NSString *lookupTrackIds = [trackIds componentsJoinedByString:@","];
+	
+	NSDictionary *parameters = @{@"id": lookupTrackIds};
 	
 	NSMutableURLRequest *request = [self in_requestWithURLString:MKCURLGuide.lookupAPI method:@"GET" parameters:parameters];
 	
