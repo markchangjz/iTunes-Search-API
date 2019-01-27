@@ -10,6 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+extern NSString *const MKCCollectedMovieDidChangeNotification;
+extern NSString *const MKCCollectedSongDidChangeNotification;
+
 extern NSString *const movieKey;
 extern NSString *const songKey;
 

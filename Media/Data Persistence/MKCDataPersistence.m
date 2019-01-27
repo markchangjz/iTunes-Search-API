@@ -8,8 +8,11 @@
 
 #import "MKCDataPersistence.h"
 
-NSString * const movieKey = @"movieKey";
-NSString * const songKey = @"songKey";
+NSString *const MKCCollectedMovieDidChangeNotification = @"MKCCollectedMovieDidChangeNotification";
+NSString *const MKCCollectedSongDidChangeNotification = @"MKCCollectedSongDidChangeNotification";
+
+NSString *const movieKey = @"movieKey";
+NSString *const songKey = @"songKey";
 
 @implementation MKCDataPersistence
 
