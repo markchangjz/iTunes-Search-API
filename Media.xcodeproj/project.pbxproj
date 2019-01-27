@@ -51,6 +51,7 @@
 		0D057B1221FD3C87007EC471 /* MKCCollectedSongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057B1121FD3C87007EC471 /* MKCCollectedSongsViewController.m */; };
 		0D057B1821FD3CC0007EC471 /* YSLContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057B1521FD3CC0007EC471 /* YSLContainerViewController.m */; };
 		0D057B1921FD3CC0007EC471 /* YSLScrollMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057B1721FD3CC0007EC471 /* YSLScrollMenuView.m */; };
+		0D057B1D21FD4EDB007EC471 /* NSNumber+Formatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057B1C21FD4EDB007EC471 /* NSNumber+Formatter.m */; };
 		0D19EBDD21FB44A90033C524 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EBDC21FB44A90033C524 /* AppDelegate.m */; };
 		0D19EBE521FB44AA0033C524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D19EBE421FB44AA0033C524 /* Assets.xcassets */; };
 		0D19EBE821FB44AA0033C524 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D19EBE621FB44AA0033C524 /* LaunchScreen.storyboard */; };
@@ -177,6 +178,8 @@
 		0D057B1521FD3CC0007EC471 /* YSLContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSLContainerViewController.m; sourceTree = "<group>"; };
 		0D057B1621FD3CC0007EC471 /* YSLContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSLContainerViewController.h; sourceTree = "<group>"; };
 		0D057B1721FD3CC0007EC471 /* YSLScrollMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSLScrollMenuView.m; sourceTree = "<group>"; };
+		0D057B1B21FD4EDB007EC471 /* NSNumber+Formatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Formatter.h"; sourceTree = "<group>"; };
+		0D057B1C21FD4EDB007EC471 /* NSNumber+Formatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Formatter.m"; sourceTree = "<group>"; };
 		0D19EBD821FB44A80033C524 /* Media.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Media.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D19EBDB21FB44A90033C524 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0D19EBDC21FB44A90033C524 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -364,6 +367,15 @@
 			path = YSLContainerViewController;
 			sourceTree = "<group>";
 		};
+		0D057B1A21FD4E9D007EC471 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				0D057B1B21FD4EDB007EC471 /* NSNumber+Formatter.h */,
+				0D057B1C21FD4EDB007EC471 /* NSNumber+Formatter.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		0D19EBCF21FB44A80033C524 = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +398,7 @@
 		0D19EBDA21FB44A80033C524 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				0D057B1A21FD4E9D007EC471 /* Utility */,
 				0D19EC1521FB45AE0033C524 /* API */,
 				0D057A9821FC2E9B007EC471 /* View */,
 				0D057B0621FC8B27007EC471 /* Data Persistence */,
@@ -637,6 +650,7 @@
 				0D057A9F21FC3008007EC471 /* MKCBasicMediaTableViewCell.m in Sources */,
 				0D057AF221FC46B8007EC471 /* SDWebImageCoderHelper.m in Sources */,
 				0D19EC1E21FB4C7E0033C524 /* MKCURLGuide.m in Sources */,
+				0D057B1D21FD4EDB007EC471 /* NSNumber+Formatter.m in Sources */,
 				0D057A9121FBEFB4007EC471 /* MKCSearchViewController.m in Sources */,
 				0D057AEA21FC46B8007EC471 /* UIImageView+HighlightedWebCache.m in Sources */,
 				0D057AEB21FC46B8007EC471 /* SDWebImageFrame.m in Sources */,
