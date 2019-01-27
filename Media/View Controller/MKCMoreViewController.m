@@ -77,6 +77,27 @@
 	// table view
 	[self.view addSubview:self.tableView];
 	[self layoutTableView];
+	
+	[self configureTableFooterView];
+}
+
+- (void)configureTableFooterView {
+	UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 50)];
+	
+	UIButton *aboutButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	aboutButton.translatesAutoresizingMaskIntoConstraints = NO;
+	aboutButton.frame = CGRectMake(0, 0, 0, 32);
+	[aboutButton setTitle:@" 關於Apple iTunes" forState:UIControlStateNormal];
+	[aboutButton setImage:[UIImage imageNamed:@"info"] forState:UIControlStateNormal];
+	[aboutButton setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+	aboutButton.tintColor = [UIColor blackColor];
+	
+	[footerView addSubview:aboutButton];
+	
+	[aboutButton.trailingAnchor constraintEqualToAnchor:footerView.trailingAnchor constant:-20.0].active = YES;
+	[aboutButton.centerYAnchor constraintEqualToAnchor:footerView.centerYAnchor constant:0.0].active = YES;
+	
+	self.tableView.tableFooterView = footerView;
 }
 
 - (void)layoutTableView {
