@@ -27,6 +27,11 @@
 	
 	[self configureView];
 	[self lookupcollectSongsInfo];
+	[self addObserver];
+}
+
+- (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
@@ -84,6 +89,8 @@
 	NSArray<NSString *> *trackIds = [MKCDataPersistence collectSongTrackIds];
 	
 	if (trackIds.count == 0) {
+		self.songs = @[];
+		[self.tableView reloadData];
 		return;
 	}
 	
@@ -118,6 +125,21 @@
 	NSArray *tableViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[tableView]-0-|" options:0 metrics:nil views:@{@"tableView": self.tableView}];
 	[self.view addConstraints:tableViewHorizontalConstraints];
 	[self.view addConstraints:tableViewVerticalConstraints];
+}
+
+#pragma mark - add observer
+
+- (void)addObserver {
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableViewData:) name:MKCCollectedSongDidChangeNotification object:nil];
+}
+
+- (void)reloadTableViewData:(NSNotification *)notification {
+	
+	if (self.tabBarController.selectedIndex == 1) {
+		return;
+	}
+	
+	[self lookupcollectSongsInfo];
 }
 
 #pragma mark - lazy instance

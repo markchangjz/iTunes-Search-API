@@ -27,6 +27,11 @@
 	
 	[self configureView];
 	[self lookupcollectMoviesInfo];
+	[self addObserver];
+}
+
+- (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
@@ -85,6 +90,8 @@
 	NSArray<NSString *> *trackIds = [MKCDataPersistence collectMovieTrackIds];
 	
 	if (trackIds.count == 0) {
+		self.movies = @[];
+		[self.tableView reloadData];
 		return;
 	}
 	
@@ -119,6 +126,21 @@
 	NSArray *tableViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[tableView]-0-|" options:0 metrics:nil views:@{@"tableView": self.tableView}];
 	[self.view addConstraints:tableViewHorizontalConstraints];
 	[self.view addConstraints:tableViewVerticalConstraints];
+}
+
+#pragma mark - add observer
+
+- (void)addObserver {
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableViewData:) name:MKCCollectedMovieDidChangeNotification object:nil];
+}
+
+- (void)reloadTableViewData:(NSNotification *)notification {
+	
+	if (self.tabBarController.selectedIndex == 1) {
+		return;
+	}
+	
+	[self lookupcollectMoviesInfo];
 }
 
 #pragma mark - lazy instance
