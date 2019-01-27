@@ -53,6 +53,12 @@
 	return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	MKCMovieInfoModel *movieInfo = self.movies[indexPath.row];
+	NSURL *openURL = [NSURL URLWithString:movieInfo.trackViewUrl];
+	[[UIApplication sharedApplication] openURL:openURL options:@{} completionHandler:nil];
+}
+
 #pragma mark - MKCMovieTableViewCellDelegate
 
 - (void)movieTableViewCell:(MKCMovieTableViewCell *)movieTableViewCell collectMovieAtIndex:(NSInteger)index {

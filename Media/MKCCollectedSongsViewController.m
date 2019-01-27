@@ -52,6 +52,12 @@
 	return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	MKCSongInfoModel *songInfo = self.songs[indexPath.row];
+	NSURL *openURL = [NSURL URLWithString:songInfo.trackViewUrl];
+	[[UIApplication sharedApplication] openURL:openURL options:@{} completionHandler:nil];
+}
+
 #pragma mark - MKCSongTableViewCellDelegate
 
 - (void)songTableViewCell:(MKCSongTableViewCell *)songTableViewCell collectSongAtIndex:(NSInteger)index {
