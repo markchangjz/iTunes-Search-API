@@ -20,17 +20,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	[self configureView];
+}
+
+#pragma mark - UI Layout
+
+- (void)configureView {
 	self.view.backgroundColor = [UIColor whiteColor];
+	
+	MKCCollectedMoviesViewController *collectedMoviesViewController = [[MKCCollectedMoviesViewController alloc] init];
+	collectedMoviesViewController.title = @"電影";
+	
+	MKCCollectedSongsViewController *collectedSongsViewController = [[MKCCollectedSongsViewController alloc] init];
+	collectedSongsViewController.title = @"音樂";
+	
+	float statusHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
+	float navigationHeight = self.navigationController.navigationBar.frame.size.height;
+	
+	NSArray<UIViewController *> *controllers = @[collectedMoviesViewController, collectedSongsViewController];
+	
+	YSLContainerViewController *containerViewController = [[YSLContainerViewController alloc] initWithControllers:controllers topBarHeight:statusHeight + navigationHeight parentViewController:self];
+	
+	[self.view addSubview:containerViewController.view];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
