@@ -24,7 +24,8 @@
 - (NSURLSessionDataTask *)searchSongWithKeyword:(nonnull NSString *)keyword successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler {
 		
 	NSDictionary *parameters = @{@"term": keyword,
-								 @"entity": @"song"
+								 @"entity": @"song",
+								 @"country": @"TW"
 								 };
 	
 	NSMutableURLRequest *request = [self in_requestWithURLString:MKCURLGuide.searchAPI method:@"GET" parameters:parameters];
@@ -37,7 +38,8 @@
 - (NSURLSessionDataTask *)searchMovieWithKeyword:(nonnull NSString *)keyword successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler {
 
 	NSDictionary *parameters = @{@"term": keyword,
-								 @"entity": @"movie"
+								 @"entity": @"movie",
+								 @"country": @"TW"
 								 };
 	
 	NSMutableURLRequest *request = [self in_requestWithURLString:MKCURLGuide.searchAPI method:@"GET" parameters:parameters];
@@ -51,7 +53,9 @@
 	
 	NSString *lookupTrackIds = [trackIds componentsJoinedByString:@","];
 	
-	NSDictionary *parameters = @{@"id": lookupTrackIds};
+	NSDictionary *parameters = @{@"id": lookupTrackIds,
+								 @"country": @"TW"
+								 };
 	
 	NSMutableURLRequest *request = [self in_requestWithURLString:MKCURLGuide.lookupAPI method:@"GET" parameters:parameters];
 	
