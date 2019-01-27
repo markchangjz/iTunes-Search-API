@@ -31,6 +31,11 @@
     [super viewDidLoad];
 	
 	[self configureView];
+	[self addObserver];
+}
+
+- (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Fetch API
@@ -278,6 +283,21 @@
 	NSArray *tableViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[tableView]-0-|" options:0 metrics:nil views:@{@"tableView": self.tableView}];
 	[self.view addConstraints:tableViewHorizontalConstraints];
 	[self.view addConstraints:tableViewVerticalConstraints];
+}
+
+#pragma mark - add observer
+
+- (void)addObserver {
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableViewData:) name:MKCCollectedMovieDidChangeNotification object:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableViewData:) name:MKCCollectedSongDidChangeNotification object:nil];
+}
+
+- (void)reloadTableViewData:(NSNotification *)notification {
+	[self.tableView beginUpdates];
+	[self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows]
+						  withRowAnimation:UITableViewRowAnimationNone];
+	[self.tableView endUpdates];
 }
 
 #pragma mark - lazy instance
