@@ -7,6 +7,9 @@
 //
 
 #import "MKCCollectedMoviesViewController.h"
+#import "MKCRequestAPI.h"
+#import "MKCDataPersistence.h"
+#import "MKCJSONModel.h"
 
 @interface MKCCollectedMoviesViewController ()
 
@@ -17,17 +20,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	[self configureView];
+	[self lookupcollectMoviesInfo];
+}
+
+#pragma mark - Fetch API
+
+- (void)lookupcollectMoviesInfo {
+	NSArray<NSString *> *trackIds = [MKCDataPersistence collectMovieTrackIds];
+	
+	if (trackIds.count == 0) {
+		return;
+	}
+	
+	[[MKCRequestAPI sharedAPI] lookupWithTrackIds:trackIds successHandler:^(NSURLResponse *response, id responseObject) {
+		NSLog(@"qaz: %@", responseObject);
+		
+		NSError *error = nil;
+		MKCMovieModel *model = [[MKCMovieModel alloc] initWithDictionary:responseObject error:&error];
+		if (error) { // Parse JSON failed
+			return;
+		}
+		
+		NSLog(@"%@", model);
+		
+	} failureHandler:^(NSError *error) {
+		
+	}];
+	
+}
+
+#pragma mark - UI Layout
+
+- (void)configureView {
 	self.view.backgroundColor = [UIColor whiteColor];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
