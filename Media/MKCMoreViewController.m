@@ -40,11 +40,25 @@
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
 	}
 	
-	cell.textLabel.text = @"text";
-	cell.detailTextLabel.text = @"detail";
+	if (indexPath.section == 0) {
+		cell.textLabel.text = @"主題顏色";
+		cell.detailTextLabel.text = @"淺色主題";
+	} else {
+		cell.textLabel.text = @"收藏項目";
+		cell.detailTextLabel.text = @"共有 # 項收藏";
+	}
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
 	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	if (indexPath.section == 0) {
+		
+	} else {
+		
+	}
 }
 
 #pragma mark - UI Layout
