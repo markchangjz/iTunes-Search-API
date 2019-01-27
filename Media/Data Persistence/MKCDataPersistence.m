@@ -70,4 +70,11 @@ NSString * const songKey = @"songKey";
 	return [collectedSongs containsObject:trackId];
 }
 
++ (NSArray<NSString *> *)collectSongTrackIds {
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	
+	NSMutableArray *collectedSongs = [userDefaults mutableArrayValueForKey:songKey];
+	return collectedSongs;
+}
+
 @end

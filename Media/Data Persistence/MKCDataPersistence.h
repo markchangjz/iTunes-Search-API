@@ -27,6 +27,7 @@ extern NSString *const songKey;
 + (void)collectSongWithTrackId:(nonnull NSString *)trackId;
 + (void)removeCollectedSongWithTrackId:(nonnull NSString *)trackId;
 + (BOOL)hasCollectdSongWithTrackId:(nonnull NSString *)trackId;
++ (NSArray<NSString *> *)collectSongTrackIds;
 
 @end
 
