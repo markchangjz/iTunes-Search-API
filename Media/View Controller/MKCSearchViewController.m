@@ -15,8 +15,9 @@
 #import "UIImageView+WebCache.h"
 #import "MKCDataPersistence.h"
 
-@interface MKCSearchViewController () <MKCSerchViewDelegate, UITableViewDelegate, UITableViewDataSource, MKCMovieTableViewCellDelegate, MKCSongTableViewCellDelegate>
+@interface MKCSearchViewController () <MKCSerchViewDelegate, UITableViewDelegate, UITableViewDataSource, MKCMovieTableViewCellDelegate, MKCSongTableViewCellDelegate, UISearchBarDelegate>
 
+@property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) MKCSerchView *serchView;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, strong) UITableView *tableView;
@@ -171,6 +172,26 @@
 	[[UIApplication sharedApplication] openURL:openURL options:@{} completionHandler:nil];
 }
 
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+	[searchBar setShowsCancelButton:YES animated:YES];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+	[searchBar setShowsCancelButton:NO animated:YES];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+	[searchBar resignFirstResponder];
+	
+	[self searchSongAndMovieWithKeyword:searchBar.text];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+	[searchBar resignFirstResponder];
+}
+
 #pragma mark - MKCSerchViewDelegate
 
 - (void)serchView:(MKCSerchView *)serchView searchKeyword:(NSString *)keyword {
@@ -268,7 +289,7 @@
 
 - (void)configureView {
 	self.view.backgroundColor = [UIColor whiteColor];
-	self.navigationItem.titleView = self.serchView;
+	self.navigationItem.titleView = self.searchBar;
 	
 	// loading view
 	[self.view addSubview:self.activityIndicatorView];
@@ -310,6 +331,15 @@
 }
 
 #pragma mark - lazy instance
+
+- (UISearchBar *)searchBar {
+	if (!_searchBar) {
+		_searchBar = [[UISearchBar alloc] init];
+		_searchBar.delegate = self;
+		_searchBar.placeholder = @"搜尋";
+	}
+	return _searchBar;
+}
 
 - (MKCSerchView *)serchView {
 	if (!_serchView) {
