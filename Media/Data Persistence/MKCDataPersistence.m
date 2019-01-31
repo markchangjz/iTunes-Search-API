@@ -10,6 +10,7 @@
 
 NSString *const MKCCollectedMovieDidChangeNotification = @"MKCCollectedMovieDidChangeNotification";
 NSString *const MKCCollectedSongDidChangeNotification = @"MKCCollectedSongDidChangeNotification";
+NSString *const MKCThemeDidChangeNotification = @"MKCThemeDidChangeNotification";
 
 NSString *const movieKey = @"movieKey";
 NSString *const songKey = @"songKey";
@@ -87,6 +88,8 @@ NSString *const MKCThemeKey = @"MKCThemeKey";
 
 + (void)setTheme:(MKCTheme)theme {
 	[self.userDefaults setInteger:theme forKey:MKCThemeKey];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:MKCThemeDidChangeNotification object:nil];
 }
 
 + (MKCTheme)theme {
