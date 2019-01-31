@@ -150,6 +150,8 @@
 	return [MKCDataPersistence theme];
 }
 
+#pragma mark - observer
+
 - (void)addObserver {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadCollectedData:) name:MKCCollectedMovieDidChangeNotification object:nil];
 	
