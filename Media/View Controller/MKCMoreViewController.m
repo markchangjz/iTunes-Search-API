@@ -144,11 +144,9 @@
 }
 
 - (void)reloadCollectedData:(NSNotification *)notification {
-	[self.tableView beginUpdates];
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
 	[self.tableView reloadRowsAtIndexPaths:@[indexPath]
 						  withRowAnimation:UITableViewRowAnimationNone];
-	[self.tableView endUpdates];
 }
 
 #pragma mark - lazy instance
