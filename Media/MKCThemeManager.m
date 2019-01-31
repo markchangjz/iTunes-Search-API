@@ -26,12 +26,20 @@
 	[[UITabBar appearance] setBarStyle:UIBarStyleDefault];
 	[[UITabBar appearance] setUnselectedItemTintColor:[UIColor lightGrayColor]];
 	[[UITabBar appearance] setTintColor:[UIColor blackColor]];
+	
+	[[UINavigationBar appearance] setBarStyle:UIBarStyleDefault];
+	[[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+	[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}];
 }
 
 + (void)applyDarkTheme {
 	[[UITabBar appearance] setBarStyle:UIBarStyleBlack];
 	[[UITabBar appearance] setUnselectedItemTintColor:[UIColor lightGrayColor]];
 	[[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+	
+	[[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
+	[[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+	[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
 }
 
 @end

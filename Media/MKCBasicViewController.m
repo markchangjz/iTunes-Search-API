@@ -18,6 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	MKCTheme theme = [MKCDataPersistence theme];
+	[self applyTheme:theme];
+	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTheme:) name:MKCThemeDidChangeNotification object:nil];
 }
 
