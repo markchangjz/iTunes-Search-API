@@ -9,16 +9,14 @@
 #import "MKCSearchViewController.h"
 #import "MKCRequestAPI.h"
 #import "MKCJSONModel.h"
-#import "MKCSerchView.h"
 #import "MKCSongTableViewCell.h"
 #import "MKCMovieTableViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "MKCDataPersistence.h"
 
-@interface MKCSearchViewController () <MKCSerchViewDelegate, UITableViewDelegate, UITableViewDataSource, MKCMovieTableViewCellDelegate, MKCSongTableViewCellDelegate, UISearchBarDelegate>
+@interface MKCSearchViewController () <UITableViewDelegate, UITableViewDataSource, MKCMovieTableViewCellDelegate, MKCSongTableViewCellDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) UISearchBar *searchBar;
-@property (nonatomic, strong) MKCSerchView *serchView;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, copy) NSArray<MKCSongInfoModel *> *songs;
@@ -192,12 +190,6 @@
 	[searchBar resignFirstResponder];
 }
 
-#pragma mark - MKCSerchViewDelegate
-
-- (void)serchView:(MKCSerchView *)serchView searchKeyword:(NSString *)keyword {
-	[self searchSongAndMovieWithKeyword:keyword];
-}
-
 #pragma mark - MKCMovieTableViewCellDelegate
 
 - (void)movieTableViewCell:(MKCMovieTableViewCell *)movieTableViewCell collectMovieAtIndex:(NSInteger)index {
@@ -339,14 +331,6 @@
 		_searchBar.placeholder = @"搜尋";
 	}
 	return _searchBar;
-}
-
-- (MKCSerchView *)serchView {
-	if (!_serchView) {
-		_serchView = [[MKCSerchView alloc] init];
-		_serchView.delegate = self;
-	}
-	return _serchView;
 }
 
 - (UIActivityIndicatorView *)activityIndicatorView {

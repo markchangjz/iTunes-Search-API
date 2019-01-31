@@ -10,7 +10,6 @@
 		0D057A8E21FBEEE1007EC471 /* MKCMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057A8D21FBEEE1007EC471 /* MKCMoreViewController.m */; };
 		0D057A9121FBEFB4007EC471 /* MKCSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057A9021FBEFB4007EC471 /* MKCSearchViewController.m */; };
 		0D057A9421FBF0C8007EC471 /* MKCMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057A9321FBF0C8007EC471 /* MKCMainTabBarController.m */; };
-		0D057A9721FC02FC007EC471 /* MKCSerchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057A9621FC02FC007EC471 /* MKCSerchView.m */; };
 		0D057A9C21FC2F4F007EC471 /* MKCBasicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057A9B21FC2F4F007EC471 /* MKCBasicTableViewCell.m */; };
 		0D057A9F21FC3008007EC471 /* MKCBasicMediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057A9E21FC3008007EC471 /* MKCBasicMediaTableViewCell.m */; };
 		0D057AA221FC3EE3007EC471 /* MKCSongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D057AA121FC3EE3007EC471 /* MKCSongTableViewCell.m */; };
@@ -99,8 +98,6 @@
 		0D057A9021FBEFB4007EC471 /* MKCSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCSearchViewController.m; sourceTree = "<group>"; };
 		0D057A9221FBF0C8007EC471 /* MKCMainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCMainTabBarController.h; sourceTree = "<group>"; };
 		0D057A9321FBF0C8007EC471 /* MKCMainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCMainTabBarController.m; sourceTree = "<group>"; };
-		0D057A9521FC02FC007EC471 /* MKCSerchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCSerchView.h; sourceTree = "<group>"; };
-		0D057A9621FC02FC007EC471 /* MKCSerchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCSerchView.m; sourceTree = "<group>"; };
 		0D057A9A21FC2F4F007EC471 /* MKCBasicTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCBasicTableViewCell.h; sourceTree = "<group>"; };
 		0D057A9B21FC2F4F007EC471 /* MKCBasicTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCBasicTableViewCell.m; sourceTree = "<group>"; };
 		0D057A9D21FC3008007EC471 /* MKCBasicMediaTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCBasicMediaTableViewCell.h; sourceTree = "<group>"; };
@@ -270,8 +267,6 @@
 			isa = PBXGroup;
 			children = (
 				0D057A9921FC2F00007EC471 /* MediaSearchResultCell */,
-				0D057A9521FC02FC007EC471 /* MKCSerchView.h */,
-				0D057A9621FC02FC007EC471 /* MKCSerchView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -722,7 +717,6 @@
 				0D057B0521FC46B9007EC471 /* SDWebImageWebPCoder.m in Sources */,
 				0DAF140B21FB530700103B3F /* JSONModel.m in Sources */,
 				0D057A8E21FBEEE1007EC471 /* MKCMoreViewController.m in Sources */,
-				0D057A9721FC02FC007EC471 /* MKCSerchView.m in Sources */,
 				0D057B2221FD7388007EC471 /* MKCWebViewController.m in Sources */,
 				0D057AEC21FC46B8007EC471 /* UIImage+ForceDecode.m in Sources */,
 				0DE0F1E721FB59980039B53E /* MKCMovieModel.m in Sources */,
