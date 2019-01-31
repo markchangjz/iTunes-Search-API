@@ -78,6 +78,7 @@
 		0DAF141521FB53CC00103B3F /* MKCSongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF141421FB53CC00103B3F /* MKCSongModel.m */; };
 		0DE0F1E721FB59980039B53E /* MKCMovieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE0F1E621FB59980039B53E /* MKCMovieModel.m */; };
 		0DF2064A2202C34E00923E45 /* MKCSettingsThemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF206492202C34E00923E45 /* MKCSettingsThemeViewController.m */; };
+		0DF206512202DFD000923E45 /* MKCThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF206502202DFD000923E45 /* MKCThemeManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -240,6 +241,8 @@
 		0DE0F1E821FB5CCB0039B53E /* MKCJSONModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCJSONModel.h; sourceTree = "<group>"; };
 		0DF206482202C34E00923E45 /* MKCSettingsThemeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCSettingsThemeViewController.h; sourceTree = "<group>"; };
 		0DF206492202C34E00923E45 /* MKCSettingsThemeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCSettingsThemeViewController.m; sourceTree = "<group>"; };
+		0DF2064F2202DFD000923E45 /* MKCThemeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCThemeManager.h; sourceTree = "<group>"; };
+		0DF206502202DFD000923E45 /* MKCThemeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCThemeManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -446,6 +449,8 @@
 				0D19EBE621FB44AA0033C524 /* LaunchScreen.storyboard */,
 				0D19EBE921FB44AA0033C524 /* Info.plist */,
 				0D19EBEA21FB44AA0033C524 /* main.m */,
+				0DF2064F2202DFD000923E45 /* MKCThemeManager.h */,
+				0DF206502202DFD000923E45 /* MKCThemeManager.m */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -728,6 +733,7 @@
 				0D19EC1321FB457F0033C524 /* AFNetworkReachabilityManager.m in Sources */,
 				0D057A9C21FC2F4F007EC471 /* MKCBasicTableViewCell.m in Sources */,
 				0D057A9421FBF0C8007EC471 /* MKCMainTabBarController.m in Sources */,
+				0DF206512202DFD000923E45 /* MKCThemeManager.m in Sources */,
 				0D057B0121FC46B9007EC471 /* UIView+WebCacheOperation.m in Sources */,
 				0D19EBDD21FB44A90033C524 /* AppDelegate.m in Sources */,
 				0D057AF821FC46B9007EC471 /* SDImageCache.m in Sources */,
