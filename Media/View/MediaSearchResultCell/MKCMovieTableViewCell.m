@@ -83,6 +83,13 @@
 	self.longDescriptionLabel.text = longDescription;
 }
 
+- (void)setIsCollapsed:(BOOL)isCollapsed {
+	_isCollapsed = isCollapsed;
+	
+	self.longDescriptionLabel.numberOfLines = isCollapsed ? 2 : 0;
+	self.readMoreButton.hidden = !isCollapsed;
+}
+
 #pragma mark - lazy instance
 
 - (UILabel *)trackNameLabel {

@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *trackCensoredName;
 @property (nonatomic, copy) NSString *trackTimeMillis;
 @property (nonatomic, copy) NSString *longDescription;
+@property (nonatomic, assign) BOOL isCollapsed;
 
 @end
 
