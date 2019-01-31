@@ -69,10 +69,10 @@
 		
 		switch (self.theme) {
 			case MKCThemeLight:
-				cell.detailTextLabel.text = @"淺色主題";
+				cell.detailTextLabel.text = @"淺色";
 				break;
 			case MKCThemeDark:
-				cell.detailTextLabel.text = @"深色主題";
+				cell.detailTextLabel.text = @"深色";
 				break;
 		}
 	} else {
