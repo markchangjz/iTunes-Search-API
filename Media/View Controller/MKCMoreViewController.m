@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, readonly, strong) NSNumber *numberOfCollected;
+@property (nonatomic, readonly) MKCTheme theme;
 
 @end
 
@@ -65,7 +66,15 @@
 	
 	if (indexPath.section == 0) {
 		cell.textLabel.text = @"主題顏色";
-		cell.detailTextLabel.text = @"淺色主題";
+		
+		switch (self.theme) {
+			case MKCThemeLight:
+				cell.detailTextLabel.text = @"淺色主題";
+				break;
+			case MKCThemeDark:
+				cell.detailTextLabel.text = @"深色主題";
+				break;
+		}
 	} else {
 		cell.textLabel.text = @"收藏項目";
 		cell.detailTextLabel.text = [NSString stringWithFormat:@"共有 %@ 項收藏", [self.numberOfCollected decimalText]];
@@ -137,14 +146,26 @@
 	return @(numberOfCollectedMovies + numberOfCollectedSongs);
 }
 
+- (MKCTheme)theme {
+	return [MKCDataPersistence theme];
+}
+
 - (void)addObserver {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadCollectedData:) name:MKCCollectedMovieDidChangeNotification object:nil];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadCollectedData:) name:MKCCollectedSongDidChangeNotification object:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadThemeData:) name:MKCThemeDidChangeNotification object:nil];
 }
 
 - (void)reloadCollectedData:(NSNotification *)notification {
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+	[self.tableView reloadRowsAtIndexPaths:@[indexPath]
+						  withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (void)reloadThemeData:(NSNotification *)notification {
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
 	[self.tableView reloadRowsAtIndexPaths:@[indexPath]
 						  withRowAnimation:UITableViewRowAnimationNone];
 }

@@ -89,7 +89,7 @@
 	[self.view addConstraints:tableViewVerticalConstraints];
 }
 
-#pragma mark - data
+#pragma mark - data source
 
 - (MKCTheme)theme {
 	return [MKCDataPersistence theme];
