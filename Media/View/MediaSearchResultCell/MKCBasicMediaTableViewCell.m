@@ -93,7 +93,7 @@
 		_mainStackView = [[UIStackView alloc] init];
 		_mainStackView.translatesAutoresizingMaskIntoConstraints = NO;
 		_mainStackView.axis = UILayoutConstraintAxisHorizontal;
-		_mainStackView.alignment = UIStackViewAlignmentCenter;
+		_mainStackView.alignment = UIStackViewAlignmentTop;
 		_mainStackView.spacing = 10.0;
 		[_mainStackView setBackgroundColor:[UIColor redColor]];
 		
