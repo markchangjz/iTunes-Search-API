@@ -60,7 +60,15 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	MKCTheme theme = self.theme;
 	
+	NSIndexPath *themeIndexPath = [NSIndexPath indexPathForRow:theme inSection:0];
+	[MKCDataPersistence setTheme:indexPath.row];
+	[tableView reloadRowsAtIndexPaths:@[themeIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+	
+	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+	cell.accessoryType = UITableViewCellAccessoryCheckmark;
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - UI Layout
