@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MKCBasicViewController.h"
 @import WebKit;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MKCWebViewController : UIViewController
+@interface MKCWebViewController : MKCBasicViewController
 
 @property (nonatomic, strong) WKWebView *webView;
 

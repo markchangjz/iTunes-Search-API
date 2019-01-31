@@ -47,18 +47,26 @@
 
 - (void)applyLightTheme {
 	UITabBar *tabBar = self.tabBarController.tabBar;
-	
 	[tabBar setBarStyle:UIBarStyleDefault];
 	[tabBar setUnselectedItemTintColor:[UIColor lightGrayColor]];
 	[tabBar setTintColor:[UIColor blackColor]];
+	
+	UINavigationBar *navigationBar = self.navigationController.navigationBar;
+	[navigationBar setBarStyle:UIBarStyleDefault];
+	[navigationBar setTintColor:[UIColor blackColor]];
+	[navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}];
 }
 
 - (void)applyDarkTheme {
 	UITabBar *tabBar = self.tabBarController.tabBar;
-	
 	[tabBar setBarStyle:UIBarStyleBlack];
 	[tabBar setUnselectedItemTintColor:[UIColor lightGrayColor]];
 	[tabBar setTintColor:[UIColor whiteColor]];
+	
+	UINavigationBar *navigationBar = self.navigationController.navigationBar;
+	[navigationBar setBarStyle:UIBarStyleBlack];
+	[navigationBar setTintColor:[UIColor whiteColor]];
+	[navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
 }
 
 @end
