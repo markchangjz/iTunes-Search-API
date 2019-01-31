@@ -14,6 +14,7 @@
 @protocol MKCMovieTableViewCellDelegate <NSObject>
 
 - (void)movieTableViewCell:(MKCMovieTableViewCell *)movieTableViewCell collectMovieAtIndex:(NSInteger)index;
+- (void)movieTableViewCell:(MKCMovieTableViewCell *)movieTableViewCell expandViewAtIndex:(NSInteger)index;
 
 @end
 

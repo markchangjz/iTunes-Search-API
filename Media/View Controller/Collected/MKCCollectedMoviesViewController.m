@@ -84,6 +84,10 @@
 	}
 }
 
+- (void)movieTableViewCell:(MKCMovieTableViewCell *)movieTableViewCell expandViewAtIndex:(NSInteger)index {
+	
+}
+
 #pragma mark - Fetch API
 
 - (void)lookupcollectMoviesInfo {

@@ -15,6 +15,7 @@
 @property (nonatomic, copy) UILabel *trackCensoredNameLabel;
 @property (nonatomic, copy) UILabel *trackTimeMillisLabel;
 @property (nonatomic, copy) UILabel *longDescriptionLabel;
+@property (nonatomic, copy) UIButton *readMoreButton;
 
 @end
 
@@ -26,6 +27,14 @@
 		[self configureContentStackView];
 	}
 	return self;
+}
+
+#pragma mark - IBAction
+
+- (void)expandCell:(UIButton *)sender {
+	if (self.delegate) {
+		[self.delegate movieTableViewCell:self expandViewAtIndex:self.tag];
+	}
 }
 
 #pragma mark - Override
@@ -44,6 +53,7 @@
 	[self.contentStackView addArrangedSubview:self.trackCensoredNameLabel];
 	[self.contentStackView addArrangedSubview:self.trackTimeMillisLabel];
 	[self.contentStackView addArrangedSubview:self.longDescriptionLabel];
+	[self.contentStackView addArrangedSubview:self.readMoreButton];
 }
 
 #pragma mark - binding
@@ -116,6 +126,16 @@
 		_longDescriptionLabel.font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightLight];
 	}
 	return _longDescriptionLabel;
+}
+
+- (UIButton *)readMoreButton {
+	if (!_readMoreButton) {
+		_readMoreButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+		[_readMoreButton setTitle:@"... 更多" forState:UIControlStateNormal];
+		[_readMoreButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+		[_readMoreButton addTarget:self action:@selector(expandCell:) forControlEvents:UIControlEventTouchUpInside];
+	}
+	return _readMoreButton;
 }
 
 @end
