@@ -391,6 +391,8 @@
 		0D057B1E21FD58C3007EC471 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0DF206592202E73500923E45 /* MKCBasicViewController.h */,
+				0DF2065A2202E73500923E45 /* MKCBasicViewController.m */,
 				0D057A9221FBF0C8007EC471 /* MKCMainTabBarController.h */,
 				0D057A9321FBF0C8007EC471 /* MKCMainTabBarController.m */,
 				0D057A8F21FBEFB4007EC471 /* MKCSearchViewController.h */,
@@ -402,6 +404,8 @@
 				0D057B2121FD7388007EC471 /* MKCWebViewController.m */,
 				0DF206482202C34E00923E45 /* MKCSettingsThemeViewController.h */,
 				0DF206492202C34E00923E45 /* MKCSettingsThemeViewController.m */,
+				0DF2064F2202DFD000923E45 /* MKCThemeManager.h */,
+				0DF206502202DFD000923E45 /* MKCThemeManager.m */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -452,10 +456,6 @@
 				0D19EBE621FB44AA0033C524 /* LaunchScreen.storyboard */,
 				0D19EBE921FB44AA0033C524 /* Info.plist */,
 				0D19EBEA21FB44AA0033C524 /* main.m */,
-				0DF2064F2202DFD000923E45 /* MKCThemeManager.h */,
-				0DF206502202DFD000923E45 /* MKCThemeManager.m */,
-				0DF206592202E73500923E45 /* MKCBasicViewController.h */,
-				0DF2065A2202E73500923E45 /* MKCBasicViewController.m */,
 			);
 			path = Media;
 			sourceTree = "<group>";
