@@ -11,6 +11,7 @@
 #import "MKCSearchViewController.h"
 #import "MKCMoreViewController.h"
 #import "MKCDataPersistence.h"
+#import "MKCThemeManager.h"
 
 @interface AppDelegate ()
 
@@ -30,6 +31,8 @@
 	[self.window makeKeyAndVisible];
 	
 	[MKCDataPersistence setDefaultValue];
+	
+	[MKCThemeManager applyTheme:MKCDataPersistence.theme];
 	
 	return YES;
 }

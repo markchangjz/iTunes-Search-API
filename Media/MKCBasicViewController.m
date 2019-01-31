@@ -7,6 +7,7 @@
 //
 
 #import "MKCBasicViewController.h"
+#import "MKCDataPersistence.h"
 
 @interface MKCBasicViewController ()
 
@@ -16,17 +17,48 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTheme:) name:MKCThemeDidChangeNotification object:nil];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-*/
+
+#pragma mark - Notification
+
+- (void)updateTheme:(NSNotification *)notification {
+	MKCTheme theme = [MKCDataPersistence theme];
+	[self applyTheme:theme];
+}
+
+#pragma mark - functions
+
+- (void)applyTheme:(MKCTheme)theme {
+	switch (theme) {
+		case MKCThemeLight:
+			[self applyLightTheme];
+			break;
+		case MKCThemeDark:
+			[self applyDarkTheme];
+			break;
+	}
+}
+
+- (void)applyLightTheme {
+	UITabBar *tabBar = self.tabBarController.tabBar;
+	
+	[tabBar setBarStyle:UIBarStyleDefault];
+	[tabBar setUnselectedItemTintColor:[UIColor lightGrayColor]];
+	[tabBar setTintColor:[UIColor blackColor]];
+}
+
+- (void)applyDarkTheme {
+	UITabBar *tabBar = self.tabBarController.tabBar;
+	
+	[tabBar setBarStyle:UIBarStyleBlack];
+	[tabBar setUnselectedItemTintColor:[UIColor lightGrayColor]];
+	[tabBar setTintColor:[UIColor whiteColor]];
+}
 
 @end

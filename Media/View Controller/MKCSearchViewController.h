@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MKCBasicViewController.h"
 
 typedef NS_ENUM(NSUInteger, UIState) {
 	UIStateBlank,
@@ -15,7 +16,7 @@ typedef NS_ENUM(NSUInteger, UIState) {
 	UIStateError
 };
 
-@interface MKCSearchViewController : UIViewController
+@interface MKCSearchViewController : MKCBasicViewController
 
 @property (nonatomic, assign) UIState state;
 

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MKCBasicViewController.h"
 
-@interface MKCMoreViewController : UIViewController
+@interface MKCMoreViewController : MKCBasicViewController
 
 @end

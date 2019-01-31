@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MKCBasicViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MKCCollectedViewController : UIViewController
+@interface MKCCollectedViewController : MKCBasicViewController
 
 @end
 

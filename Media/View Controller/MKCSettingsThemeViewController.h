@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MKCBasicViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MKCSettingsThemeViewController : UIViewController
+@interface MKCSettingsThemeViewController : MKCBasicViewController
 
 @end
 
