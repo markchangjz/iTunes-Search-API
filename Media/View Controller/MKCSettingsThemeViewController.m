@@ -7,10 +7,13 @@
 //
 
 #import "MKCSettingsThemeViewController.h"
+#import "MKCDataPersistence.h"
 
 @interface MKCSettingsThemeViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, copy) NSArray<NSNumber *> *themes;
+@property (nonatomic, readonly) MKCTheme theme;
 
 @end
 
@@ -25,7 +28,7 @@
 #pragma mark - UITableViewDelegate & UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 2;
+	return self.themes.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -36,11 +39,20 @@
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
 	}
 	
-	if (indexPath.row == 0) {
-		cell.textLabel.text = @"淺色主題";
+	MKCTheme theme = indexPath.row;
+	
+	switch (theme) {
+		case MKCThemeLight:
+			cell.textLabel.text = @"淺色主題";
+			break;
+		case MKCThemeDark:
+			cell.textLabel.text = @"深色主題";
+			break;
+	}
+	
+	if (theme == self.theme) {
 		cell.accessoryType = UITableViewCellAccessoryCheckmark;
 	} else {
-		cell.textLabel.text = @"深色主題";
 		cell.accessoryType = UITableViewCellAccessoryNone;
 	}
 	
@@ -69,6 +81,12 @@
 	[self.view addConstraints:tableViewVerticalConstraints];
 }
 
+#pragma mark - data
+
+- (MKCTheme)theme {
+	return [MKCDataPersistence theme];
+}
+
 #pragma mark - lazy instance
 
 - (UITableView *)tableView {
@@ -79,6 +97,13 @@
 		_tableView.dataSource = self;
 	}
 	return _tableView;
+}
+
+- (NSArray<NSNumber *> *)themes {
+	if (!_themes) {
+		_themes = @[@(MKCThemeLight), @(MKCThemeDark)];
+	}
+	return _themes;
 }
 
 @end
