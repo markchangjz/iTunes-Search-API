@@ -138,12 +138,12 @@
 }
 
 - (void)addObserver {
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableViewData:) name:MKCCollectedMovieDidChangeNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadCollectedData:) name:MKCCollectedMovieDidChangeNotification object:nil];
 	
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableViewData:) name:MKCCollectedSongDidChangeNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadCollectedData:) name:MKCCollectedSongDidChangeNotification object:nil];
 }
 
-- (void)reloadTableViewData:(NSNotification *)notification {
+- (void)reloadCollectedData:(NSNotification *)notification {
 	[self.tableView beginUpdates];
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
 	[self.tableView reloadRowsAtIndexPaths:@[indexPath]
