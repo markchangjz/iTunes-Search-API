@@ -154,7 +154,6 @@
 
 - (void)addObserver {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadCollectedData:) name:MKCCollectedMovieDidChangeNotification object:nil];
-	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadCollectedData:) name:MKCCollectedSongDidChangeNotification object:nil];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadThemeData:) name:MKCThemeDidChangeNotification object:nil];
