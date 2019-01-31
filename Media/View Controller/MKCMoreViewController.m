@@ -12,6 +12,7 @@
 #import "MKCDataPersistence.h"
 #import "MKCWebViewController.h"
 #import "MKCURLGuide.h"
+#import "MKCSettingsThemeViewController.h"
 
 @interface MKCMoreViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -77,7 +78,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	if (indexPath.section == 0) {
-		
+		MKCSettingsThemeViewController *settingsThemeViewController = [[MKCSettingsThemeViewController alloc] init];
+		[self.navigationController pushViewController:settingsThemeViewController animated:YES];
 	} else {
 		MKCCollectedViewController *collectedViewController = [[MKCCollectedViewController alloc] init];
 		[self.navigationController pushViewController:collectedViewController animated:YES];

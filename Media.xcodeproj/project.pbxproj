@@ -77,6 +77,7 @@
 		0DAF141121FB530700103B3F /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF140821FB530700103B3F /* JSONModel+networking.m */; };
 		0DAF141521FB53CC00103B3F /* MKCSongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF141421FB53CC00103B3F /* MKCSongModel.m */; };
 		0DE0F1E721FB59980039B53E /* MKCMovieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE0F1E621FB59980039B53E /* MKCMovieModel.m */; };
+		0DF2064A2202C34E00923E45 /* MKCSettingsThemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF206492202C34E00923E45 /* MKCSettingsThemeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,6 +238,8 @@
 		0DE0F1E521FB59980039B53E /* MKCMovieModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCMovieModel.h; sourceTree = "<group>"; };
 		0DE0F1E621FB59980039B53E /* MKCMovieModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCMovieModel.m; sourceTree = "<group>"; };
 		0DE0F1E821FB5CCB0039B53E /* MKCJSONModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCJSONModel.h; sourceTree = "<group>"; };
+		0DF206482202C34E00923E45 /* MKCSettingsThemeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCSettingsThemeViewController.h; sourceTree = "<group>"; };
+		0DF206492202C34E00923E45 /* MKCSettingsThemeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCSettingsThemeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,6 +394,8 @@
 				0D057B1F21FD5910007EC471 /* Collected */,
 				0D057B2021FD7388007EC471 /* MKCWebViewController.h */,
 				0D057B2121FD7388007EC471 /* MKCWebViewController.m */,
+				0DF206482202C34E00923E45 /* MKCSettingsThemeViewController.h */,
+				0DF206492202C34E00923E45 /* MKCSettingsThemeViewController.m */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -683,6 +688,7 @@
 				0D19EBEB21FB44AA0033C524 /* main.m in Sources */,
 				0D057AF521FC46B8007EC471 /* SDWebImageCoder.m in Sources */,
 				0D057AE721FC46B8007EC471 /* UIImage+WebP.m in Sources */,
+				0DF2064A2202C34E00923E45 /* MKCSettingsThemeViewController.m in Sources */,
 				0D057B0421FC46B9007EC471 /* UIButton+WebCache.m in Sources */,
 				0DAF140A21FB530700103B3F /* JSONKeyMapper.m in Sources */,
 				0D057AFD21FC46B9007EC471 /* NSImage+WebCache.m in Sources */,
