@@ -10,6 +10,7 @@
 #import "MKCMainTabBarController.h"
 #import "MKCSearchViewController.h"
 #import "MKCMoreViewController.h"
+#import "MKCDataPersistence.h"
 
 @interface AppDelegate ()
 
@@ -27,6 +28,8 @@
 	
 	self.window.rootViewController = mainTabBarController;
 	[self.window makeKeyAndVisible];
+	
+	[MKCDataPersistence setDefaultValue];
 	
 	return YES;
 }

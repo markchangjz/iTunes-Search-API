@@ -13,11 +13,18 @@ NSString *const MKCCollectedSongDidChangeNotification = @"MKCCollectedSongDidCha
 
 NSString *const movieKey = @"movieKey";
 NSString *const songKey = @"songKey";
+NSString *const MKCThemeKey = @"MKCThemeKey";
 
 @implementation MKCDataPersistence
 
 + (NSUserDefaults *)userDefaults {
 	return [NSUserDefaults standardUserDefaults];
+}
+
++ (void)setDefaultValue {
+	[self.userDefaults registerDefaults:@{MKCThemeKey: @(MKCThemeLight),
+										  }];
+
 }
 
 #pragma mark - movie
@@ -74,6 +81,16 @@ NSString *const songKey = @"songKey";
 + (NSArray<NSString *> *)collectSongTrackIds {
 	NSMutableArray *collectedSongs = [self.userDefaults mutableArrayValueForKey:songKey];
 	return collectedSongs;
+}
+
+#pragma mark - theme
+
++ (void)setTheme:(MKCTheme)theme {
+	[self.userDefaults setInteger:theme forKey:MKCThemeKey];
+}
+
++ (MKCTheme)theme {
+	return [self.userDefaults integerForKey:MKCThemeKey];
 }
 
 @end

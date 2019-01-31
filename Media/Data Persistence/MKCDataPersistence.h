@@ -15,8 +15,16 @@ extern NSString *const MKCCollectedSongDidChangeNotification;
 
 extern NSString *const movieKey;
 extern NSString *const songKey;
+extern NSString *const MKCThemeKey;
+
+typedef NS_ENUM(NSInteger, MKCTheme) {
+	MKCThemeLight,
+	MKCThemeDark
+};
 
 @interface MKCDataPersistence : NSObject
+
++ (void)setDefaultValue;
 
 #pragma mark - movie
 
@@ -31,6 +39,11 @@ extern NSString *const songKey;
 + (void)removeCollectedSongWithTrackId:(nonnull NSString *)trackId;
 + (BOOL)hasCollectdSongWithTrackId:(nonnull NSString *)trackId;
 + (NSArray<NSString *> *)collectSongTrackIds;
+
+#pragma mark - theme
+
++ (void)setTheme:(MKCTheme)theme;
++ (MKCTheme)theme;
 
 @end
 
