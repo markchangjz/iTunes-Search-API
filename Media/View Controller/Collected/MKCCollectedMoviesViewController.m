@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, copy) NSArray<MKCMovieInfoModel *> *movies;
+@property (nonatomic, strong) NSMutableSet<NSString *> *expandMovieItems;
 
 @end
 
@@ -51,6 +52,7 @@
 	cell.trackTimeMillis = movieInfo.trackTimeMillis;
 	cell.longDescription = movieInfo.longDescription;
 	cell.isCollected = [MKCDataPersistence hasCollectdMovieWithTrackId:movieInfo.trackId];
+	cell.isCollapsed = ![self.expandMovieItems containsObject:movieInfo.trackId];
 	
 	cell.delegate = self;
 	cell.tag = indexPath.row;
@@ -86,6 +88,13 @@
 
 - (void)movieTableViewCell:(MKCMovieTableViewCell *)movieTableViewCell expandViewAtIndex:(NSInteger)index {
 	
+	NSIndexPath *selectedIndexPath = [self.tableView indexPathForCell:movieTableViewCell];
+	NSInteger selectedIndex = selectedIndexPath.row;
+	
+	[self.expandMovieItems addObject:self.movies[selectedIndex].trackId];
+	
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selectedIndex inSection:0];
+	[self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 #pragma mark - Fetch API
@@ -159,6 +168,13 @@
 		_tableView.rowHeight = UITableViewAutomaticDimension;
 	}
 	return _tableView;
+}
+
+- (NSMutableSet<NSString *> *)expandMovieItems {
+	if (!_expandMovieItems) {
+		_expandMovieItems = [[NSMutableSet alloc] init];
+	}
+	return _expandMovieItems;
 }
 
 @end
