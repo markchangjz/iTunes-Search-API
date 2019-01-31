@@ -16,75 +16,63 @@ NSString *const songKey = @"songKey";
 
 @implementation MKCDataPersistence
 
++ (NSUserDefaults *)userDefaults {
+	return [NSUserDefaults standardUserDefaults];
+}
+
 #pragma mark - movie
 
 + (void)collectMovieWithTrackId:(NSString *)trackId {
-	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	
-	NSMutableArray *collectedMovies = [userDefaults mutableArrayValueForKey:movieKey];
+	NSMutableArray *collectedMovies = [self.userDefaults mutableArrayValueForKey:movieKey];
 	[collectedMovies addObject:trackId];
-	[userDefaults setObject:[collectedMovies copy] forKey:movieKey];
+	[self.userDefaults setObject:[collectedMovies copy] forKey:movieKey];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedMovieDidChangeNotification object:nil];
 }
 
 + (void)removeCollectedMovieWithTrackId:(NSString *)trackId {
-	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	
-	NSMutableArray *collectedMovies = [userDefaults mutableArrayValueForKey:movieKey];
+	NSMutableArray *collectedMovies = [self.userDefaults mutableArrayValueForKey:movieKey];
 	[collectedMovies removeObject:trackId];
-	[userDefaults setObject:[collectedMovies copy] forKey:movieKey];
+	[self.userDefaults setObject:[collectedMovies copy] forKey:movieKey];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedMovieDidChangeNotification object:nil];
 }
 
 + (BOOL)hasCollectdMovieWithTrackId:(NSString *)trackId {
-	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	
-	NSMutableArray *collectedMovies = [userDefaults mutableArrayValueForKey:movieKey];
+	NSMutableArray *collectedMovies = [self.userDefaults mutableArrayValueForKey:movieKey];
 	return [collectedMovies containsObject:trackId];
 }
 
 + (NSArray<NSString *> *)collectMovieTrackIds {
-	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	
-	NSMutableArray *collectedMovies = [userDefaults mutableArrayValueForKey:movieKey];
+	NSMutableArray *collectedMovies = [self.userDefaults mutableArrayValueForKey:movieKey];
 	return collectedMovies;
 }
 
 #pragma mark - song
 
 + (void)collectSongWithTrackId:(nonnull NSString *)trackId {
-	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	
-	NSMutableArray *collectedSongs = [userDefaults mutableArrayValueForKey:songKey];
+	NSMutableArray *collectedSongs = [self.userDefaults mutableArrayValueForKey:songKey];
 	[collectedSongs addObject:trackId];
-	[userDefaults setObject:[collectedSongs copy] forKey:songKey];
+	[self.userDefaults setObject:[collectedSongs copy] forKey:songKey];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedSongDidChangeNotification object:nil];
 }
 
 + (void)removeCollectedSongWithTrackId:(nonnull NSString *)trackId {
-	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	
-	NSMutableArray *collectedSongs = [userDefaults mutableArrayValueForKey:songKey];
+	NSMutableArray *collectedSongs = [self.userDefaults mutableArrayValueForKey:songKey];
 	[collectedSongs removeObject:trackId];
-	[userDefaults setObject:[collectedSongs copy] forKey:songKey];
+	[self.userDefaults setObject:[collectedSongs copy] forKey:songKey];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedSongDidChangeNotification object:nil];
 }
 
 + (BOOL)hasCollectdSongWithTrackId:(nonnull NSString *)trackId {
-	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	
-	NSMutableArray *collectedSongs = [userDefaults mutableArrayValueForKey:songKey];
+	NSMutableArray *collectedSongs = [self.userDefaults mutableArrayValueForKey:songKey];
 	return [collectedSongs containsObject:trackId];
 }
 
 + (NSArray<NSString *> *)collectSongTrackIds {
-	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	
-	NSMutableArray *collectedSongs = [userDefaults mutableArrayValueForKey:songKey];
+	NSMutableArray *collectedSongs = [self.userDefaults mutableArrayValueForKey:songKey];
 	return collectedSongs;
 }
 
