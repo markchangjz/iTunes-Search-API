@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "MKCBasicTableViewCell.h"
+#import "MKCMediaCellModel.h"
+
+@protocol MKCBasicMediaTableViewCellProtocol <NSObject>
+
+- (void)configureWithModel:(MKCMediaCellModel *)model;
+
+@end
 
 @interface MKCBasicMediaTableViewCell : MKCBasicTableViewCell
 

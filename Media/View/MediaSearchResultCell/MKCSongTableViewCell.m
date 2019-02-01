@@ -7,6 +7,7 @@
 //
 
 #import "MKCSongTableViewCell.h"
+#import "MKCSongModel.h"
 
 @interface MKCSongTableViewCell()
 
@@ -25,6 +26,16 @@
 		[self configureContentStackView];
 	}
 	return self;
+}
+
+#pragma mark - MKCBasicMediaTableViewCellProtocol
+
+- (void)configureWithModel:(MKCMediaCellModel *)model {
+	MKCSongInfoModel *song = (MKCSongInfoModel *)model.mediaInfo;
+	self.trackName = song.trackName;
+	self.artistName = song.artistName;
+	self.collectionName = song.collectionName;
+	self.trackTimeMillis = song.trackTimeMillis;
 }
 
 #pragma mark - Override

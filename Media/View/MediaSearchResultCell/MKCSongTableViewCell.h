@@ -19,7 +19,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MKCSongTableViewCell : MKCBasicMediaTableViewCell
+@interface MKCSongTableViewCell : MKCBasicMediaTableViewCell <MKCBasicMediaTableViewCellProtocol>
 
 @property (nonatomic, weak) id<MKCSongTableViewCellDelegate> delegate;
 @property (nonatomic, copy) NSString *trackName;

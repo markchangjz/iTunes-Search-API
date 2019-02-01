@@ -13,6 +13,8 @@
 #import "MKCMovieTableViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "MKCDataPersistence.h"
+#import "MKCMovieCellModel.h"
+#import "MKCSongCellModel.h"
 
 @interface MKCSearchViewController () <UITableViewDelegate, UITableViewDataSource, MKCMovieTableViewCellDelegate, MKCSongTableViewCellDelegate, UISearchBarDelegate>
 
@@ -124,13 +126,17 @@
 	if (indexPath.section == 0) {
 		MKCMovieTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCMovieTableViewCell.identifier forIndexPath:indexPath];
 		
+		MKCMovieCellModel *movieModel = [MKCMovieCellModel new];
+		movieModel.mediaInfo = self.movies[indexPath.row];
+		[cell configureWithModel:movieModel];
+		
 		MKCMovieInfoModel *movieInfo = self.movies[indexPath.row];
 		[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:movieInfo.imageUrl]];
-		cell.trackName = movieInfo.trackName;
-		cell.artistName = movieInfo.artistName;
-		cell.trackCensoredName = movieInfo.trackCensoredName;
-		cell.trackTimeMillis = movieInfo.trackTimeMillis;
-		cell.longDescription = movieInfo.longDescription;
+//		cell.trackName = movieInfo.trackName;
+//		cell.artistName = movieInfo.artistName;
+//		cell.trackCensoredName = movieInfo.trackCensoredName;
+//		cell.trackTimeMillis = movieInfo.trackTimeMillis;
+//		cell.longDescription = movieInfo.longDescription;
 		cell.isCollected = [MKCDataPersistence hasCollectdMovieWithTrackId:movieInfo.trackId];
 		cell.isCollapsed = ![self.expandMovieItems containsObject:movieInfo.trackId];
 		
@@ -141,12 +147,16 @@
 	} else {
 		MKCSongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCSongTableViewCell.identifier forIndexPath:indexPath];
 		
+		MKCSongCellModel *songModel = [MKCSongCellModel new];
+		songModel.mediaInfo = self.songs[indexPath.row];
+		[cell configureWithModel:songModel];
+		
 		MKCSongInfoModel *songInfo = self.songs[indexPath.row];
 		[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:songInfo.imageUrl]];
-		cell.trackName = songInfo.trackName;
-		cell.artistName = songInfo.artistName;
-		cell.collectionName = songInfo.collectionName;
-		cell.trackTimeMillis = songInfo.trackTimeMillis;
+//		cell.trackName = songInfo.trackName;
+//		cell.artistName = songInfo.artistName;
+//		cell.collectionName = songInfo.collectionName;
+//		cell.trackTimeMillis = songInfo.trackTimeMillis;
 		cell.isCollected = [MKCDataPersistence hasCollectdSongWithTrackId:songInfo.trackId];
 		
 		cell.delegate = self;
