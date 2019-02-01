@@ -11,9 +11,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, MKCMediaType) {
+	MKCMediaTypeMovie,
+	MKCMediaTypeSong
+};
+
 @interface MKCMediaCellModel : NSObject
 
 @property (nonatomic, strong) JSONModel *mediaInfo;
+@property (nonatomic, assign) MKCMediaType type;
 
 @end
 
