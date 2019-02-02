@@ -13,7 +13,6 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, copy) NSArray<NSNumber *> *themes;
-@property (nonatomic, readonly) MKCTheme theme;
 
 @end
 
@@ -39,7 +38,7 @@
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
 	}
 	
-	MKCTheme theme = indexPath.row;
+	MKCTheme theme = (MKCTheme)indexPath.row;
 	
 	switch (theme) {
 		case MKCThemeLight:
@@ -50,7 +49,7 @@
 			break;
 	}
 	
-	if (theme == self.theme) {
+	if (theme == MKCDataPersistence.theme) {
 		cell.accessoryType = UITableViewCellAccessoryCheckmark;
 	} else {
 		cell.accessoryType = UITableViewCellAccessoryNone;
@@ -60,11 +59,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	MKCTheme theme = self.theme;
+	MKCTheme theme = MKCDataPersistence.theme;
 	
-	NSIndexPath *themeIndexPath = [NSIndexPath indexPathForRow:theme inSection:0];
-	[MKCDataPersistence setTheme:indexPath.row];
-	[tableView reloadRowsAtIndexPaths:@[themeIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+	NSIndexPath *currentSelectedIndexPath = [NSIndexPath indexPathForRow:theme inSection:0];
+	[MKCDataPersistence setTheme:(MKCTheme)indexPath.row];
+	[tableView reloadRowsAtIndexPaths:@[currentSelectedIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 	
 	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 	cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -87,12 +86,6 @@
 	NSArray *tableViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[tableView]-0-|" options:0 metrics:nil views:@{@"tableView": self.tableView}];
 	[self.view addConstraints:tableViewHorizontalConstraints];
 	[self.view addConstraints:tableViewVerticalConstraints];
-}
-
-#pragma mark - data source
-
-- (MKCTheme)theme {
-	return [MKCDataPersistence theme];
 }
 
 #pragma mark - lazy instance
