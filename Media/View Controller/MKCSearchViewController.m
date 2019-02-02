@@ -331,7 +331,22 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 	// table view
 	[self.view addSubview:self.tableView];
 	[self layoutTableView];
-	
+	[self registerTableViewCellClass];
+}
+
+- (void)layoutActivityIndicatorView {
+	[self.activityIndicatorView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+	[self.activityIndicatorView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
+}
+
+- (void)layoutTableView {
+	NSArray *tableViewHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[tableView]-0-|" options:0 metrics:nil views:@{@"tableView": self.tableView}];
+	NSArray *tableViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[tableView]-0-|" options:0 metrics:nil views:@{@"tableView": self.tableView}];
+	[self.view addConstraints:tableViewHorizontalConstraints];
+	[self.view addConstraints:tableViewVerticalConstraints];
+}
+
+- (void)registerTableViewCellClass {
 	[self.cellList enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 		MKCMediaType type = obj.integerValue;
 		NSString *cellIdentifier = [NSString stringWithFormat:@"%ld", type];
@@ -348,18 +363,6 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 		
 		[self.tableView registerClass:cellClass forCellReuseIdentifier:cellIdentifier];
 	}];
-}
-
-- (void)layoutActivityIndicatorView {
-	[self.activityIndicatorView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
-	[self.activityIndicatorView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
-}
-
-- (void)layoutTableView {
-	NSArray *tableViewHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[tableView]-0-|" options:0 metrics:nil views:@{@"tableView": self.tableView}];
-	NSArray *tableViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[tableView]-0-|" options:0 metrics:nil views:@{@"tableView": self.tableView}];
-	[self.view addConstraints:tableViewHorizontalConstraints];
-	[self.view addConstraints:tableViewVerticalConstraints];
 }
 
 #pragma mark - add observer
