@@ -11,7 +11,6 @@
 #import "MKCJSONModel.h"
 #import "MKCSongTableViewCell.h"
 #import "MKCMovieTableViewCell.h"
-#import "UIImageView+WebCache.h"
 #import "MKCDataPersistence.h"
 
 typedef NS_ENUM(NSInteger, MKCMediaType) {
