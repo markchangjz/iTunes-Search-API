@@ -71,8 +71,8 @@
 		
 //		MKCMediaType type = (MKCMediaType)self.cellList[indexPath.section].integerValue;
 		
-		for (NSNumber *value in self.cellList) {
-			MKCMediaType type = value.integerValue;
+		[self.cellList enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+			MKCMediaType type = obj.integerValue;
 			
 			switch (type) {
 				case MKCMediaTypeMovie:
@@ -82,8 +82,7 @@
 					self.mediaElements[@(type)] = self.songs;
 					break;
 			}
-		}
-		
+		}];
 		
 //		[self.mediaElements insertObject:self.movies atIndex:0];
 //		[self.mediaElements insertObject:self.songs atIndex:1];
@@ -443,18 +442,33 @@
 	[self.view addSubview:self.tableView];
 	[self layoutTableView];
 	
-	for (NSNumber *value in self.cellList) {
-		MKCMediaType type = value.integerValue;
+	[self.cellList enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+		MKCMediaType type = obj.integerValue;
+		
+		NSString *cellIdentifier = [NSString stringWithFormat:@"%ld", type];
 		
 		switch (type) {
 			case MKCMediaTypeMovie:
-				[self.tableView registerClass:[MKCMovieTableViewCell class] forCellReuseIdentifier:[NSString stringWithFormat:@"%ld", MKCMediaTypeMovie]];
+				[self.tableView registerClass:[MKCMovieTableViewCell class] forCellReuseIdentifier:cellIdentifier];
 				break;
 			case MKCMediaTypeSong:
-				[self.tableView registerClass:[MKCSongTableViewCell class] forCellReuseIdentifier:[NSString stringWithFormat:@"%ld", MKCMediaTypeSong]];
+				[self.tableView registerClass:[MKCSongTableViewCell class] forCellReuseIdentifier:cellIdentifier];
 				break;
 		}
-	}
+	}];
+	
+//	for (NSNumber *value in self.cellList) {
+//		MKCMediaType type = value.integerValue;
+//
+//		switch (type) {
+//			case MKCMediaTypeMovie:
+//				[self.tableView registerClass:[MKCMovieTableViewCell class] forCellReuseIdentifier:[NSString stringWithFormat:@"%ld", MKCMediaTypeMovie]];
+//				break;
+//			case MKCMediaTypeSong:
+//				[self.tableView registerClass:[MKCSongTableViewCell class] forCellReuseIdentifier:[NSString stringWithFormat:@"%ld", MKCMediaTypeSong]];
+//				break;
+//		}
+//	}
 	
 //	[self.tableView registerClass:[MKCMovieTableViewCell class] forCellReuseIdentifier:@"cell-0"];
 //	[self.tableView registerClass:[MKCSongTableViewCell class] forCellReuseIdentifier:@"cell-1"];
