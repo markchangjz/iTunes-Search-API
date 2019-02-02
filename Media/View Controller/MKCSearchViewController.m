@@ -70,21 +70,8 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 	});
 	
 	dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-		self.mediaElements = [[NSMutableDictionary alloc] init];
+		[self parseData];
 		
-		[self.cellListOrder enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-			MKCMediaType type = (MKCMediaType)obj.integerValue;
-			
-			switch (type) {
-				case MKCMediaTypeMovie:
-					self.mediaElements[@(type)] = self.movies;
-					break;
-				case MKCMediaTypeSong:
-					self.mediaElements[@(type)] = self.songs;
-					break;
-			}
-		}];
-	
 		self.state = UIStateFinish;
 	});
 }
@@ -118,6 +105,25 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 		completion(YES);
 	} failureHandler:^(NSError *error) {
 		completion(NO);
+	}];
+}
+
+#pragma mark - parse data
+
+- (void)parseData {
+	self.mediaElements = [[NSMutableDictionary alloc] init];
+	
+	[self.cellListOrder enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+		MKCMediaType type = (MKCMediaType)obj.integerValue;
+		
+		switch (type) {
+			case MKCMediaTypeMovie:
+				self.mediaElements[@(type)] = self.movies;
+				break;
+			case MKCMediaTypeSong:
+				self.mediaElements[@(type)] = self.songs;
+				break;
+		}
 	}];
 }
 
