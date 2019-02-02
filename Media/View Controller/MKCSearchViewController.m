@@ -346,10 +346,17 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 }
 
 - (void)layoutTableView {
+	
+	if (@available(iOS 11.0, *)) {
+		[self.tableView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor].active = YES;
+		[self.tableView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor].active = YES;
+	} else {
+		[self.tableView.topAnchor constraintEqualToAnchor:self.topLayoutGuide.bottomAnchor].active = YES;
+		[self.tableView.bottomAnchor constraintEqualToAnchor:self.bottomLayoutGuide.topAnchor].active = YES;
+	}
+	
 	NSArray *tableViewHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[tableView]-0-|" options:0 metrics:nil views:@{@"tableView": self.tableView}];
-	NSArray *tableViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[tableView]-0-|" options:0 metrics:nil views:@{@"tableView": self.tableView}];
 	[self.view addConstraints:tableViewHorizontalConstraints];
-	[self.view addConstraints:tableViewVerticalConstraints];
 }
 
 - (void)registerTableViewCellClass {
