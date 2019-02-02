@@ -23,7 +23,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, copy) NSArray<MKCSongInfoModel *> *songs;
 @property (nonatomic, copy) NSArray<MKCMovieInfoModel *> *movies;
-@property (nonatomic, strong) NSMutableArray<NSArray<JSONModel *> *> *mediaElements;
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSArray<JSONModel *> *> *mediaElements;
 @property (nonatomic, strong) NSArray<NSNumber *> *cellList;
 @property (nonatomic, strong) NSMutableSet<NSString *> *expandMovieItems;
 
@@ -34,9 +34,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	self.cellList = @[@(MKCMediaTypeMovie), @(MKCMediaTypeSong)];
+	
 	[self configureView];
 	[self addObserver];
-	self.cellList = @[@(MKCMediaTypeMovie), @(MKCMediaTypeSong)];
 }
 
 - (void)dealloc {
@@ -66,10 +67,27 @@
 	});
 	
 	dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-		self.mediaElements = [[NSMutableArray alloc] initWithCapacity:2];
+		self.mediaElements = [NSMutableDictionary new];//[[NSMutableArray alloc] initWithCapacity:2];
 		
-		[self.mediaElements insertObject:self.movies atIndex:0];
-		[self.mediaElements insertObject:self.songs atIndex:1];
+//		MKCMediaType type = (MKCMediaType)self.cellList[indexPath.section].integerValue;
+		
+		for (NSNumber *value in self.cellList) {
+			MKCMediaType type = value.integerValue;
+			
+			switch (type) {
+				case MKCMediaTypeMovie:
+					self.mediaElements[@(type)] = self.movies;
+					break;
+				case MKCMediaTypeSong:
+					self.mediaElements[@(type)] = self.songs;
+					break;
+			}
+		}
+		
+		
+//		[self.mediaElements insertObject:self.movies atIndex:0];
+//		[self.mediaElements insertObject:self.songs atIndex:1];
+//
 		
 //		for (MKCMovieInfoModel *movie in self.movies) {
 //			MKCMovieCellModel *model = [[MKCMovieCellModel alloc] init];
@@ -141,23 +159,37 @@
 #pragma mark - UITableViewDelegate & UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 2;
+//	return 2;
+	return self.cellList.count;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	if (section == 0) {
-		return @"電影";
-	} else {
-		return @"音樂";
+//	if (section == 0) {
+//		return @"電影";
+//	} else {
+//		return @"音樂";
+//	}
+	
+	MKCMediaType type = (MKCMediaType)self.cellList[section].integerValue;
+	
+	switch (type) {
+		case MKCMediaTypeMovie:
+			return @"電影";
+		case MKCMediaTypeSong:
+			return @"音樂";
 	}
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	if (section == 0) {
-		return self.movies.count;
-	} else {
-		return self.songs.count;
-	}
+//	if (section == 0) {
+//		return self.movies.count;
+//	} else {
+//		return self.songs.count;
+//	}
+	
+	MKCMediaType type = (MKCMediaType)self.cellList[section].integerValue;
+	
+	return self.mediaElements[@(type)].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -171,24 +203,20 @@
 	 return customCell as! UITableViewCell
 	 */
 	
-	JSONModel *cellModel = self.mediaElements[indexPath.section][indexPath.row];
+	MKCMediaType type = (MKCMediaType)self.cellList[indexPath.section].integerValue;
 	
-	NSString *cellIdentifier = [NSString stringWithFormat:@"cell-%ld", indexPath.section];
+	JSONModel *cellModel = self.mediaElements[@(type)][indexPath.row];
 	
+	NSString *cellIdentifier = [NSString stringWithFormat:@"%ld", type];
 	MKCBasicMediaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
 	
 	[cell configureWithModel2:cellModel];
 	
-	
-	MKCMediaType type = (MKCMediaType)self.cellList[indexPath.section].integerValue;
-	
 	switch (type) {
 		case MKCMediaTypeMovie:
-			NSLog(@"MKCMediaTypeMovie");
 			cell = [self setupMovieTableViewCellWithCell:cell cellModel:(MKCMovieInfoModel *)cellModel];
 			break;
 		case MKCMediaTypeSong:
-			NSLog(@"MKCMediaTypeSong");
 			cell = [self setupSongTableViewCellWithCell:cell cellModel:(MKCSongInfoModel *)cellModel];
 			break;
 	}
@@ -259,16 +287,39 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
+	MKCMediaType type = (MKCMediaType)self.cellList[indexPath.section].integerValue;
+	JSONModel *mediaInfoModel = self.mediaElements[@(type)][indexPath.row];
+	
 	NSURL *openURL;
-	if (indexPath.section == 0) {
-		MKCMovieInfoModel *movieInfo = self.movies[indexPath.row];
-		openURL = [NSURL URLWithString:movieInfo.trackViewUrl];
-	} else {
-		MKCSongInfoModel *movieInfo = self.songs[indexPath.row];
-		openURL = [NSURL URLWithString:movieInfo.trackViewUrl];
+	
+	switch (type) {
+		case MKCMediaTypeMovie:
+		{
+			MKCMovieInfoModel *movieInfo = (MKCMovieInfoModel *)mediaInfoModel;
+			openURL = [NSURL URLWithString:movieInfo.trackViewUrl];
+		}
+			break;
+			
+		case MKCMediaTypeSong:
+		{
+			MKCSongInfoModel *songInfo = (MKCSongInfoModel *)mediaInfoModel;
+			openURL = [NSURL URLWithString:songInfo.trackViewUrl];
+		}
+			break;
 	}
 	
 	[[UIApplication sharedApplication] openURL:openURL options:@{} completionHandler:nil];
+	
+//	NSURL *openURL;
+//	if (indexPath.section == 0) {
+//		MKCMovieInfoModel *movieInfo = self.movies[indexPath.row];
+//		openURL = [NSURL URLWithString:movieInfo.trackViewUrl];
+//	} else {
+//		MKCSongInfoModel *movieInfo = self.songs[indexPath.row];
+//		openURL = [NSURL URLWithString:movieInfo.trackViewUrl];
+//	}
+//
+//	[[UIApplication sharedApplication] openURL:openURL options:@{} completionHandler:nil];
 }
 
 #pragma mark - UISearchBarDelegate
@@ -392,11 +443,24 @@
 	[self.view addSubview:self.tableView];
 	[self layoutTableView];
 	
-	[self.tableView registerClass:[MKCMovieTableViewCell class] forCellReuseIdentifier:@"cell-0"];
-	[self.tableView registerClass:[MKCSongTableViewCell class] forCellReuseIdentifier:@"cell-1"];
+	for (NSNumber *value in self.cellList) {
+		MKCMediaType type = value.integerValue;
+		
+		switch (type) {
+			case MKCMediaTypeMovie:
+				[self.tableView registerClass:[MKCMovieTableViewCell class] forCellReuseIdentifier:[NSString stringWithFormat:@"%ld", MKCMediaTypeMovie]];
+				break;
+			case MKCMediaTypeSong:
+				[self.tableView registerClass:[MKCSongTableViewCell class] forCellReuseIdentifier:[NSString stringWithFormat:@"%ld", MKCMediaTypeSong]];
+				break;
+		}
+	}
 	
-	[self.tableView registerClass:[MKCSongTableViewCell class] forCellReuseIdentifier:MKCSongTableViewCell.identifier];
-	[self.tableView registerClass:[MKCMovieTableViewCell class] forCellReuseIdentifier:MKCMovieTableViewCell.identifier];
+//	[self.tableView registerClass:[MKCMovieTableViewCell class] forCellReuseIdentifier:@"cell-0"];
+//	[self.tableView registerClass:[MKCSongTableViewCell class] forCellReuseIdentifier:@"cell-1"];
+//
+//	[self.tableView registerClass:[MKCSongTableViewCell class] forCellReuseIdentifier:MKCSongTableViewCell.identifier];
+//	[self.tableView registerClass:[MKCMovieTableViewCell class] forCellReuseIdentifier:MKCMovieTableViewCell.identifier];
 }
 
 - (void)layoutActivityIndicatorView {
