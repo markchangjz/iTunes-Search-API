@@ -311,6 +311,7 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 - (void)configureLoadingStateView {
 	[self.activityIndicatorView startAnimating];
 	self.tableView.hidden = YES;
+	self.tableView.contentOffset = CGPointZero;
 }
 
 - (void)configureFinishStateView {
