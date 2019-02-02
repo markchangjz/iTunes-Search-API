@@ -13,8 +13,6 @@
 #import "MKCMovieTableViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "MKCDataPersistence.h"
-#import "MKCMovieCellModel.h"
-#import "MKCSongCellModel.h"
 
 @interface MKCSearchViewController () <UITableViewDelegate, UITableViewDataSource, MKCMovieTableViewCellDelegate, MKCSongTableViewCellDelegate, UISearchBarDelegate>
 

@@ -80,8 +80,6 @@
 		0DF206512202DFD000923E45 /* MKCThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF206502202DFD000923E45 /* MKCThemeManager.m */; };
 		0DF2065B2202E73500923E45 /* MKCBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF2065A2202E73500923E45 /* MKCBasicViewController.m */; };
 		0DF20667220336F000923E45 /* MKCMediaCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF20666220336F000923E45 /* MKCMediaCellModel.m */; };
-		0DF2066A2203378A00923E45 /* MKCMovieCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF206692203378A00923E45 /* MKCMovieCellModel.m */; };
-		0DF2066D2203379F00923E45 /* MKCSongCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF2066C2203379F00923E45 /* MKCSongCellModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -248,10 +246,6 @@
 		0DF2065A2202E73500923E45 /* MKCBasicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCBasicViewController.m; sourceTree = "<group>"; };
 		0DF20665220336F000923E45 /* MKCMediaCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCMediaCellModel.h; sourceTree = "<group>"; };
 		0DF20666220336F000923E45 /* MKCMediaCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCMediaCellModel.m; sourceTree = "<group>"; };
-		0DF206682203378A00923E45 /* MKCMovieCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCMovieCellModel.h; sourceTree = "<group>"; };
-		0DF206692203378A00923E45 /* MKCMovieCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCMovieCellModel.m; sourceTree = "<group>"; };
-		0DF2066B2203379F00923E45 /* MKCSongCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCSongCellModel.h; sourceTree = "<group>"; };
-		0DF2066C2203379F00923E45 /* MKCSongCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCSongCellModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -587,10 +581,6 @@
 			children = (
 				0DF20665220336F000923E45 /* MKCMediaCellModel.h */,
 				0DF20666220336F000923E45 /* MKCMediaCellModel.m */,
-				0DF206682203378A00923E45 /* MKCMovieCellModel.h */,
-				0DF206692203378A00923E45 /* MKCMovieCellModel.m */,
-				0DF2066B2203379F00923E45 /* MKCSongCellModel.h */,
-				0DF2066C2203379F00923E45 /* MKCSongCellModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -718,8 +708,6 @@
 				0D057AF521FC46B8007EC471 /* SDWebImageCoder.m in Sources */,
 				0D057AE721FC46B8007EC471 /* UIImage+WebP.m in Sources */,
 				0DF2064A2202C34E00923E45 /* MKCSettingsThemeViewController.m in Sources */,
-				0DF2066D2203379F00923E45 /* MKCSongCellModel.m in Sources */,
-				0DF2066A2203378A00923E45 /* MKCMovieCellModel.m in Sources */,
 				0D057B0421FC46B9007EC471 /* UIButton+WebCache.m in Sources */,
 				0DAF140A21FB530700103B3F /* JSONKeyMapper.m in Sources */,
 				0D057AFD21FC46B9007EC471 /* NSImage+WebCache.m in Sources */,
