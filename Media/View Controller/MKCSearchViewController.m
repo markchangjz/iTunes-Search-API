@@ -374,10 +374,13 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 }
 
 - (void)reloadTableViewData:(NSNotification *)notification {
-	[self.tableView beginUpdates];
-	[self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows]
-						  withRowAnimation:UITableViewRowAnimationNone];
-	[self.tableView endUpdates];
+	
+	if (self.tabBarController.selectedIndex == 0) {
+		return;
+	}
+	
+	NSArray *visibleIndexPaths = [self.tableView indexPathsForVisibleRows];
+	[self.tableView reloadRowsAtIndexPaths:visibleIndexPaths withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark - lazy instance
