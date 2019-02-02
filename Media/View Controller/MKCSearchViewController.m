@@ -23,6 +23,8 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, copy) NSArray<MKCSongInfoModel *> *songs;
 @property (nonatomic, copy) NSArray<MKCMovieInfoModel *> *movies;
+@property (nonatomic, strong) NSMutableArray<NSArray<JSONModel *> *> *mediaElements;
+@property (nonatomic, strong) NSArray<NSNumber *> *cellList;
 @property (nonatomic, strong) NSMutableSet<NSString *> *expandMovieItems;
 
 @end
@@ -34,6 +36,7 @@
 	
 	[self configureView];
 	[self addObserver];
+	self.cellList = @[@(MKCMediaTypeMovie), @(MKCMediaTypeSong)];
 }
 
 - (void)dealloc {
@@ -63,6 +66,25 @@
 	});
 	
 	dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+		self.mediaElements = [[NSMutableArray alloc] initWithCapacity:2];
+		
+		[self.mediaElements insertObject:self.movies atIndex:0];
+		[self.mediaElements insertObject:self.songs atIndex:1];
+		
+//		for (MKCMovieInfoModel *movie in self.movies) {
+//			MKCMovieCellModel *model = [[MKCMovieCellModel alloc] init];
+//			model.mediaInfo = movie;
+//			model.type = MKCMediaTypeMovie;
+//			[self.mediaElements addObject:model];
+//		}
+//
+//		for (MKCSongInfoModel *song in self.songs) {
+//			MKCMediaCellModel *model = [[MKCMediaCellModel alloc] init];
+//			model.mediaInfo = song;
+//			model.type = MKCMediaTypeSong;
+//			[self.mediaElements addObject:model];
+//		}
+		
 		self.state = UIStateFinish;
 	});
 }
@@ -99,6 +121,23 @@
 	}];
 }
 
+#pragma mark - configure UI data
+
+- (MKCMovieTableViewCell *)setupMovieTableViewCellWithCell:(MKCBasicMediaTableViewCell *)cell cellModel:(MKCMovieInfoModel *)cellModel {
+	MKCMovieTableViewCell *movieCell = (MKCMovieTableViewCell *)cell;
+	movieCell.delegate = self;
+	movieCell.isCollected = [MKCDataPersistence hasCollectdMovieWithTrackId:cellModel.trackId];
+	movieCell.isCollapsed = ![self.expandMovieItems containsObject:cellModel.trackId];
+	return movieCell;
+}
+
+- (MKCSongTableViewCell *)setupSongTableViewCellWithCell:(MKCBasicMediaTableViewCell *)cell cellModel:(MKCSongInfoModel *)cellModel {
+	MKCSongTableViewCell *songCell = (MKCSongTableViewCell *)cell;
+	songCell.delegate = self;
+	songCell.isCollected = [MKCDataPersistence hasCollectdSongWithTrackId:cellModel.trackId];
+	return songCell;
+}
+
 #pragma mark - UITableViewDelegate & UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -122,6 +161,58 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	/*
+	 let cellModel = customElements[indexPath.row]
+	 let cellIdentifier = cellModel.tpye.rawValue
+	 let customCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CustomElementCell
+	 
+	 customCell.configure(withModel: cellModel)
+	 
+	 return customCell as! UITableViewCell
+	 */
+	
+	JSONModel *cellModel = self.mediaElements[indexPath.section][indexPath.row];
+	
+	NSString *cellIdentifier = [NSString stringWithFormat:@"cell-%ld", indexPath.section];
+	
+	MKCBasicMediaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+	
+	[cell configureWithModel2:cellModel];
+	
+	
+	MKCMediaType type = (MKCMediaType)self.cellList[indexPath.section].integerValue;
+	
+	switch (type) {
+		case MKCMediaTypeMovie:
+			NSLog(@"MKCMediaTypeMovie");
+			cell = [self setupMovieTableViewCellWithCell:cell cellModel:(MKCMovieInfoModel *)cellModel];
+			break;
+		case MKCMediaTypeSong:
+			NSLog(@"MKCMediaTypeSong");
+			cell = [self setupSongTableViewCellWithCell:cell cellModel:(MKCSongInfoModel *)cellModel];
+			break;
+	}
+	
+	cell.tag = indexPath.row;
+	
+	return cell;
+	
+	if (indexPath.section == 0) {
+		MKCMovieTableViewCell *movieCell = (MKCMovieTableViewCell *)cell;
+		movieCell.delegate = self;
+		MKCMovieInfoModel *model = (MKCMovieInfoModel *)cellModel;
+		movieCell.isCollected = [MKCDataPersistence hasCollectdMovieWithTrackId:model.trackId];
+		movieCell.isCollapsed = ![self.expandMovieItems containsObject:model.trackId];
+		cell = movieCell;
+	} else {
+		[(MKCSongTableViewCell *)cell setDelegate:self];
+		MKCSongInfoModel *model = (MKCSongInfoModel *)cellModel;
+		cell.isCollected = [MKCDataPersistence hasCollectdSongWithTrackId:model.trackId];
+	}
+	
+	cell.tag = indexPath.row;
+	return cell;
+
 	
 	if (indexPath.section == 0) {
 		MKCMovieTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCMovieTableViewCell.identifier forIndexPath:indexPath];
@@ -300,6 +391,9 @@
 	// table view
 	[self.view addSubview:self.tableView];
 	[self layoutTableView];
+	
+	[self.tableView registerClass:[MKCMovieTableViewCell class] forCellReuseIdentifier:@"cell-0"];
+	[self.tableView registerClass:[MKCSongTableViewCell class] forCellReuseIdentifier:@"cell-1"];
 	
 	[self.tableView registerClass:[MKCSongTableViewCell class] forCellReuseIdentifier:MKCSongTableViewCell.identifier];
 	[self.tableView registerClass:[MKCMovieTableViewCell class] forCellReuseIdentifier:MKCMovieTableViewCell.identifier];

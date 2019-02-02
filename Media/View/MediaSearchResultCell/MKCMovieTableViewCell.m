@@ -8,6 +8,7 @@
 
 #import "MKCMovieTableViewCell.h"
 #import "MKCMovieModel.h"
+#import "UIImageView+WebCache.h"
 
 @interface MKCMovieTableViewCell()
 
@@ -34,6 +35,16 @@
 
 - (void)configureWithModel:(MKCMediaCellModel *)model {
 	MKCMovieInfoModel *movie = (MKCMovieInfoModel *)model.mediaInfo;
+	self.trackName = movie.trackName;
+	self.artistName = movie.artistName;
+	self.trackCensoredName = movie.trackCensoredName;
+	self.trackTimeMillis = movie.trackTimeMillis;
+	self.longDescription = movie.longDescription;
+}
+
+- (void)configureWithModel2:(JSONModel *)model {
+	MKCMovieInfoModel *movie = (MKCMovieInfoModel *)model;
+	[self.coverImageView sd_setImageWithURL:[NSURL URLWithString:movie.imageUrl]];
 	self.trackName = movie.trackName;
 	self.artistName = movie.artistName;
 	self.trackCensoredName = movie.trackCensoredName;

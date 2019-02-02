@@ -8,6 +8,7 @@
 
 #import "MKCSongTableViewCell.h"
 #import "MKCSongModel.h"
+#import "UIImageView+WebCache.h"
 
 @interface MKCSongTableViewCell()
 
@@ -32,6 +33,15 @@
 
 - (void)configureWithModel:(MKCMediaCellModel *)model {
 	MKCSongInfoModel *song = (MKCSongInfoModel *)model.mediaInfo;
+	self.trackName = song.trackName;
+	self.artistName = song.artistName;
+	self.collectionName = song.collectionName;
+	self.trackTimeMillis = song.trackTimeMillis;
+}
+
+- (void)configureWithModel2:(JSONModel *)model {
+	MKCSongInfoModel *song = (MKCSongInfoModel *)model;
+	[self.coverImageView sd_setImageWithURL:[NSURL URLWithString:song.imageUrl]];
 	self.trackName = song.trackName;
 	self.artistName = song.artistName;
 	self.collectionName = song.collectionName;

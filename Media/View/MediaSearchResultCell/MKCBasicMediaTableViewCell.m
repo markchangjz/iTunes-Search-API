@@ -30,6 +30,10 @@
 	return self;
 }
 
+- (void)configureWithModel2:(JSONModel *)model {
+	
+}
+
 #pragma mark - IBAction
 
 - (void)collect:(UIButton *)sender {
