@@ -444,37 +444,20 @@
 	
 	[self.cellList enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 		MKCMediaType type = obj.integerValue;
-		
 		NSString *cellIdentifier = [NSString stringWithFormat:@"%ld", type];
+		Class cellClass;
 		
 		switch (type) {
 			case MKCMediaTypeMovie:
-				[self.tableView registerClass:[MKCMovieTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+				cellClass = [MKCMovieTableViewCell class];
 				break;
 			case MKCMediaTypeSong:
-				[self.tableView registerClass:[MKCSongTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+				cellClass = [MKCSongTableViewCell class];
 				break;
 		}
+		
+		[self.tableView registerClass:cellClass forCellReuseIdentifier:cellIdentifier];
 	}];
-	
-//	for (NSNumber *value in self.cellList) {
-//		MKCMediaType type = value.integerValue;
-//
-//		switch (type) {
-//			case MKCMediaTypeMovie:
-//				[self.tableView registerClass:[MKCMovieTableViewCell class] forCellReuseIdentifier:[NSString stringWithFormat:@"%ld", MKCMediaTypeMovie]];
-//				break;
-//			case MKCMediaTypeSong:
-//				[self.tableView registerClass:[MKCSongTableViewCell class] forCellReuseIdentifier:[NSString stringWithFormat:@"%ld", MKCMediaTypeSong]];
-//				break;
-//		}
-//	}
-	
-//	[self.tableView registerClass:[MKCMovieTableViewCell class] forCellReuseIdentifier:@"cell-0"];
-//	[self.tableView registerClass:[MKCSongTableViewCell class] forCellReuseIdentifier:@"cell-1"];
-//
-//	[self.tableView registerClass:[MKCSongTableViewCell class] forCellReuseIdentifier:MKCSongTableViewCell.identifier];
-//	[self.tableView registerClass:[MKCMovieTableViewCell class] forCellReuseIdentifier:MKCMovieTableViewCell.identifier];
 }
 
 - (void)layoutActivityIndicatorView {
