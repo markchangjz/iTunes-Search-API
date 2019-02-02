@@ -79,6 +79,7 @@
 		0DF2064A2202C34E00923E45 /* MKCSettingsThemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF206492202C34E00923E45 /* MKCSettingsThemeViewController.m */; };
 		0DF206512202DFD000923E45 /* MKCThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF206502202DFD000923E45 /* MKCThemeManager.m */; };
 		0DF2065B2202E73500923E45 /* MKCBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF2065A2202E73500923E45 /* MKCBasicViewController.m */; };
+		0DF2067B2205BEC100923E45 /* APITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF2067A2205BEC100923E45 /* APITests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -243,6 +244,7 @@
 		0DF206502202DFD000923E45 /* MKCThemeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCThemeManager.m; sourceTree = "<group>"; };
 		0DF206592202E73500923E45 /* MKCBasicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCBasicViewController.h; sourceTree = "<group>"; };
 		0DF2065A2202E73500923E45 /* MKCBasicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCBasicViewController.m; sourceTree = "<group>"; };
+		0DF2067A2205BEC100923E45 /* APITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APITests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -451,6 +453,7 @@
 			isa = PBXGroup;
 			children = (
 				0D19EBF421FB44AA0033C524 /* FormatterTests.m */,
+				0DF2067A2205BEC100923E45 /* APITests.m */,
 				0D19EBF621FB44AA0033C524 /* Info.plist */,
 			);
 			path = MediaTests;
@@ -779,6 +782,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DF2067B2205BEC100923E45 /* APITests.m in Sources */,
 				0D19EBF521FB44AA0033C524 /* FormatterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
