@@ -10,12 +10,6 @@
 #import "MKCBasicTableViewCell.h"
 #import "MKCMediaCellModel.h"
 
-@protocol MKCBasicMediaTableViewCellProtocol <NSObject>
-
-- (void)configureWithModel:(MKCMediaCellModel *)model;
-
-@end
-
 @interface MKCBasicMediaTableViewCell : MKCBasicTableViewCell
 
 @property (nonatomic, strong) UIImageView *coverImageView;

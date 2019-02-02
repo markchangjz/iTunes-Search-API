@@ -246,7 +246,6 @@
 		
 		MKCMovieCellModel *movieModel = [MKCMovieCellModel new];
 		movieModel.mediaInfo = self.movies[indexPath.row];
-		[cell configureWithModel:movieModel];
 		
 		MKCMovieInfoModel *movieInfo = self.movies[indexPath.row];
 		[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:movieInfo.imageUrl]];
@@ -267,7 +266,6 @@
 		
 		MKCSongCellModel *songModel = [MKCSongCellModel new];
 		songModel.mediaInfo = self.songs[indexPath.row];
-		[cell configureWithModel:songModel];
 		
 		MKCSongInfoModel *songInfo = self.songs[indexPath.row];
 		[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:songInfo.imageUrl]];
