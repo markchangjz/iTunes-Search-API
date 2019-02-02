@@ -56,7 +56,7 @@
 		0D19EBE521FB44AA0033C524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D19EBE421FB44AA0033C524 /* Assets.xcassets */; };
 		0D19EBE821FB44AA0033C524 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D19EBE621FB44AA0033C524 /* LaunchScreen.storyboard */; };
 		0D19EBEB21FB44AA0033C524 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EBEA21FB44AA0033C524 /* main.m */; };
-		0D19EBF521FB44AA0033C524 /* MediaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EBF421FB44AA0033C524 /* MediaTests.m */; };
+		0D19EBF521FB44AA0033C524 /* FormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EBF421FB44AA0033C524 /* FormatterTests.m */; };
 		0D19EC0F21FB457F0033C524 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EC0521FB457F0033C524 /* AFURLResponseSerialization.m */; };
 		0D19EC1021FB457F0033C524 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EC0621FB457F0033C524 /* AFHTTPSessionManager.m */; };
 		0D19EC1121FB457F0033C524 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D19EC0821FB457F0033C524 /* AFURLSessionManager.m */; };
@@ -191,7 +191,7 @@
 		0D19EBE921FB44AA0033C524 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D19EBEA21FB44AA0033C524 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0D19EBF021FB44AA0033C524 /* MediaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MediaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0D19EBF421FB44AA0033C524 /* MediaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediaTests.m; sourceTree = "<group>"; };
+		0D19EBF421FB44AA0033C524 /* FormatterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FormatterTests.m; sourceTree = "<group>"; };
 		0D19EBF621FB44AA0033C524 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D19EC0121FB457F0033C524 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
 		0D19EC0221FB457F0033C524 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
@@ -450,7 +450,7 @@
 		0D19EBF321FB44AA0033C524 /* MediaTests */ = {
 			isa = PBXGroup;
 			children = (
-				0D19EBF421FB44AA0033C524 /* MediaTests.m */,
+				0D19EBF421FB44AA0033C524 /* FormatterTests.m */,
 				0D19EBF621FB44AA0033C524 /* Info.plist */,
 			);
 			path = MediaTests;
@@ -779,7 +779,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D19EBF521FB44AA0033C524 /* MediaTests.m in Sources */,
+				0D19EBF521FB44AA0033C524 /* FormatterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
