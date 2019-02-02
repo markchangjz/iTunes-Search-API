@@ -23,11 +23,12 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, strong) UITableView *tableView;
+
 @property (nonatomic, copy) NSArray<MKCSongInfoModel *> *songs;
 @property (nonatomic, copy) NSArray<MKCMovieInfoModel *> *movies;
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSArray<JSONModel *> *> *mediaElements;
-@property (nonatomic, strong) NSArray<NSNumber *> *cellList;
-@property (nonatomic, strong) NSMutableSet<NSString *> *expandMovieItems;
+@property (nonatomic, strong) NSArray<NSNumber *> *cellListOrder;
+@property (nonatomic, strong) NSMutableSet<NSString *> *expandedMovieItems;
 
 @end
 
@@ -36,7 +37,7 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	self.cellList = @[@(MKCMediaTypeMovie), @(MKCMediaTypeSong)];
+	self.cellListOrder = @[@(MKCMediaTypeMovie), @(MKCMediaTypeSong)];
 	
 	[self configureView];
 	[self addObserver];
@@ -71,8 +72,8 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 	dispatch_group_notify(group, dispatch_get_main_queue(), ^{
 		self.mediaElements = [[NSMutableDictionary alloc] init];
 		
-		[self.cellList enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-			MKCMediaType type = obj.integerValue;
+		[self.cellListOrder enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+			MKCMediaType type = (MKCMediaType)obj.integerValue;
 			
 			switch (type) {
 				case MKCMediaTypeMovie:
@@ -126,7 +127,7 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 	MKCMovieTableViewCell *movieCell = (MKCMovieTableViewCell *)cell;
 	movieCell.delegate = self;
 	movieCell.isCollected = [MKCDataPersistence hasCollectdMovieWithTrackId:cellModel.trackId];
-	movieCell.isCollapsed = ![self.expandMovieItems containsObject:cellModel.trackId];
+	movieCell.isCollapsed = ![self.expandedMovieItems containsObject:cellModel.trackId];
 	return movieCell;
 }
 
@@ -140,12 +141,12 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 #pragma mark - UITableViewDelegate & UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return self.cellList.count;
+	return self.cellListOrder.count;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	
-	MKCMediaType type = (MKCMediaType)self.cellList[section].integerValue;
+	MKCMediaType type = (MKCMediaType)self.cellListOrder[section].integerValue;
 	
 	switch (type) {
 		case MKCMediaTypeMovie:
@@ -157,14 +158,14 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
-	MKCMediaType type = (MKCMediaType)self.cellList[section].integerValue;
+	MKCMediaType type = (MKCMediaType)self.cellListOrder[section].integerValue;
 	
 	return self.mediaElements[@(type)].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	MKCMediaType type = (MKCMediaType)self.cellList[indexPath.section].integerValue;
+	MKCMediaType type = (MKCMediaType)self.cellListOrder[indexPath.section].integerValue;
 	JSONModel *cellModel = self.mediaElements[@(type)][indexPath.row];
 	
 	NSString *cellIdentifier = [NSString stringWithFormat:@"%ld", type];
@@ -186,7 +187,7 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	MKCMediaType type = (MKCMediaType)self.cellList[indexPath.section].integerValue;
+	MKCMediaType type = (MKCMediaType)self.cellListOrder[indexPath.section].integerValue;
 	JSONModel *mediaInfoModel = self.mediaElements[@(type)][indexPath.row];
 	
 	NSURL *openURL;
@@ -247,7 +248,7 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 }
 
 - (void)movieTableViewCell:(MKCMovieTableViewCell *)movieTableViewCell expandViewAtIndex:(NSInteger)index {
-	[self.expandMovieItems addObject:self.movies[index].trackId];
+	[self.expandedMovieItems addObject:self.movies[index].trackId];
 	
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
 	[self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -346,8 +347,8 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 }
 
 - (void)registerTableViewCellClass {
-	[self.cellList enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-		MKCMediaType type = obj.integerValue;
+	[self.cellListOrder enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+		MKCMediaType type = (MKCMediaType)obj.integerValue;
 		NSString *cellIdentifier = [NSString stringWithFormat:@"%ld", type];
 		Class cellClass;
 		
@@ -411,11 +412,11 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 	return _tableView;
 }
 
-- (NSMutableSet<NSString *> *)expandMovieItems {
-	if (!_expandMovieItems) {
-		_expandMovieItems = [[NSMutableSet alloc] init];
+- (NSMutableSet<NSString *> *)expandedMovieItems {
+	if (!_expandedMovieItems) {
+		_expandedMovieItems = [[NSMutableSet alloc] init];
 	}
-	return _expandMovieItems;
+	return _expandedMovieItems;
 }
 
 @end
