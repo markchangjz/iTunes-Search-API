@@ -14,6 +14,11 @@
 #import "UIImageView+WebCache.h"
 #import "MKCDataPersistence.h"
 
+typedef NS_ENUM(NSInteger, MKCMediaType) {
+	MKCMediaTypeMovie,
+	MKCMediaTypeSong
+};
+
 @interface MKCSearchViewController () <UITableViewDelegate, UITableViewDataSource, MKCMovieTableViewCellDelegate, MKCSongTableViewCellDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) UISearchBar *searchBar;
