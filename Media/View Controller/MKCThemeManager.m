@@ -30,6 +30,8 @@
 	[[UINavigationBar appearance] setBarStyle:UIBarStyleDefault];
 	[[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
 	[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}];
+	
+	[UIApplication sharedApplication].delegate.window.tintColor = [UIColor darkGrayColor];
 }
 
 + (void)applyDarkTheme {
@@ -40,6 +42,8 @@
 	[[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
 	[[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 	[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+	
+	[UIApplication sharedApplication].delegate.window.tintColor = [UIColor lightGrayColor];
 }
 
 @end
