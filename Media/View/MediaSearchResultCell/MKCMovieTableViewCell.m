@@ -27,6 +27,7 @@
 	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
 	if (self) {
 		[self configureContentStackView];
+		[self.collectionButton addTarget:self action:@selector(collect:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	return self;
 }
@@ -39,13 +40,13 @@
 	}
 }
 
-#pragma mark - Override
-
 - (void)collect:(UIButton *)sender {
 	if (self.delegate) {
 		[self.delegate movieTableViewCell:self collectMovieAtIndex:self.tag];
 	}
 }
+
+#pragma mark - Override
 
 - (void)configureWithModel:(JSONModel *)model {
 	MKCMovieInfoModel *movie = (MKCMovieInfoModel *)model;
