@@ -8,8 +8,6 @@
 
 #import "AppDelegate.h"
 #import "MKCMainTabBarController.h"
-#import "MKCSearchViewController.h"
-#import "MKCMoreViewController.h"
 #import "MKCDataPersistence.h"
 #import "MKCThemeManager.h"
 
