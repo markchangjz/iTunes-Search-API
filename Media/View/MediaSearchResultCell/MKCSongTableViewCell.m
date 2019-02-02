@@ -29,31 +29,21 @@
 	return self;
 }
 
-#pragma mark - MKCBasicMediaTableViewCellProtocol
-
-- (void)configureWithModel:(MKCMediaCellModel *)model {
-	MKCSongInfoModel *song = (MKCSongInfoModel *)model.mediaInfo;
-	self.trackName = song.trackName;
-	self.artistName = song.artistName;
-	self.collectionName = song.collectionName;
-	self.trackTimeMillis = song.trackTimeMillis;
-}
-
-- (void)configureWithModel2:(JSONModel *)model {
-	MKCSongInfoModel *song = (MKCSongInfoModel *)model;
-	[self.coverImageView sd_setImageWithURL:[NSURL URLWithString:song.imageUrl]];
-	self.trackName = song.trackName;
-	self.artistName = song.artistName;
-	self.collectionName = song.collectionName;
-	self.trackTimeMillis = song.trackTimeMillis;
-}
-
 #pragma mark - Override
 
 - (void)collect:(UIButton *)sender {
 	if (self.delegate) {
 		[self.delegate songTableViewCell:self collectSongAtIndex:self.tag];
 	}
+}
+
+- (void)configureWithModel:(JSONModel *)model {
+	MKCSongInfoModel *song = (MKCSongInfoModel *)model;
+	[self.coverImageView sd_setImageWithURL:[NSURL URLWithString:song.imageUrl]];
+	self.trackName = song.trackName;
+	self.artistName = song.artistName;
+	self.collectionName = song.collectionName;
+	self.trackTimeMillis = song.trackTimeMillis;
 }
 
 #pragma mark - UI layout

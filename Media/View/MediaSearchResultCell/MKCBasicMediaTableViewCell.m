@@ -30,7 +30,7 @@
 	return self;
 }
 
-- (void)configureWithModel2:(JSONModel *)model {
+- (void)configureWithModel:(JSONModel *)model {
 	
 }
 

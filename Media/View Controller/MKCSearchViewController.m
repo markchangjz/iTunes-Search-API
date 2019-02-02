@@ -209,7 +209,7 @@
 	NSString *cellIdentifier = [NSString stringWithFormat:@"%ld", type];
 	MKCBasicMediaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
 	
-	[cell configureWithModel2:cellModel];
+	[cell configureWithModel:cellModel];
 	
 	switch (type) {
 		case MKCMediaTypeMovie:
