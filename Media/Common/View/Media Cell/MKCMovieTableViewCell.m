@@ -54,7 +54,7 @@
 	self.trackName = movie.trackName;
 	self.artistName = movie.artistName;
 	self.trackCensoredName = movie.trackCensoredName;
-	self.trackTimeMillis = movie.trackTimeMillis;
+	self.trackTimeMillis = [movie.trackTimeMillis stringValue];
 	self.longDescription = movie.longDescription;
 }
 

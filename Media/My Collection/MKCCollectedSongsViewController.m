@@ -48,7 +48,7 @@
 	cell.trackName = songInfo.trackName;
 	cell.artistName = songInfo.artistName;
 	cell.collectionName = songInfo.collectionName;
-	cell.trackTimeMillis = songInfo.trackTimeMillis;
+	cell.trackTimeMillis = [songInfo.trackTimeMillis stringValue];
 	cell.isCollected = [MKCDataPersistence hasCollectdSongWithTrackId:songInfo.trackId];
 	
 	cell.delegate = self;

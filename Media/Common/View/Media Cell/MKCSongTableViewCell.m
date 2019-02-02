@@ -46,7 +46,7 @@
 	self.trackName = song.trackName;
 	self.artistName = song.artistName;
 	self.collectionName = song.collectionName;
-	self.trackTimeMillis = song.trackTimeMillis;
+	self.trackTimeMillis = [song.trackTimeMillis stringValue];
 }
 
 #pragma mark - UI layout
