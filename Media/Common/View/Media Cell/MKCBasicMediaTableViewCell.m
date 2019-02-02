@@ -30,9 +30,7 @@
 	return self;
 }
 
-#pragma mark - IBAction
-
-- (void)collect:(UIButton *)sender {
+- (void)configureWithModel:(JSONModel *)model {
 	
 }
 
@@ -83,7 +81,6 @@
 		_collectionButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		_collectionButton.translatesAutoresizingMaskIntoConstraints = NO;
 		[_collectionButton setImage:[UIImage imageNamed:@"not_collected"] forState:UIControlStateNormal];
-		[_collectionButton addTarget:self action:@selector(collect:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	return _collectionButton;
 }

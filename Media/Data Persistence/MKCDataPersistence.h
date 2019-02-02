@@ -14,8 +14,8 @@ extern NSString *const MKCCollectedMovieDidChangeNotification;
 extern NSString *const MKCCollectedSongDidChangeNotification;
 extern NSString *const MKCThemeDidChangeNotification;
 
-extern NSString *const movieKey;
-extern NSString *const songKey;
+extern NSString *const MKCCollectedMoviesKey;
+extern NSString *const MKCCollectedSongsKey;
 extern NSString *const MKCThemeKey;
 
 typedef NS_ENUM(NSInteger, MKCTheme) {

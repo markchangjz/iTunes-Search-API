@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MKCBasicTableViewCell.h"
+#import "JSONModel.h"
 
 @interface MKCBasicMediaTableViewCell : MKCBasicTableViewCell
 
@@ -15,5 +16,7 @@
 @property (nonatomic, strong) UIStackView *contentStackView;
 @property (nonatomic, strong) UIButton *collectionButton;
 @property (nonatomic, assign) BOOL isCollected;
+
+- (void)configureWithModel:(JSONModel *)model;
 
 @end

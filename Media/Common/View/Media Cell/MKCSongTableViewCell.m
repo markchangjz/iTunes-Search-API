@@ -7,6 +7,8 @@
 //
 
 #import "MKCSongTableViewCell.h"
+#import "MKCSongModel.h"
+#import "UIImageView+WebCache.h"
 
 @interface MKCSongTableViewCell()
 
@@ -23,16 +25,28 @@
 	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
 	if (self) {
 		[self configureContentStackView];
+		[self.collectionButton addTarget:self action:@selector(collect:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	return self;
 }
 
-#pragma mark - Override
+#pragma mark - IBAction
 
 - (void)collect:(UIButton *)sender {
 	if (self.delegate) {
 		[self.delegate songTableViewCell:self collectSongAtIndex:self.tag];
 	}
+}
+
+#pragma mark - Override
+
+- (void)configureWithModel:(JSONModel *)model {
+	MKCSongInfoModel *song = (MKCSongInfoModel *)model;
+	[self.coverImageView sd_setImageWithURL:[NSURL URLWithString:song.imageUrl]];
+	self.trackName = song.trackName;
+	self.artistName = song.artistName;
+	self.collectionName = song.collectionName;
+	self.trackTimeMillis = song.trackTimeMillis;
 }
 
 #pragma mark - UI layout
