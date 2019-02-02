@@ -12,8 +12,8 @@ NSString *const MKCCollectedMovieDidChangeNotification = @"MKCCollectedMovieDidC
 NSString *const MKCCollectedSongDidChangeNotification = @"MKCCollectedSongDidChangeNotification";
 NSString *const MKCThemeDidChangeNotification = @"MKCThemeDidChangeNotification";
 
-NSString *const movieKey = @"movieKey";
-NSString *const songKey = @"songKey";
+NSString *const MKCCollectedMoviesKey = @"MKCCollectedMoviesKey";
+NSString *const MKCCollectedSongsKey = @"MKCCollectedSongsKey";
 NSString *const MKCThemeKey = @"MKCThemeKey";
 
 @implementation MKCDataPersistence
@@ -31,56 +31,56 @@ NSString *const MKCThemeKey = @"MKCThemeKey";
 #pragma mark - movie
 
 + (void)collectMovieWithTrackId:(NSString *)trackId {
-	NSMutableArray *collectedMovies = [self.userDefaults mutableArrayValueForKey:movieKey];
+	NSMutableArray *collectedMovies = [self.userDefaults mutableArrayValueForKey:MKCCollectedMoviesKey];
 	[collectedMovies addObject:trackId];
-	[self.userDefaults setObject:[collectedMovies copy] forKey:movieKey];
+	[self.userDefaults setObject:[collectedMovies copy] forKey:MKCCollectedMoviesKey];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedMovieDidChangeNotification object:nil];
 }
 
 + (void)removeCollectedMovieWithTrackId:(NSString *)trackId {
-	NSMutableArray *collectedMovies = [self.userDefaults mutableArrayValueForKey:movieKey];
+	NSMutableArray *collectedMovies = [self.userDefaults mutableArrayValueForKey:MKCCollectedMoviesKey];
 	[collectedMovies removeObject:trackId];
-	[self.userDefaults setObject:[collectedMovies copy] forKey:movieKey];
+	[self.userDefaults setObject:[collectedMovies copy] forKey:MKCCollectedMoviesKey];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedMovieDidChangeNotification object:nil];
 }
 
 + (BOOL)hasCollectdMovieWithTrackId:(NSString *)trackId {
-	NSMutableArray *collectedMovies = [self.userDefaults mutableArrayValueForKey:movieKey];
+	NSMutableArray *collectedMovies = [self.userDefaults mutableArrayValueForKey:MKCCollectedMoviesKey];
 	return [collectedMovies containsObject:trackId];
 }
 
 + (NSArray<NSString *> *)collectMovieTrackIds {
-	NSMutableArray *collectedMovies = [self.userDefaults mutableArrayValueForKey:movieKey];
+	NSMutableArray *collectedMovies = [self.userDefaults mutableArrayValueForKey:MKCCollectedMoviesKey];
 	return collectedMovies;
 }
 
 #pragma mark - song
 
 + (void)collectSongWithTrackId:(nonnull NSString *)trackId {
-	NSMutableArray *collectedSongs = [self.userDefaults mutableArrayValueForKey:songKey];
+	NSMutableArray *collectedSongs = [self.userDefaults mutableArrayValueForKey:MKCCollectedSongsKey];
 	[collectedSongs addObject:trackId];
-	[self.userDefaults setObject:[collectedSongs copy] forKey:songKey];
+	[self.userDefaults setObject:[collectedSongs copy] forKey:MKCCollectedSongsKey];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedSongDidChangeNotification object:nil];
 }
 
 + (void)removeCollectedSongWithTrackId:(nonnull NSString *)trackId {
-	NSMutableArray *collectedSongs = [self.userDefaults mutableArrayValueForKey:songKey];
+	NSMutableArray *collectedSongs = [self.userDefaults mutableArrayValueForKey:MKCCollectedSongsKey];
 	[collectedSongs removeObject:trackId];
-	[self.userDefaults setObject:[collectedSongs copy] forKey:songKey];
+	[self.userDefaults setObject:[collectedSongs copy] forKey:MKCCollectedSongsKey];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedSongDidChangeNotification object:nil];
 }
 
 + (BOOL)hasCollectdSongWithTrackId:(nonnull NSString *)trackId {
-	NSMutableArray *collectedSongs = [self.userDefaults mutableArrayValueForKey:songKey];
+	NSMutableArray *collectedSongs = [self.userDefaults mutableArrayValueForKey:MKCCollectedSongsKey];
 	return [collectedSongs containsObject:trackId];
 }
 
 + (NSArray<NSString *> *)collectSongTrackIds {
-	NSMutableArray *collectedSongs = [self.userDefaults mutableArrayValueForKey:songKey];
+	NSMutableArray *collectedSongs = [self.userDefaults mutableArrayValueForKey:MKCCollectedSongsKey];
 	return collectedSongs;
 }
 
