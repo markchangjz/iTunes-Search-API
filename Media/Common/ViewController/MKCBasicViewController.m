@@ -9,6 +9,12 @@
 #import "MKCBasicViewController.h"
 #import "MKCDataPersistence.h"
 
+/*
+ Theme:
+ 1. https://medium.com/@mczachurski/ios-dark-theme-9a12724c112d
+ 2. https://medium.com/@abhimuralidharan/maintaining-a-colour-theme-manager-on-ios-swift-178b8a6a92
+ */
+
 @interface MKCBasicViewController ()
 
 @end
