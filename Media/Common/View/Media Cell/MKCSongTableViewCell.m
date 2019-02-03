@@ -9,6 +9,7 @@
 #import "MKCSongTableViewCell.h"
 #import "MKCSongModel.h"
 #import "UIImageView+WebCache.h"
+#import "NSNumber+Formatter.h"
 
 @interface MKCSongTableViewCell()
 
@@ -46,7 +47,7 @@
 	self.trackName = song.trackName;
 	self.artistName = song.artistName;
 	self.collectionName = song.collectionName;
-	self.trackTimeMillis = [song.trackTimeMillis stringValue];
+	self.trackTimeMillis = [song.trackTime durationText];
 }
 
 #pragma mark - UI layout

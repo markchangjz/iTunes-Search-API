@@ -21,6 +21,8 @@
 @property (nonatomic, copy) NSString <Optional> *imageUrl;
 @property (nonatomic, copy) NSString <Optional> *trackId;
 
+@property (nonatomic, readonly) NSNumber <Ignore> *trackTime;
+
 @end
 
 @interface MKCSongModel : JSONModel

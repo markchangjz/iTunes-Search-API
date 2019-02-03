@@ -14,6 +14,10 @@
 	return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"imageUrl": @"artworkUrl100"}];
 }
 
+- (NSNumber<Ignore> *)trackTime {
+	return @(self.trackTimeMillis.integerValue / 1000);
+}
+
 @end
 
 @implementation MKCSongModel

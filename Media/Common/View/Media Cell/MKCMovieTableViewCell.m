@@ -9,6 +9,7 @@
 #import "MKCMovieTableViewCell.h"
 #import "MKCMovieModel.h"
 #import "UIImageView+WebCache.h"
+#import "NSNumber+Formatter.h"
 
 @interface MKCMovieTableViewCell()
 
@@ -54,7 +55,7 @@
 	self.trackName = movie.trackName;
 	self.artistName = movie.artistName;
 	self.trackCensoredName = movie.trackCensoredName;
-	self.trackTimeMillis = [movie.trackTimeMillis stringValue];
+	self.trackTimeMillis = [movie.trackTime durationText];
 	self.longDescription = movie.longDescription;
 }
 
