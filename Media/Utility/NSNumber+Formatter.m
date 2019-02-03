@@ -16,4 +16,15 @@
 	return [formatter stringFromNumber:self];
 }
 
+- (NSString *)durationText {
+	// Reference: https://crunchybagel.com/formatting-a-duration-with-nsdatecomponentsformatter/
+	
+	NSTimeInterval duration = self.doubleValue;
+	NSDateComponentsFormatter *formatter = [[NSDateComponentsFormatter alloc] init];
+	[formatter setUnitsStyle:NSDateComponentsFormatterUnitsStylePositional];
+	[formatter setAllowedUnits:NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond];
+	[formatter setZeroFormattingBehavior:NSDateComponentsFormatterZeroFormattingBehaviorDefault];
+	return [formatter stringFromTimeInterval:duration];
+}
+
 @end

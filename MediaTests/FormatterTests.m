@@ -40,4 +40,11 @@
 	XCTAssertEqualObjects([@-1000000 decimalText], @"-1,000,000");
 }
 
+- (void)testDurationText {
+	XCTAssertEqualObjects([@(7220335/1000) durationText], @"2:00:20");
+	XCTAssertEqualObjects([@(5063232/1000) durationText], @"1:24:23");
+	XCTAssertEqualObjects([@(1740607/1000) durationText], @"29:00");
+	XCTAssertEqualObjects([@(150) durationText], @"2:30");
+}
+
 @end
