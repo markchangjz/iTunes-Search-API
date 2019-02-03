@@ -8,12 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "MKCDataPersistence.h"
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MKCThemeManager : NSObject
 
-+(void)applyTheme:(MKCTheme)theme;
++ (MKCTheme)currentTheme;
++ (void)applyTheme:(MKCTheme)theme;
+
++ (UIBarStyle)barStyle;
 
 @end
 

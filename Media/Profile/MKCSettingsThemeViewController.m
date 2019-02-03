@@ -7,7 +7,7 @@
 //
 
 #import "MKCSettingsThemeViewController.h"
-#import "MKCDataPersistence.h"
+#import "MKCThemeManager.h"
 
 @interface MKCSettingsThemeViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -59,10 +59,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	MKCTheme theme = MKCDataPersistence.theme;
+	MKCTheme currentTheme = MKCThemeManager.currentTheme;
 	
-	NSIndexPath *currentSelectedIndexPath = [NSIndexPath indexPathForRow:theme inSection:0];
-	[MKCDataPersistence setTheme:(MKCTheme)indexPath.row];
+	NSIndexPath *currentSelectedIndexPath = [NSIndexPath indexPathForRow:currentTheme inSection:0];
+	
+	MKCTheme applyTheme = (MKCTheme)indexPath.row;
+	[MKCThemeManager applyTheme:applyTheme];
+	
 	[tableView reloadRowsAtIndexPaths:@[currentSelectedIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 	
 	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];

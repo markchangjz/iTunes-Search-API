@@ -11,39 +11,21 @@
 
 @implementation MKCThemeManager
 
++ (MKCTheme)currentTheme {
+	return [MKCDataPersistence theme];
+}
+
 +(void)applyTheme:(MKCTheme)theme {
-	switch (theme) {
+	[MKCDataPersistence setTheme:theme];
+}
+
++ (UIBarStyle)barStyle {
+	switch (self.currentTheme) {
 		case MKCThemeLight:
-			[self applyLightTheme];
-			break;
+			return UIBarStyleDefault;
 		case MKCThemeDark:
-			[self applyDarkTheme];
-			break;
+			return UIBarStyleBlack;
 	}
-}
-
-+ (void)applyLightTheme {
-	[[UITabBar appearance] setBarStyle:UIBarStyleDefault];
-	[[UITabBar appearance] setUnselectedItemTintColor:[UIColor lightGrayColor]];
-	[[UITabBar appearance] setTintColor:[UIColor blackColor]];
-	
-	[[UINavigationBar appearance] setBarStyle:UIBarStyleDefault];
-	[[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
-	[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}];
-	
-	[UIApplication sharedApplication].delegate.window.tintColor = [UIColor darkGrayColor];
-}
-
-+ (void)applyDarkTheme {
-	[[UITabBar appearance] setBarStyle:UIBarStyleBlack];
-	[[UITabBar appearance] setUnselectedItemTintColor:[UIColor lightGrayColor]];
-	[[UITabBar appearance] setTintColor:[UIColor whiteColor]];
-	
-	[[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
-	[[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-	[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-	
-	[UIApplication sharedApplication].delegate.window.tintColor = [UIColor lightGrayColor];
 }
 
 @end

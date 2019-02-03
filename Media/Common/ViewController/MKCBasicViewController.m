@@ -8,6 +8,7 @@
 
 #import "MKCBasicViewController.h"
 #import "MKCDataPersistence.h"
+#import "MKCThemeManager.h"
 
 /*
  Theme:
@@ -21,13 +22,14 @@
 
 @implementation MKCBasicViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (instancetype)init {
+	self = [super init];
 	
-	MKCTheme theme = [MKCDataPersistence theme];
-	[self applyTheme:theme];
-	
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTheme:) name:MKCThemeDidChangeNotification object:nil];
+	if (self) {
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTheme:) name:MKCThemeDidChangeNotification object:nil];
+	}
+
+	return self;
 }
 
 - (void)dealloc {
@@ -37,7 +39,7 @@
 #pragma mark - Notification
 
 - (void)updateTheme:(NSNotification *)notification {
-	MKCTheme theme = [MKCDataPersistence theme];
+	MKCTheme theme = MKCThemeManager.currentTheme;
 	[self applyTheme:theme];
 }
 
@@ -55,30 +57,52 @@
 }
 
 - (void)applyLightTheme {
+	// Tab Bar
 	UITabBar *tabBar = self.tabBarController.tabBar;
 	[tabBar setBarStyle:UIBarStyleDefault];
 	[tabBar setUnselectedItemTintColor:[UIColor lightGrayColor]];
 	[tabBar setTintColor:[UIColor blackColor]];
 	
+	[[UITabBar appearance] setBarStyle:UIBarStyleDefault];
+	[[UITabBar appearance] setUnselectedItemTintColor:[UIColor lightGrayColor]];
+	[[UITabBar appearance] setTintColor:[UIColor blackColor]];
+	
+	// Navigation Bar
 	UINavigationBar *navigationBar = self.navigationController.navigationBar;
 	[navigationBar setBarStyle:UIBarStyleDefault];
 	[navigationBar setTintColor:[UIColor blackColor]];
 	[navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}];
 	
+	[[UINavigationBar appearance] setBarStyle:UIBarStyleDefault];
+	[[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+	[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}];
+	
+	// Tint Color
 	[UIApplication sharedApplication].delegate.window.tintColor = [UIColor darkGrayColor];
 }
 
 - (void)applyDarkTheme {
+	// Tab Bar
 	UITabBar *tabBar = self.tabBarController.tabBar;
 	[tabBar setBarStyle:UIBarStyleBlack];
 	[tabBar setUnselectedItemTintColor:[UIColor lightGrayColor]];
 	[tabBar setTintColor:[UIColor whiteColor]];
 	
+	[[UITabBar appearance] setBarStyle:UIBarStyleBlack];
+	[[UITabBar appearance] setUnselectedItemTintColor:[UIColor lightGrayColor]];
+	[[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+	
+	// Navigation Bar
 	UINavigationBar *navigationBar = self.navigationController.navigationBar;
 	[navigationBar setBarStyle:UIBarStyleBlack];
 	[navigationBar setTintColor:[UIColor whiteColor]];
 	[navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
 	
+	[[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
+	[[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+	[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+	
+	// Tint Color
 	[UIApplication sharedApplication].delegate.window.tintColor = [UIColor lightGrayColor];
 }
 
