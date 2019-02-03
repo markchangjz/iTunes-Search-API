@@ -28,4 +28,49 @@
 	}
 }
 
++ (UIColor *)tabBarUnselectedItemTintColor {
+	switch (self.currentTheme) {
+		case MKCThemeLight:
+			return [UIColor lightGrayColor];
+		case MKCThemeDark:
+			return [UIColor lightGrayColor];
+	}
+}
+
++ (UIColor *)tabBarTintColor {
+	switch (self.currentTheme) {
+		case MKCThemeLight:
+			return [UIColor blackColor];
+		case MKCThemeDark:
+			return [UIColor whiteColor];
+	}
+}
+
++ (UIColor *)navigationBarTintColor {
+	switch (self.currentTheme) {
+		case MKCThemeLight:
+			return [UIColor blackColor];
+		case MKCThemeDark:
+			return [UIColor whiteColor];
+	}
+}
+
++ (UIColor *)navigationTitleColor {
+	switch (self.currentTheme) {
+		case MKCThemeLight:
+			return [UIColor blackColor];
+		case MKCThemeDark:
+			return [UIColor whiteColor];
+	}
+}
+
++ (UIColor *)tintColor {
+	switch (self.currentTheme) {
+		case MKCThemeLight:
+			return [UIColor darkGrayColor];
+		case MKCThemeDark:
+			return [UIColor lightGrayColor];
+	}
+}
+
 @end

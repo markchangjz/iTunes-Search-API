@@ -24,11 +24,9 @@
 
 - (instancetype)init {
 	self = [super init];
-	
 	if (self) {
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTheme:) name:MKCThemeDidChangeNotification object:nil];
 	}
-
 	return self;
 }
 
@@ -57,53 +55,43 @@
 }
 
 - (void)applyLightTheme {
-	// Tab Bar
-	UITabBar *tabBar = self.tabBarController.tabBar;
-	[tabBar setBarStyle:UIBarStyleDefault];
-	[tabBar setUnselectedItemTintColor:[UIColor lightGrayColor]];
-	[tabBar setTintColor:[UIColor blackColor]];
-	
-	[[UITabBar appearance] setBarStyle:UIBarStyleDefault];
-	[[UITabBar appearance] setUnselectedItemTintColor:[UIColor lightGrayColor]];
-	[[UITabBar appearance] setTintColor:[UIColor blackColor]];
-	
-	// Navigation Bar
-	UINavigationBar *navigationBar = self.navigationController.navigationBar;
-	[navigationBar setBarStyle:UIBarStyleDefault];
-	[navigationBar setTintColor:[UIColor blackColor]];
-	[navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}];
-	
-	[[UINavigationBar appearance] setBarStyle:UIBarStyleDefault];
-	[[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
-	[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}];
-	
-	// Tint Color
-	[UIApplication sharedApplication].delegate.window.tintColor = [UIColor darkGrayColor];
+	[self setTintColor];
+	[self setTabBarAppearance];
+	[self setNavigationBarAppearance];
 }
 
 - (void)applyDarkTheme {
-	// Tab Bar
-	UITabBar *tabBar = self.tabBarController.tabBar;
-	[tabBar setBarStyle:UIBarStyleBlack];
-	[tabBar setUnselectedItemTintColor:[UIColor lightGrayColor]];
-	[tabBar setTintColor:[UIColor whiteColor]];
+	[self setTintColor];
+	[self setTabBarAppearance];
+	[self setNavigationBarAppearance];
+}
+
+- (void)setTintColor {
+	[UIApplication sharedApplication].delegate.window.tintColor = MKCThemeManager.tintColor;
+}
+
+- (void)setTabBarAppearance {
+	NSArray *tabBars = @[self.tabBarController.tabBar,
+						 UITabBar.appearance
+						 ];
 	
-	[[UITabBar appearance] setBarStyle:UIBarStyleBlack];
-	[[UITabBar appearance] setUnselectedItemTintColor:[UIColor lightGrayColor]];
-	[[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+	for (UITabBar *tabBar in tabBars) {
+		tabBar.barStyle = MKCThemeManager.barStyle;
+		tabBar.unselectedItemTintColor = MKCThemeManager.tabBarUnselectedItemTintColor;
+		tabBar.tintColor = MKCThemeManager.tabBarTintColor;
+	}
+}
+
+- (void)setNavigationBarAppearance {
+	NSArray *navigationBars = @[self.navigationController.navigationBar,
+								UINavigationBar.appearance
+								];
 	
-	// Navigation Bar
-	UINavigationBar *navigationBar = self.navigationController.navigationBar;
-	[navigationBar setBarStyle:UIBarStyleBlack];
-	[navigationBar setTintColor:[UIColor whiteColor]];
-	[navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-	
-	[[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
-	[[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-	[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-	
-	// Tint Color
-	[UIApplication sharedApplication].delegate.window.tintColor = [UIColor lightGrayColor];
+	for (UINavigationBar *navigationBar in navigationBars) {
+		navigationBar.barStyle = MKCThemeManager.barStyle;
+		navigationBar.tintColor = MKCThemeManager.navigationBarTintColor;
+		navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: MKCThemeManager.navigationTitleColor};
+	}
 }
 
 @end

@@ -18,6 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)applyTheme:(MKCTheme)theme;
 
 + (UIBarStyle)barStyle;
++ (UIColor *)tabBarUnselectedItemTintColor;
++ (UIColor *)tabBarTintColor;
++ (UIColor *)navigationBarTintColor;
++ (UIColor *)navigationTitleColor;
++ (UIColor *)tintColor;
 
 @end
 
