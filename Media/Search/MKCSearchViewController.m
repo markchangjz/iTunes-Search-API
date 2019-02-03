@@ -174,7 +174,7 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 	MKCMediaType type = (MKCMediaType)self.cellListOrder[indexPath.section].integerValue;
 	JSONModel *cellModel = self.mediaElements[@(type)][indexPath.row];
 	
-	NSString *cellIdentifier = [NSString stringWithFormat:@"%ld", type];
+	NSString *cellIdentifier = [NSString stringWithFormat:@"%ld", (long)type];
 	MKCBasicMediaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
 	[cell configureWithModel:cellModel];
 	cell.tag = indexPath.row;
@@ -363,7 +363,7 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 - (void)registerTableViewCellClass {
 	[self.cellListOrder enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 		MKCMediaType type = (MKCMediaType)obj.integerValue;
-		NSString *cellIdentifier = [NSString stringWithFormat:@"%ld", type];
+		NSString *cellIdentifier = [NSString stringWithFormat:@"%ld", (long)type];
 		Class cellClass;
 		
 		switch (type) {
