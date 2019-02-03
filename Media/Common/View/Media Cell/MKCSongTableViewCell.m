@@ -79,6 +79,12 @@
 - (void)setTrackTimeMillis:(NSString *)trackTimeMillis {
 	_trackTimeMillis = trackTimeMillis;
 	self.trackTimeMillisLabel.text = trackTimeMillis;
+	
+	if ([trackTimeMillis isEqualToString:@"0"]) {
+		self.trackTimeMillisLabel.hidden = YES;
+	} else {
+		self.trackTimeMillisLabel.hidden = NO;
+	}
 }
 
 #pragma mark - lazy instance
