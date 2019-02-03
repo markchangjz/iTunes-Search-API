@@ -215,6 +215,8 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 	}
 	
 	[[UIApplication sharedApplication] openURL:openURL options:@{} completionHandler:nil];
+	
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - UISearchBarDelegate

@@ -64,6 +64,8 @@
 	MKCMovieInfoModel *movieInfo = self.movies[indexPath.row];
 	NSURL *openURL = [NSURL URLWithString:movieInfo.trackViewUrl];
 	[[UIApplication sharedApplication] openURL:openURL options:@{} completionHandler:nil];
+	
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - MKCMovieTableViewCellDelegate

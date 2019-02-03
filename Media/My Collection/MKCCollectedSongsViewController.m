@@ -61,6 +61,8 @@
 	MKCSongInfoModel *songInfo = self.songs[indexPath.row];
 	NSURL *openURL = [NSURL URLWithString:songInfo.trackViewUrl];
 	[[UIApplication sharedApplication] openURL:openURL options:@{} completionHandler:nil];
+	
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - MKCSongTableViewCellDelegate
