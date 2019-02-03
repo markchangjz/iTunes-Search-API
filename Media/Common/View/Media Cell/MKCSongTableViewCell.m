@@ -16,7 +16,7 @@
 @property (nonatomic, copy) UILabel *trackNameLabel;
 @property (nonatomic, copy) UILabel *artistNameLabel;
 @property (nonatomic, copy) UILabel *collectionNameLabel;
-@property (nonatomic, copy) UILabel *trackTimeMillisLabel;
+@property (nonatomic, copy) UILabel *trackTimeLabel;
 
 @end
 
@@ -47,7 +47,7 @@
 	self.trackName = song.trackName;
 	self.artistName = song.artistName;
 	self.collectionName = song.collectionName;
-	self.trackTimeMillis = [song.trackTime durationText];
+	self.duration = song.trackTime;
 }
 
 #pragma mark - UI layout
@@ -56,7 +56,7 @@
 	[self.contentStackView addArrangedSubview:self.trackNameLabel];
 	[self.contentStackView addArrangedSubview:self.artistNameLabel];
 	[self.contentStackView addArrangedSubview:self.collectionNameLabel];
-	[self.contentStackView addArrangedSubview:self.trackTimeMillisLabel];
+	[self.contentStackView addArrangedSubview:self.trackTimeLabel];
 }
 
 #pragma mark - binding
@@ -76,14 +76,16 @@
 	self.collectionNameLabel.text = collectionName;
 }
 
-- (void)setTrackTimeMillis:(NSString *)trackTimeMillis {
-	_trackTimeMillis = trackTimeMillis;
-	self.trackTimeMillisLabel.text = trackTimeMillis;
+- (void)setDuration:(NSNumber *)duration {
+	_duration = duration;
 	
-	if ([trackTimeMillis isEqualToString:@"0"]) {
-		self.trackTimeMillisLabel.hidden = YES;
+	NSString *durationText = [duration durationText];
+	self.trackTimeLabel.text = durationText;
+	
+	if ([durationText isEqualToString:@"0"]) {
+		self.trackTimeLabel.hidden = YES;
 	} else {
-		self.trackTimeMillisLabel.hidden = NO;
+		self.trackTimeLabel.hidden = NO;
 	}
 }
 
@@ -114,12 +116,12 @@
 	return _collectionNameLabel;
 }
 
-- (UILabel *)trackTimeMillisLabel {
-	if (!_trackTimeMillisLabel) {
-		_trackTimeMillisLabel = [[UILabel alloc] init];
-		_trackTimeMillisLabel.translatesAutoresizingMaskIntoConstraints = NO;
+- (UILabel *)trackTimeLabel {
+	if (!_trackTimeLabel) {
+		_trackTimeLabel = [[UILabel alloc] init];
+		_trackTimeLabel.translatesAutoresizingMaskIntoConstraints = NO;
 	}
-	return _trackTimeMillisLabel;
+	return _trackTimeLabel;
 }
 
 @end

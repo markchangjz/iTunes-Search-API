@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *trackName;
 @property (nonatomic, copy) NSString *artistName;
 @property (nonatomic, copy) NSString *collectionName;
-@property (nonatomic, copy) NSString *trackTimeMillis;
+@property (nonatomic, strong) NSNumber *duration;
 
 @end
 

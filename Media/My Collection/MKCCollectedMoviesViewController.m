@@ -49,7 +49,7 @@
 	cell.trackName = movieInfo.trackName;
 	cell.artistName = movieInfo.artistName;
 	cell.trackCensoredName = movieInfo.trackCensoredName;
-	cell.trackTimeMillis = [movieInfo.trackTimeMillis stringValue];
+	cell.duration = movieInfo.trackTime;
 	cell.longDescription = movieInfo.longDescription;
 	cell.isCollected = [MKCDataPersistence hasCollectdMovieWithTrackId:movieInfo.trackId];
 	cell.isCollapsed = ![self.expandMovieItems containsObject:movieInfo.trackId];

@@ -16,7 +16,7 @@
 @property (nonatomic, copy) UILabel *trackNameLabel;
 @property (nonatomic, copy) UILabel *artistNameLabel;
 @property (nonatomic, copy) UILabel *trackCensoredNameLabel;
-@property (nonatomic, copy) UILabel *trackTimeMillisLabel;
+@property (nonatomic, copy) UILabel *trackTimeLabel;
 @property (nonatomic, copy) UILabel *longDescriptionLabel;
 @property (nonatomic, copy) UIButton *readMoreButton;
 
@@ -55,7 +55,7 @@
 	self.trackName = movie.trackName;
 	self.artistName = movie.artistName;
 	self.trackCensoredName = movie.trackCensoredName;
-	self.trackTimeMillis = [movie.trackTime durationText];
+	self.duration = movie.trackTime;
 	self.longDescription = movie.longDescription;
 }
 
@@ -65,7 +65,7 @@
 	[self.contentStackView addArrangedSubview:self.trackNameLabel];
 	[self.contentStackView addArrangedSubview:self.artistNameLabel];
 	[self.contentStackView addArrangedSubview:self.trackCensoredNameLabel];
-	[self.contentStackView addArrangedSubview:self.trackTimeMillisLabel];
+	[self.contentStackView addArrangedSubview:self.trackTimeLabel];
 	[self.contentStackView addArrangedSubview:self.longDescriptionLabel];
 	[self.contentStackView addArrangedSubview:self.readMoreButton];
 }
@@ -87,14 +87,16 @@
 	self.trackCensoredNameLabel.text = trackCensoredName;
 }
 
-- (void)setTrackTimeMillis:(NSString *)trackTimeMillis {
-	_trackTimeMillis = trackTimeMillis;
-	self.trackTimeMillisLabel.text = trackTimeMillis;
+- (void)setDuration:(NSNumber *)duration {
+	_duration = duration;
 	
-	if ([trackTimeMillis isEqualToString:@"0"]) {
-		self.trackTimeMillisLabel.hidden = YES;
+	NSString *durationText = [duration durationText];
+	self.trackTimeLabel.text = durationText;
+	
+	if ([durationText isEqualToString:@"0"]) {
+		self.trackTimeLabel.hidden = YES;
 	} else {
-		self.trackTimeMillisLabel.hidden = NO;
+		self.trackTimeLabel.hidden = NO;
 	}
 }
 
@@ -137,12 +139,12 @@
 	return _trackCensoredNameLabel;
 }
 
-- (UILabel *)trackTimeMillisLabel {
-	if (!_trackTimeMillisLabel) {
-		_trackTimeMillisLabel = [[UILabel alloc] init];
-		_trackTimeMillisLabel.translatesAutoresizingMaskIntoConstraints = NO;
+- (UILabel *)trackTimeLabel {
+	if (!_trackTimeLabel) {
+		_trackTimeLabel = [[UILabel alloc] init];
+		_trackTimeLabel.translatesAutoresizingMaskIntoConstraints = NO;
 	}
-	return _trackTimeMillisLabel;
+	return _trackTimeLabel;
 }
 
 - (UILabel *)longDescriptionLabel {
