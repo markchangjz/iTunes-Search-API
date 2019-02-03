@@ -7,6 +7,7 @@ target 'Media' do
   pod 'AFNetworking', '~> 3.2.1'
   pod 'JSONModel', '~> 1.7.0'
   pod 'SDWebImage', '~> 4.4.1'
+  pod 'YSLContainerViewController'
 
   # Pods for Media
 

@@ -18,23 +18,27 @@ PODS:
   - SDWebImage (4.4.1):
     - SDWebImage/Core (= 4.4.1)
   - SDWebImage/Core (4.4.1)
+  - YSLContainerViewController (0.0.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
   - JSONModel (~> 1.7.0)
   - SDWebImage (~> 4.4.1)
+  - YSLContainerViewController
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - JSONModel
     - SDWebImage
+    - YSLContainerViewController
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
+  YSLContainerViewController: f4ca045a6965333db46d8c793483b07abb3a0508
 
-PODFILE CHECKSUM: 44a97d7f458311c4a88244513f951be004c38649
+PODFILE CHECKSUM: 21a4bb56232564f75577e7b0790fbee38b351e1e
 
 COCOAPODS: 1.5.3
