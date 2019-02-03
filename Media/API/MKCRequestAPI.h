@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFNetworking.h"
 
 typedef void (^MKCSuccessHandler)(NSURLResponse *response, id responseObject);
 typedef void (^MKCFailureHandler)(NSError *error);
@@ -14,6 +15,7 @@ typedef void (^MKCFailureHandler)(NSError *error);
 @interface MKCRequestAPI : NSObject
 
 + (MKCRequestAPI *)sharedAPI;
++ (AFURLSessionManager *)sessionManager;
 
 - (NSURLSessionDataTask *)searchSongWithKeyword:(nonnull NSString *)keyword successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler;
 

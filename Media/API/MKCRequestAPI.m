@@ -21,6 +21,15 @@
 	return instance;
 }
 
++ (AFURLSessionManager *)sessionManager {
+	static AFHTTPSessionManager *instance = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		instance = [AFHTTPSessionManager manager];
+	});
+	return instance;
+}
+
 - (NSURLSessionDataTask *)searchSongWithKeyword:(nonnull NSString *)keyword successHandler:(MKCSuccessHandler)successHandler failureHandler:(MKCFailureHandler)failureHandler {
 		
 	NSDictionary *parameters = @{@"term": keyword,

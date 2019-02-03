@@ -7,7 +7,6 @@
 //
 
 #import "MKCRequestAPI+Private.h"
-#import "AFNetworking.h"
 
 @implementation MKCRequestAPI (Private)
 
@@ -20,10 +19,7 @@
 
 - (NSURLSessionDataTask *)in_fireAPIWithRequest:(NSURLRequest *)request successHandler:(void (^)(NSURLResponse *, id))successHandler failureHandler:(void (^)(NSError *))failureHandler {
 	
-	NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-	AFURLSessionManager *httpSessionManager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-	
-	NSURLSessionDataTask *dataTask = [httpSessionManager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+	NSURLSessionDataTask *dataTask = [[MKCRequestAPI sessionManager] dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
 		if (error) {
 			if (failureHandler) {
 				failureHandler(error);
