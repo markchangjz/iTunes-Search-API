@@ -12,7 +12,7 @@
 
 - (NSString *)decimalText {	
 	NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-	[formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+	formatter.numberStyle = NSNumberFormatterDecimalStyle;
 	return [formatter stringFromNumber:self];
 }
 
@@ -21,9 +21,9 @@
 	
 	NSTimeInterval duration = self.doubleValue;
 	NSDateComponentsFormatter *formatter = [[NSDateComponentsFormatter alloc] init];
-	[formatter setUnitsStyle:NSDateComponentsFormatterUnitsStylePositional];
-	[formatter setAllowedUnits:NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond];
-	[formatter setZeroFormattingBehavior:NSDateComponentsFormatterZeroFormattingBehaviorDefault];
+	formatter.unitsStyle = NSDateComponentsFormatterUnitsStylePositional;
+	formatter.allowedUnits = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+	formatter.zeroFormattingBehavior = NSDateComponentsFormatterZeroFormattingBehaviorDefault;
 	return [formatter stringFromTimeInterval:duration];
 }
 
