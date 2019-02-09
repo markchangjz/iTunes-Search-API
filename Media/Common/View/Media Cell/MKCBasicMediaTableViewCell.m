@@ -40,7 +40,7 @@
 	if (isCollected) {
 		[self.collectionButton setImage:[UIImage imageNamed:@"collected"] forState:UIControlStateNormal];
 	} else {
-		[self.collectionButton setImage:[UIImage imageNamed:@"not_collected"] forState:UIControlStateNormal];
+		[self.collectionButton setImage:[UIImage imageNamed:@"not_collect"] forState:UIControlStateNormal];
 	}
 }
 
@@ -78,7 +78,7 @@
 	if (!_collectionButton) {
 		_collectionButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		_collectionButton.translatesAutoresizingMaskIntoConstraints = NO;
-		[_collectionButton setImage:[UIImage imageNamed:@"not_collected"] forState:UIControlStateNormal];
+		[_collectionButton setImage:[UIImage imageNamed:@"not_collect"] forState:UIControlStateNormal];
 	}
 	return _collectionButton;
 }
