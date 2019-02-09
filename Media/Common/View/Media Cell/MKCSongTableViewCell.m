@@ -34,7 +34,7 @@
 #pragma mark - IBAction
 
 - (void)collect:(UIButton *)sender {
-	if (self.delegate) {
+	if ([self.delegate respondsToSelector:@selector(songTableViewCell:collectSongAtIndex:)]) {
 		[self.delegate songTableViewCell:self collectSongAtIndex:self.tag];
 	}
 }

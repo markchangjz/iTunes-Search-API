@@ -36,13 +36,13 @@
 #pragma mark - IBAction
 
 - (void)expandCell:(UIButton *)sender {
-	if (self.delegate) {
+	if ([self.delegate respondsToSelector:@selector(movieTableViewCell:expandViewAtIndex:)]) {
 		[self.delegate movieTableViewCell:self expandViewAtIndex:self.tag];
 	}
 }
 
 - (void)collect:(UIButton *)sender {
-	if (self.delegate) {
+	if ([self.delegate respondsToSelector:@selector(movieTableViewCell:collectMovieAtIndex:)]) {
 		[self.delegate movieTableViewCell:self collectMovieAtIndex:self.tag];
 	}
 }
