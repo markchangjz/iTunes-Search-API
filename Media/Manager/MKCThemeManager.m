@@ -7,7 +7,6 @@
 //
 
 #import "MKCThemeManager.h"
-#import <UIKit/UIKit.h>
 
 @implementation MKCThemeManager
 
