@@ -27,7 +27,7 @@
     [super viewDidLoad];
 	
 	[self configureView];
-	[self lookupcollectMoviesInfo];
+	[self lookupCollectMoviesInfo];
 	[self addObserver];
 }
 
@@ -101,7 +101,7 @@
 
 #pragma mark - Fetch API
 
-- (void)lookupcollectMoviesInfo {
+- (void)lookupCollectMoviesInfo {
 	NSArray<NSString *> *trackIds = [MKCDataPersistence collectMovieTrackIds];
 	
 	if (trackIds.count == 0) {
@@ -155,7 +155,7 @@
 		return;
 	}
 	
-	[self lookupcollectMoviesInfo];
+	[self lookupCollectMoviesInfo];
 }
 
 #pragma mark - lazy instance
