@@ -90,7 +90,7 @@
 		_mainStackView.axis = UILayoutConstraintAxisHorizontal;
 		_mainStackView.alignment = UIStackViewAlignmentTop;
 		_mainStackView.spacing = 10.0;
-		[_mainStackView setBackgroundColor:[UIColor redColor]];
+//		[_mainStackView setBackgroundColor:[UIColor redColor]];
 		
 		[_mainStackView addArrangedSubview:self.coverImageView];
 		[_mainStackView addArrangedSubview:self.contentStackView];
