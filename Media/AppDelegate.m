@@ -21,6 +21,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
 	
+	[MKCDataPersistence setDefaultValue];
+	[MKCThemeManager applyTheme:[MKCDataPersistence theme]];
+	
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
 	MKCMainTabBarController *mainTabBarController = [[MKCMainTabBarController alloc] init];
