@@ -45,12 +45,14 @@
 	MKCMovieTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCMovieTableViewCell.identifier forIndexPath:indexPath];
 	
 	MKCMovieInfoModel *movieInfo = self.movies[indexPath.row];
+	NSURL *expectedURL = [NSURL URLWithString:movieInfo.imageUrl];
 	// 優化圖片載入：使用 SDWebImage 的緩存策略和錯誤處理
-	[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:movieInfo.imageUrl]
+	[cell.coverImageView sd_setImageWithURL:expectedURL
 							placeholderImage:nil
 									 options:SDWebImageRetryFailed | SDWebImageHighPriority
 								   completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-		if (error) {
+		// 檢查 URL 是否匹配，避免 cell 重用時設置錯誤的背景色
+		if (error && [imageURL isEqual:expectedURL]) {
 			cell.coverImageView.backgroundColor = [UIColor lightGrayColor];
 		}
 	}];

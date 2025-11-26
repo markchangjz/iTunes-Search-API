@@ -43,12 +43,14 @@
 
 - (void)configureWithModel:(JSONModel *)model {
 	MKCSongInfoModel *song = (MKCSongInfoModel *)model;
+	NSURL *expectedURL = [NSURL URLWithString:song.imageUrl];
 	// 優化圖片載入：使用 SDWebImage 的緩存策略和錯誤處理
-	[self.coverImageView sd_setImageWithURL:[NSURL URLWithString:song.imageUrl]
+	[self.coverImageView sd_setImageWithURL:expectedURL
 							placeholderImage:nil
 									 options:SDWebImageRetryFailed | SDWebImageHighPriority
 								   completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-		if (error) {
+		// 檢查 URL 是否匹配，避免 cell 重用時設置錯誤的背景色
+		if (error && [imageURL isEqual:expectedURL]) {
 			// 載入失敗時使用預設背景色
 			self.coverImageView.backgroundColor = [UIColor lightGrayColor];
 		}
