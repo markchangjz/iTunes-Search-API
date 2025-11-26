@@ -44,12 +44,21 @@
 	MKCSongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCSongTableViewCell.identifier forIndexPath:indexPath];
 	
 	MKCSongInfoModel *songInfo = self.songs[indexPath.row];
-	[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:songInfo.imageUrl]];
+	// 優化圖片載入：使用 SDWebImage 的緩存策略和錯誤處理
+	[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:songInfo.imageUrl]
+							placeholderImage:nil
+									 options:SDWebImageRetryFailed | SDWebImageHighPriority
+								   completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+		if (error) {
+			cell.coverImageView.backgroundColor = [UIColor lightGrayColor];
+		}
+	}];
 	cell.trackName = songInfo.trackName;
 	cell.artistName = songInfo.artistName;
 	cell.collectionName = songInfo.collectionName;
 	cell.duration = songInfo.trackTime;
-	cell.isCollected = [MKCDataPersistence hasCollectdSongWithTrackId:songInfo.trackId];
+	// 由於此頁面只顯示已收藏的項目，直接設為 YES，避免重複查詢
+	cell.isCollected = YES;
 	
 	cell.delegate = self;
 	cell.tag = indexPath.row;

@@ -45,13 +45,24 @@
 	MKCMovieTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MKCMovieTableViewCell.identifier forIndexPath:indexPath];
 	
 	MKCMovieInfoModel *movieInfo = self.movies[indexPath.row];
-	[cell.coverImageView sd_setImageWithURL:[NSURL URLWithString:movieInfo.imageUrl]];
+	NSURL *expectedURL = [NSURL URLWithString:movieInfo.imageUrl];
+	// 優化圖片載入：使用 SDWebImage 的緩存策略和錯誤處理
+	[cell.coverImageView sd_setImageWithURL:expectedURL
+							placeholderImage:nil
+									 options:SDWebImageRetryFailed | SDWebImageHighPriority
+								   completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+		// 檢查 URL 是否匹配，避免 cell 重用時設置錯誤的背景色
+		if (error && [imageURL isEqual:expectedURL]) {
+			cell.coverImageView.backgroundColor = [UIColor lightGrayColor];
+		}
+	}];
 	cell.trackName = movieInfo.trackName;
 	cell.artistName = movieInfo.artistName;
 	cell.trackCensoredName = movieInfo.trackCensoredName;
 	cell.duration = movieInfo.trackTime;
 	cell.longDescription = movieInfo.longDescription;
-	cell.isCollected = [MKCDataPersistence hasCollectdMovieWithTrackId:movieInfo.trackId];
+	// 由於此頁面只顯示已收藏的項目，直接設為 YES，避免重複查詢
+	cell.isCollected = YES;
 	cell.isCollapsed = ![self.expandMovieItems containsObject:movieInfo.trackId];
 	
 	cell.delegate = self;
