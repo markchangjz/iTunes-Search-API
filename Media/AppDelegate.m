@@ -28,10 +28,6 @@
 	self.window.rootViewController = mainTabBarController;
 	[self.window makeKeyAndVisible];
 	
-	[MKCDataPersistence setDefaultValue];
-	
-	[MKCThemeManager applyTheme:MKCDataPersistence.theme];
-	
 	return YES;
 }
 
