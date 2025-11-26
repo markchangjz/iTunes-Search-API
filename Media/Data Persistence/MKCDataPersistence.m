@@ -16,7 +16,49 @@ NSString *const MKCCollectedMoviesKey = @"MKCCollectedMoviesKey";
 NSString *const MKCCollectedSongsKey = @"MKCCollectedSongsKey";
 NSString *const MKCThemeKey = @"MKCThemeKey";
 
+@interface MKCDataPersistence ()
+
+@property (class, nonatomic, strong) NSSet<NSString *> *cachedCollectedMovieTrackIds;
+@property (class, nonatomic, strong) NSSet<NSString *> *cachedCollectedSongTrackIds;
+
+@end
+
 @implementation MKCDataPersistence
+
+static NSSet<NSString *> *_cachedCollectedMovieTrackIds = nil;
+static NSSet<NSString *> *_cachedCollectedSongTrackIds = nil;
+
++ (NSSet<NSString *> *)cachedCollectedMovieTrackIds {
+	if (!_cachedCollectedMovieTrackIds) {
+		[self reloadCachedCollectedMovieTrackIds];
+	}
+	return _cachedCollectedMovieTrackIds;
+}
+
++ (void)setCachedCollectedMovieTrackIds:(NSSet<NSString *> *)cachedCollectedMovieTrackIds {
+	_cachedCollectedMovieTrackIds = cachedCollectedMovieTrackIds;
+}
+
++ (NSSet<NSString *> *)cachedCollectedSongTrackIds {
+	if (!_cachedCollectedSongTrackIds) {
+		[self reloadCachedCollectedSongTrackIds];
+	}
+	return _cachedCollectedSongTrackIds;
+}
+
++ (void)setCachedCollectedSongTrackIds:(NSSet<NSString *> *)cachedCollectedSongTrackIds {
+	_cachedCollectedSongTrackIds = cachedCollectedSongTrackIds;
+}
+
++ (void)reloadCachedCollectedMovieTrackIds {
+	NSArray<NSString *> *trackIds = [self.userDefaults arrayForKey:MKCCollectedMoviesKey] ?: @[];
+	_cachedCollectedMovieTrackIds = [NSSet setWithArray:trackIds];
+}
+
++ (void)reloadCachedCollectedSongTrackIds {
+	NSArray<NSString *> *trackIds = [self.userDefaults arrayForKey:MKCCollectedSongsKey] ?: @[];
+	_cachedCollectedSongTrackIds = [NSSet setWithArray:trackIds];
+}
 
 + (NSUserDefaults *)userDefaults {
 	return [NSUserDefaults standardUserDefaults];
@@ -32,23 +74,28 @@ NSString *const MKCThemeKey = @"MKCThemeKey";
 
 + (void)collectMovieWithTrackId:(NSString *)trackId {
 	NSMutableArray *collectedMovies = [self.userDefaults mutableArrayValueForKey:MKCCollectedMoviesKey];
-	[collectedMovies addObject:trackId];
-	[self.userDefaults setObject:[collectedMovies copy] forKey:MKCCollectedMoviesKey];
-	
-	[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedMovieDidChangeNotification object:nil];
+	if (![collectedMovies containsObject:trackId]) {
+		[collectedMovies addObject:trackId];
+		[self.userDefaults setObject:[collectedMovies copy] forKey:MKCCollectedMoviesKey];
+		[self reloadCachedCollectedMovieTrackIds];
+		
+		[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedMovieDidChangeNotification object:nil];
+	}
 }
 
 + (void)removeCollectedMovieWithTrackId:(NSString *)trackId {
 	NSMutableArray *collectedMovies = [self.userDefaults mutableArrayValueForKey:MKCCollectedMoviesKey];
-	[collectedMovies removeObject:trackId];
-	[self.userDefaults setObject:[collectedMovies copy] forKey:MKCCollectedMoviesKey];
-	
-	[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedMovieDidChangeNotification object:nil];
+	if ([collectedMovies containsObject:trackId]) {
+		[collectedMovies removeObject:trackId];
+		[self.userDefaults setObject:[collectedMovies copy] forKey:MKCCollectedMoviesKey];
+		[self reloadCachedCollectedMovieTrackIds];
+		
+		[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedMovieDidChangeNotification object:nil];
+	}
 }
 
 + (BOOL)hasCollectdMovieWithTrackId:(NSString *)trackId {
-	NSMutableArray *collectedMovies = [self.userDefaults mutableArrayValueForKey:MKCCollectedMoviesKey];
-	return [collectedMovies containsObject:trackId];
+	return [[self cachedCollectedMovieTrackIds] containsObject:trackId];
 }
 
 + (NSArray<NSString *> *)collectMovieTrackIds {
@@ -60,23 +107,28 @@ NSString *const MKCThemeKey = @"MKCThemeKey";
 
 + (void)collectSongWithTrackId:(nonnull NSString *)trackId {
 	NSMutableArray *collectedSongs = [self.userDefaults mutableArrayValueForKey:MKCCollectedSongsKey];
-	[collectedSongs addObject:trackId];
-	[self.userDefaults setObject:[collectedSongs copy] forKey:MKCCollectedSongsKey];
-	
-	[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedSongDidChangeNotification object:nil];
+	if (![collectedSongs containsObject:trackId]) {
+		[collectedSongs addObject:trackId];
+		[self.userDefaults setObject:[collectedSongs copy] forKey:MKCCollectedSongsKey];
+		[self reloadCachedCollectedSongTrackIds];
+		
+		[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedSongDidChangeNotification object:nil];
+	}
 }
 
 + (void)removeCollectedSongWithTrackId:(nonnull NSString *)trackId {
 	NSMutableArray *collectedSongs = [self.userDefaults mutableArrayValueForKey:MKCCollectedSongsKey];
-	[collectedSongs removeObject:trackId];
-	[self.userDefaults setObject:[collectedSongs copy] forKey:MKCCollectedSongsKey];
-	
-	[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedSongDidChangeNotification object:nil];
+	if ([collectedSongs containsObject:trackId]) {
+		[collectedSongs removeObject:trackId];
+		[self.userDefaults setObject:[collectedSongs copy] forKey:MKCCollectedSongsKey];
+		[self reloadCachedCollectedSongTrackIds];
+		
+		[[NSNotificationCenter defaultCenter] postNotificationName:MKCCollectedSongDidChangeNotification object:nil];
+	}
 }
 
 + (BOOL)hasCollectdSongWithTrackId:(nonnull NSString *)trackId {
-	NSMutableArray *collectedSongs = [self.userDefaults mutableArrayValueForKey:MKCCollectedSongsKey];
-	return [collectedSongs containsObject:trackId];
+	return [[self cachedCollectedSongTrackIds] containsObject:trackId];
 }
 
 + (NSArray<NSString *> *)collectSongTrackIds {

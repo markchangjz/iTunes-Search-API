@@ -29,6 +29,8 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 @property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSArray<JSONModel *> *> *mediaElements;
 @property (nonatomic, strong) NSArray<NSNumber *> *cellListOrder;
 @property (nonatomic, strong) NSMutableSet<NSString *> *expandedMovieItems;
+@property (nonatomic, strong) NSSet<NSString *> *collectedMovieTrackIds;
+@property (nonatomic, strong) NSSet<NSString *> *collectedSongTrackIds;
 
 @end
 
@@ -113,6 +115,10 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 - (void)parseData {
 	self.mediaElements = [[NSMutableDictionary alloc] init];
 	
+	// 一次性載入所有收藏狀態，避免在 cellForRowAtIndexPath 中重複查詢
+	self.collectedMovieTrackIds = [NSSet setWithArray:[MKCDataPersistence collectMovieTrackIds]];
+	self.collectedSongTrackIds = [NSSet setWithArray:[MKCDataPersistence collectSongTrackIds]];
+	
 	[self.cellListOrder enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 		MKCMediaType type = (MKCMediaType)obj.integerValue;
 		
@@ -132,7 +138,7 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 - (MKCMovieTableViewCell *)setupMovieTableViewCellWithCell:(MKCBasicMediaTableViewCell *)cell cellModel:(MKCMovieInfoModel *)cellModel {
 	MKCMovieTableViewCell *movieCell = (MKCMovieTableViewCell *)cell;
 	movieCell.delegate = self;
-	movieCell.isCollected = [MKCDataPersistence hasCollectdMovieWithTrackId:cellModel.trackId];
+	movieCell.isCollected = [self.collectedMovieTrackIds containsObject:cellModel.trackId];
 	movieCell.isCollapsed = ![self.expandedMovieItems containsObject:cellModel.trackId];
 	return movieCell;
 }
@@ -140,7 +146,7 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 - (MKCSongTableViewCell *)setupSongTableViewCellWithCell:(MKCBasicMediaTableViewCell *)cell cellModel:(MKCSongInfoModel *)cellModel {
 	MKCSongTableViewCell *songCell = (MKCSongTableViewCell *)cell;
 	songCell.delegate = self;
-	songCell.isCollected = [MKCDataPersistence hasCollectdSongWithTrackId:cellModel.trackId];
+	songCell.isCollected = [self.collectedSongTrackIds containsObject:cellModel.trackId];
 	return songCell;
 }
 
@@ -394,6 +400,10 @@ typedef NS_ENUM(NSInteger, MKCMediaType) {
 	if (self.tabBarController.selectedIndex == 0) {
 		return;
 	}
+	
+	// 重新載入收藏狀態
+	self.collectedMovieTrackIds = [NSSet setWithArray:[MKCDataPersistence collectMovieTrackIds]];
+	self.collectedSongTrackIds = [NSSet setWithArray:[MKCDataPersistence collectSongTrackIds]];
 	
 	NSArray *visibleIndexPaths = [self.tableView indexPathsForVisibleRows];
 	[self.tableView reloadRowsAtIndexPaths:visibleIndexPaths withRowAnimation:UITableViewRowAnimationNone];

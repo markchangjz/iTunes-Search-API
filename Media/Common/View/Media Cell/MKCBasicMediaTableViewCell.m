@@ -32,6 +32,13 @@
 	
 }
 
+- (void)prepareForReuse {
+	[super prepareForReuse];
+	// 取消之前的圖片載入請求，避免 cell 重用時載入錯誤的圖片
+	[self.coverImageView sd_cancelCurrentImageLoad];
+	self.coverImageView.image = nil;
+}
+
 #pragma mark - binding
 
 - (void)setIsCollected:(BOOL)isCollected {

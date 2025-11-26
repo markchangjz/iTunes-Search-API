@@ -51,7 +51,16 @@
 
 - (void)configureWithModel:(JSONModel *)model {
 	MKCMovieInfoModel *movie = (MKCMovieInfoModel *)model;
-	[self.coverImageView sd_setImageWithURL:[NSURL URLWithString:movie.imageUrl]];
+	// 優化圖片載入：使用 SDWebImage 的緩存策略和錯誤處理
+	[self.coverImageView sd_setImageWithURL:[NSURL URLWithString:movie.imageUrl]
+							placeholderImage:nil
+									 options:SDWebImageRetryFailed | SDWebImageHighPriority
+								   completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+		if (error) {
+			// 載入失敗時使用預設背景色
+			self.coverImageView.backgroundColor = [UIColor lightGrayColor];
+		}
+	}];
 	self.trackName = movie.trackName;
 	self.artistName = movie.artistName;
 	self.trackCensoredName = movie.trackCensoredName;
